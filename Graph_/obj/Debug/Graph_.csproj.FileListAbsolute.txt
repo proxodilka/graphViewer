@@ -1,0 +1,10 @@
+C:\Users\len\source\repos\Graph_\Graph_\bin\Debug\Graph_.exe.config
+C:\Users\len\source\repos\Graph_\Graph_\bin\Debug\Graph_.exe
+C:\Users\len\source\repos\Graph_\Graph_\bin\Debug\Graph_.pdb
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.csprojAssemblyReference.cache
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.Properties.Resources.resources
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.csproj.GenerateResource.cache
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.csproj.CoreCompileInputs.cache
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.exe
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.pdb
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.MainWindow.resources
