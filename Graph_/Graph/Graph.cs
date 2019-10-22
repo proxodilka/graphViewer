@@ -162,7 +162,7 @@ namespace Graph_
                 }
             }
 
-            vertexModified?.Invoke(this, new GraphEventArgs());
+            edgeModified?.Invoke(this, new GraphEventArgs());
         }
 
         public void clearEdges()
@@ -177,7 +177,7 @@ namespace Graph_
                 }
             }
 
-            vertexModified?.Invoke(this, new GraphEventArgs());
+            edgeModified?.Invoke(this, new GraphEventArgs());
         }
 
         public Dictionary<int, HashSet<int>> get()

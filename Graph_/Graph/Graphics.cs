@@ -31,7 +31,7 @@ namespace Graph_.GraphVisual_
             graph = _graph;
             graph.edgeModified += onEdgesChanged;
             graph.vertexModified += onVertexChanged;
-            isCanvasDirty = false;
+            isCanvasDirty = true;
 
             activeVertices = new HashSet<int>();
             markedVertices = new Dictionary<int, Color>();
@@ -42,7 +42,7 @@ namespace Graph_.GraphVisual_
 
         private void onVertexChanged(object sender, GraphEventArgs e)
         {
-            render();
+            render(true);
         }
 
         private void onEdgesChanged(object sender, GraphEventArgs e)
@@ -119,7 +119,7 @@ namespace Graph_.GraphVisual_
 
         private int calcScale()
         {
-            int baseCoef = 200;
+            int baseCoef = 220;
             while (baseCoef < graph.verticesNumber)
                 baseCoef *= 2;
             if (graph.verticesNumber == 0) return 1;
@@ -149,14 +149,20 @@ namespace Graph_.GraphVisual_
             return true;
         }
 
-        private void render()
+        private void render(bool isResetCenter=false)
         {
             plot.reset();
             drawVertecies();
             drawEdges();
             
 
-            plot.setScale(calcScale());
+            
+            if (isResetCenter)
+            {
+                plot.setScale(calcScale());
+                plot.resetCenter();
+            }
+                
   
             plot.render();
             didUpdate?.Invoke(this);
@@ -166,8 +172,7 @@ namespace Graph_.GraphVisual_
         {
             markedVertices.Clear();
             activeVertices.Clear();
-            isCanvasDirty = false;
-            render();
+            render(true);
         }
 
         public void stopAnimation()

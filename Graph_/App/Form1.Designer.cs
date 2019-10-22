@@ -106,40 +106,45 @@
             // newFileOption
             // 
             this.newFileOption.Name = "newFileOption";
-            this.newFileOption.Size = new System.Drawing.Size(123, 22);
+            this.newFileOption.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newFileOption.Size = new System.Drawing.Size(195, 22);
             this.newFileOption.Text = "New";
             this.newFileOption.Click += new System.EventHandler(this.NewFileOption_Click);
             // 
             // openFileOption
             // 
             this.openFileOption.Name = "openFileOption";
-            this.openFileOption.Size = new System.Drawing.Size(123, 22);
+            this.openFileOption.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openFileOption.Size = new System.Drawing.Size(195, 22);
             this.openFileOption.Text = "Open...";
             this.openFileOption.Click += new System.EventHandler(this.OpenFileOption_Click);
             // 
             // saveFileOption
             // 
             this.saveFileOption.Name = "saveFileOption";
-            this.saveFileOption.Size = new System.Drawing.Size(123, 22);
+            this.saveFileOption.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveFileOption.Size = new System.Drawing.Size(195, 22);
             this.saveFileOption.Text = "Save";
             this.saveFileOption.Click += new System.EventHandler(this.SaveFileOption_Click);
             // 
             // saveAsFileOption
             // 
             this.saveAsFileOption.Name = "saveAsFileOption";
-            this.saveAsFileOption.Size = new System.Drawing.Size(123, 22);
+            this.saveAsFileOption.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.saveAsFileOption.Size = new System.Drawing.Size(195, 22);
             this.saveAsFileOption.Text = "Save As...";
             this.saveAsFileOption.Click += new System.EventHandler(this.SaveAsFileOption_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(120, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(192, 6);
             // 
             // exitOption
             // 
             this.exitOption.Name = "exitOption";
-            this.exitOption.Size = new System.Drawing.Size(123, 22);
+            this.exitOption.Size = new System.Drawing.Size(195, 22);
             this.exitOption.Text = "Exit";
             this.exitOption.Click += new System.EventHandler(this.ExitOption_Click);
             // 
@@ -163,6 +168,8 @@
             this.plot.Size = new System.Drawing.Size(821, 497);
             this.plot.TabIndex = 0;
             this.plot.TabStop = false;
+            this.plot.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Plot_GiveFeedback);
+            this.plot.QueryContinueDrag += new System.Windows.Forms.QueryContinueDragEventHandler(this.Plot_QueryContinueDrag);
             // 
             // resetButton
             // 
@@ -213,7 +220,7 @@
             this.changeVertexTab.Location = new System.Drawing.Point(4, 22);
             this.changeVertexTab.Name = "changeVertexTab";
             this.changeVertexTab.Padding = new System.Windows.Forms.Padding(3);
-            this.changeVertexTab.Size = new System.Drawing.Size(813, 68);
+            this.changeVertexTab.Size = new System.Drawing.Size(813, 90);
             this.changeVertexTab.TabIndex = 0;
             this.changeVertexTab.Text = "Изменение вершин";
             this.changeVertexTab.UseVisualStyleBackColor = true;
@@ -270,7 +277,7 @@
             this.changeEdgesTab.Controls.Add(this.changeEdgesLabel);
             this.changeEdgesTab.Location = new System.Drawing.Point(4, 22);
             this.changeEdgesTab.Name = "changeEdgesTab";
-            this.changeEdgesTab.Size = new System.Drawing.Size(813, 68);
+            this.changeEdgesTab.Size = new System.Drawing.Size(813, 90);
             this.changeEdgesTab.TabIndex = 2;
             this.changeEdgesTab.Text = "Изменение рёбер";
             this.changeEdgesTab.UseVisualStyleBackColor = true;

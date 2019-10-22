@@ -49,7 +49,7 @@ namespace Graph_
                 alignCenter.Alignment = StringAlignment.Center;
                 alignCenter.LineAlignment = StringAlignment.Center;
 
-                Font font = new Font("arial", fontSize==0?0.000001f:fontSize, GraphicsUnit.Pixel);
+                Font font = new Font("arial", fontSize<=0?0.000001f:fontSize, GraphicsUnit.Pixel);
 
                 context.graph.DrawString(text, font, new SolidBrush(color), textArea, alignCenter);
 

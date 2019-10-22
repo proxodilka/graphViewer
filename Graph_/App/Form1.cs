@@ -48,6 +48,17 @@ namespace Graph_
                 graph.clearEdges();
         }
 
+        private void Plot_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            Console.WriteLine("dragging");
+        }
+
+        private void Plot_QueryContinueDrag(object sender, QueryContinueDragEventArgs e)
+        {
+            Console.WriteLine("dragging");
+            
+        }
+
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closingFile()) e.Cancel=true;
@@ -62,11 +73,11 @@ namespace Graph_
         public MainWindow()
         {
             mainWindow = this;
+            KeyPreview = true;
             InitializeComponent();
             handleAppState();
             newFile();
-            //openFile(@"C:\Users\len\Documents\pikto.txt");
-            int x = 2;
+            openFile(@"C:\Users\len\Documents\bfs_vs_dfs.txt");
             //Colors colorManager = new Colors();
 
 
