@@ -111,6 +111,44 @@ namespace Graph_
 
         }
 
+        private bool tryToParseGraph(StreamReader fileStream, string[] type)
+        {
+            if (type.Length == 1)
+            {
+                if (type[0] == "undetected_type") { onError(unknownFileError); return false; }
+                else if (type[0] == "adjacency_matrix")
+                {
+                    try
+                    {
+                        int[][] adjacencyMatrix = parseMatrix(fileStream);
+                        graph = new Graph(adjacencyMatrix);
+                    }
+                    catch { onError(parseError); return false; }
+                }
+                else if (type[0] == "adjacency_list")
+                {
+                    try { graph = new Graph(parseList(fileStream)); }
+                    catch { onError(parseError); return false; }
+                }
+                else { onError(unknownFileError); return false; };
+            }
+            else if (type.Length == 3)
+            {
+                if (type[0] == "adjacency_matrix")
+                {
+                    try
+                    {
+                        int[][] adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2]));
+                        graph = new Graph(adjacencyMatrix);
+                    }
+                    catch { onError(parseError); return false; }
+                }
+                else { onError(unknownFileError); return false; };
+            }
+
+            return true;
+        }
+
         private Array slice(Array arr, int start, int? _end = null)
         {
             int end = _end ?? arr.Length - start;

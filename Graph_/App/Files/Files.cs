@@ -38,53 +38,29 @@ namespace Graph_
 
         private void openFile(string filePath)
         {
-            currentFilePath = filePath;
-            
-
-            hasPath = true;
-            isModified = false;
-            StreamReader fileStream = new StreamReader(currentFilePath);
+             
+            StreamReader fileStream = new StreamReader(filePath);
             string firstLine = fileStream.ReadLine();
 
             string[] type = detectType(firstLine).Split(' ');
-
-            if (type.Length == 1)
-            {
-                if (type[0] == "undetected_type") { onError(unknownFileError); return; }
-                else if (type[0] == "adjacency_matrix") {
-                    int[][] adjacencyMatrix = null;
-
-                    try{ adjacencyMatrix = parseMatrix(fileStream); }
-                    catch { onError(parseError); return; }
-
-                    graph = new Graph(adjacencyMatrix);
-                }
-                else if (type[0] == "adjacency_list") {
-                    try { graph = new Graph(parseList(fileStream)); }
-                    catch { onError(parseError); return; }
-                }
-                else { onError(unknownFileError); return; };
-            }
-            else if (type.Length == 3)
-            {
-                if (type[0] == "adjacency_matrix") {
-                    int[][] adjacencyMatrix = null;
-                    try { adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2])); }
-                    catch { onError(parseError); return; }
-                    graph = new Graph(adjacencyMatrix);
-                }
-                else { onError(unknownFileError); return; };
-            }
-
+            bool fileOk = tryToParseGraph(fileStream, type);
+            
             fileStream.Close();
 
-            graphVisual = new GraphVisual(plot, graph);
-            graphAlgo = new GraphAlgo(graph);
-            subscribe();
+            if (fileOk)
+            {
+                hasPath = true;
+                isModified = false;
+                currentFilePath = filePath;
+                graphVisual = new GraphVisual(plot, graph);
+                graphAlgo = new GraphAlgo(graph);
+                subscribe();
 
-            appState = "ready";
-            handleAppState();
-            updateInputBounds();
+                appState = "ready";
+                handleAppState();
+                updateInputBounds();
+            }
+            
         }
 
         private void saveFile(string filePath)
