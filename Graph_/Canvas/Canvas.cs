@@ -53,6 +53,7 @@ namespace Graph_
 
             img = new Bitmap(w, h);
             graph = Graphics.FromImage(img);
+            graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             WFCanvasContext context = new WFCanvasContext(this);
 
