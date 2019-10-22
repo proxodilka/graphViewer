@@ -157,7 +157,8 @@ namespace Graph_
             {
                 foreach(int vertex in vertices)
                 {
-                    addEdge(srcVertex, vertex, true);
+                    if (srcVertex!=vertex)
+                        addEdge(srcVertex, vertex, true);
                 }
             }
 
