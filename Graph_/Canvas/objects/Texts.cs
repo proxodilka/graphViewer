@@ -13,25 +13,31 @@ namespace Graph_
     public class Texts
     {
         WFCanvas.WFCanvasContext context;
-        private List<Tuple<string, float, float>> texts;
+        private List<Tuple<Color, Tuple<string, float, float>>> texts;
 
         public Texts(WFCanvas.WFCanvasContext context)
         {
             this.context = context;
-            this.texts = new List<Tuple<string, float, float>>();
+            this.texts = new List<Tuple<Color, Tuple<string, float, float>>>();
         }
 
-        public int addText(string text, float x = 0, float y = 0)
+        public int addText(string text, float x = 0, float y = 0, Color? _color=null)
         {
-            texts.Add(new Tuple<string, float, float>(text, x, y));
+            Color color = _color ?? Color.Black;
+            texts.Add(new Tuple<Color, Tuple<string, float, float>>(color, 
+                      new Tuple<string, float, float>(text, x, y)));
+
             return texts.Count() - 1;
         }
 
         public void draw()
         {
-            foreach (Tuple<string, float, float> _text in texts)
+            foreach (var textProps in texts)
             {
                 int fontSize = 1 * context.scale;
+
+                Color color = textProps.Item1;
+                var _text = textProps.Item2;
 
                 string text = _text.Item1;
                 float x = _text.Item2 * context.scale + context.center.X;
@@ -43,9 +49,9 @@ namespace Graph_
                 alignCenter.Alignment = StringAlignment.Center;
                 alignCenter.LineAlignment = StringAlignment.Center;
 
-                Font font = new Font("arial", fontSize, GraphicsUnit.Pixel);
+                Font font = new Font("arial", fontSize==0?0.000001f:fontSize, GraphicsUnit.Pixel);
 
-                context.graph.DrawString(text, font, Brushes.Black, textArea, alignCenter);
+                context.graph.DrawString(text, font, new SolidBrush(color), textArea, alignCenter);
 
                 //DEBUG: graph.DrawRectangle(new Pen(Color.Red), textArea);
             }

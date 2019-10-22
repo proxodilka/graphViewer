@@ -48,6 +48,8 @@
             this.addVertex = new System.Windows.Forms.Button();
             this.changeVertexesLabel = new System.Windows.Forms.Label();
             this.changeEdgesTab = new System.Windows.Forms.TabPage();
+            this.clearEdges = new System.Windows.Forms.Button();
+            this.makeGraphComplete = new System.Windows.Forms.Button();
             this.toEdgeValue = new System.Windows.Forms.NumericUpDown();
             this.fromEdgeValue = new System.Windows.Forms.NumericUpDown();
             this.toLabel = new System.Windows.Forms.Label();
@@ -56,6 +58,7 @@
             this.addEdge = new System.Windows.Forms.Button();
             this.changeEdgesLabel = new System.Windows.Forms.Label();
             this.traversalTab = new System.Windows.Forms.TabPage();
+            this.isConnectedComponents = new System.Windows.Forms.RadioButton();
             this.traversalStartVertex = new System.Windows.Forms.NumericUpDown();
             this.startTraversal = new System.Windows.Forms.Button();
             this.isDfs = new System.Windows.Forms.RadioButton();
@@ -197,7 +200,7 @@
             this.tabControl.Location = new System.Drawing.Point(13, 554);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(821, 160);
+            this.tabControl.Size = new System.Drawing.Size(821, 116);
             this.tabControl.TabIndex = 8;
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TabControl_Selecting);
             // 
@@ -210,7 +213,7 @@
             this.changeVertexTab.Location = new System.Drawing.Point(4, 22);
             this.changeVertexTab.Name = "changeVertexTab";
             this.changeVertexTab.Padding = new System.Windows.Forms.Padding(3);
-            this.changeVertexTab.Size = new System.Drawing.Size(813, 134);
+            this.changeVertexTab.Size = new System.Drawing.Size(813, 68);
             this.changeVertexTab.TabIndex = 0;
             this.changeVertexTab.Text = "Изменение вершин";
             this.changeVertexTab.UseVisualStyleBackColor = true;
@@ -256,6 +259,8 @@
             // 
             // changeEdgesTab
             // 
+            this.changeEdgesTab.Controls.Add(this.clearEdges);
+            this.changeEdgesTab.Controls.Add(this.makeGraphComplete);
             this.changeEdgesTab.Controls.Add(this.toEdgeValue);
             this.changeEdgesTab.Controls.Add(this.fromEdgeValue);
             this.changeEdgesTab.Controls.Add(this.toLabel);
@@ -265,10 +270,32 @@
             this.changeEdgesTab.Controls.Add(this.changeEdgesLabel);
             this.changeEdgesTab.Location = new System.Drawing.Point(4, 22);
             this.changeEdgesTab.Name = "changeEdgesTab";
-            this.changeEdgesTab.Size = new System.Drawing.Size(813, 134);
+            this.changeEdgesTab.Size = new System.Drawing.Size(813, 68);
             this.changeEdgesTab.TabIndex = 2;
             this.changeEdgesTab.Text = "Изменение рёбер";
             this.changeEdgesTab.UseVisualStyleBackColor = true;
+            // 
+            // clearEdges
+            // 
+            this.clearEdges.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearEdges.Location = new System.Drawing.Point(297, 26);
+            this.clearEdges.Name = "clearEdges";
+            this.clearEdges.Size = new System.Drawing.Size(134, 22);
+            this.clearEdges.TabIndex = 24;
+            this.clearEdges.Text = "Удалить все ребра";
+            this.clearEdges.UseVisualStyleBackColor = true;
+            this.clearEdges.Click += new System.EventHandler(this.ClearEdges_Click);
+            // 
+            // makeGraphComplete
+            // 
+            this.makeGraphComplete.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.makeGraphComplete.Location = new System.Drawing.Point(157, 27);
+            this.makeGraphComplete.Name = "makeGraphComplete";
+            this.makeGraphComplete.Size = new System.Drawing.Size(134, 22);
+            this.makeGraphComplete.TabIndex = 23;
+            this.makeGraphComplete.Text = "Сделать полным";
+            this.makeGraphComplete.UseVisualStyleBackColor = true;
+            this.makeGraphComplete.Click += new System.EventHandler(this.MakeGraphComplete_Click);
             // 
             // toEdgeValue
             // 
@@ -340,6 +367,7 @@
             // 
             // traversalTab
             // 
+            this.traversalTab.Controls.Add(this.isConnectedComponents);
             this.traversalTab.Controls.Add(this.traversalStartVertex);
             this.traversalTab.Controls.Add(this.startTraversal);
             this.traversalTab.Controls.Add(this.isDfs);
@@ -348,10 +376,21 @@
             this.traversalTab.Location = new System.Drawing.Point(4, 22);
             this.traversalTab.Name = "traversalTab";
             this.traversalTab.Padding = new System.Windows.Forms.Padding(3);
-            this.traversalTab.Size = new System.Drawing.Size(813, 134);
+            this.traversalTab.Size = new System.Drawing.Size(813, 90);
             this.traversalTab.TabIndex = 1;
             this.traversalTab.Text = "Обходы";
             this.traversalTab.UseVisualStyleBackColor = true;
+            // 
+            // isConnectedComponents
+            // 
+            this.isConnectedComponents.AutoSize = true;
+            this.isConnectedComponents.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.isConnectedComponents.Location = new System.Drawing.Point(134, 59);
+            this.isConnectedComponents.Name = "isConnectedComponents";
+            this.isConnectedComponents.Size = new System.Drawing.Size(134, 27);
+            this.isConnectedComponents.TabIndex = 16;
+            this.isConnectedComponents.Text = "Компоненты";
+            this.isConnectedComponents.UseVisualStyleBackColor = true;
             // 
             // traversalStartVertex
             // 
@@ -426,7 +465,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(846, 726);
+            this.ClientSize = new System.Drawing.Size(846, 681);
             this.Controls.Add(this.filePathLabel);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.graphRoot);
@@ -496,6 +535,9 @@
         private System.Windows.Forms.ToolStripMenuItem newFileOption;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitOption;
+        private System.Windows.Forms.RadioButton isConnectedComponents;
+        private System.Windows.Forms.Button makeGraphComplete;
+        private System.Windows.Forms.Button clearEdges;
     }
 }
 

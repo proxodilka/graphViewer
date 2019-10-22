@@ -33,6 +33,14 @@ namespace Graph_
             return ans;
         }
 
+        static public PointF calcPointOnCircle(float value, bool isDegree = false, float x=0, float y=0, float r=1)
+        {
+            if (isDegree) value *= (float)Math.PI / 180.0f;
+
+            PointF ans = new PointF(x + r * (float)Math.Cos(value), y + r * (float)Math.Sin(value));
+            return ans;
+        }
+
         public RectangleF getAsRectangle()
         {
             RectangleF ans = new RectangleF(x - r, y + r, 2 * r, 2 * r);

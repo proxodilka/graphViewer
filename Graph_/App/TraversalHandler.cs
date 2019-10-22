@@ -18,10 +18,11 @@ namespace Graph_
             if (!onAnimation)
             {
                 int value = (int)traversalStartVertex.Value;
-                List<int> path = null;
+                List<Tuple<int, int>> path=null;
 
                 if (isDfs.Checked) path = graphAlgo.dfs(value);
                 else if (isBfs.Checked) path = graphAlgo.bfs(value);
+                else if (isConnectedComponents.Checked) path = graphAlgo.connectedComponents(value);
 
                 changeOnAnimationState();
                 await graphVisual.animate(path);
@@ -30,8 +31,6 @@ namespace Graph_
             else
             {
                 graphVisual.stopAnimation();
-                graphVisual.reset();
-                updateActiveVertex();
             }
         }
 

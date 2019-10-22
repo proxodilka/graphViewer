@@ -10,7 +10,7 @@ namespace Graph_
     {
         Graph graph;
         Dictionary<int, HashSet<int>> graphList;
-        bool[] visited;
+        int[] visited;
         List<int> ans;
 
         public GraphAlgo(Graph _graph)
@@ -19,35 +19,35 @@ namespace Graph_
             ans = new List<int>();
         }
 
-        private void _dfs(int x, bool isFirst = true)
+        private void _dfs(int x, int colorValue, bool isFirst = true)
         {
-            if (visited[x])
+            if (visited[x]!=0)
                 return;
-            visited[x] = true;
+            visited[x] = colorValue;
             if (isFirst) ans.Add(x);
 
             foreach(int y in graphList[x])
             {
-                if (x!=y && !visited[y])
+                if (x!=y && visited[y]==0)
                 {
                     ans.Add(y);
-                    _dfs(y, false);
+                    _dfs(y, colorValue, false);
                     ans.Add(x);
                 }
                 
             }
         }
 
-        public List<int> dfs(int start)
+        public List<Tuple <int, int>> dfs(int start, int colorValue = 1, bool doNotClear = false)
         {
-            algoInit();
-            _dfs(start);
-            return ans;
+            if (!doNotClear) algoInit();
+            _dfs(start, colorValue);
+            return convertToRightAns(ans);
         }
 
-        public List<int> bfs(int start)
+        public List<Tuple<int, int>> bfs(int start, int colorValue = 1, bool doNotClear=false)
         {
-            algoInit();
+            if (!doNotClear) algoInit();
             Queue<int> verticesQueue = new Queue<int>();
             verticesQueue.Enqueue(start);
             
@@ -55,26 +55,60 @@ namespace Graph_
             while (verticesQueue.Count != 0)
             {
                 int vertex = verticesQueue.Dequeue();
-                visited[vertex] = true;
+                visited[vertex] = colorValue;
                 ans.Add(vertex);
                 foreach(int nextVertex in graphList[vertex])
                 {
-                    if (nextVertex!=vertex && !visited[nextVertex])
+                    if (nextVertex!=vertex && visited[nextVertex]==0)
                     {
                         verticesQueue.Enqueue(nextVertex);
-                        visited[nextVertex] = true;
+                        visited[nextVertex] = colorValue;
                     }
                 }
             }
 
-            return ans;
+            return convertToRightAns(ans);
+        }
+
+        private int hasUnvisitedVertices()
+        {
+            foreach (var pair in graphList)
+            {
+                int vertex = pair.Key;
+                if (visited[vertex] == 0) return vertex;
+            }
+            return -1;
+        }
+
+        public List<Tuple<int, int>> connectedComponents(int start)
+        {
+            algoInit();
+            int unvisitedVertex = start, counter = 1;
+            do
+            {
+                bfs(unvisitedVertex, counter, true);
+                unvisitedVertex = hasUnvisitedVertices();
+                counter++;
+            } while (unvisitedVertex != -1);
+
+            return convertToRightAns(ans);
         }
 
         private void algoInit()
         {
             ans.Clear();
-            visited = new bool[graph.getMaxVertexNumber()+1];
+            visited = new int[graph.getMaxVertexNumber()+1];
             graphList = graph.get();
+        }
+
+        private List<Tuple<int,int>> convertToRightAns(List<int> list)
+        {
+            List<Tuple<int, int>> ans = new List<Tuple<int, int>>();
+            foreach(int value in list)
+            {
+                ans.Add(new Tuple<int, int>(value, visited[value]));
+            }
+            return ans;
         }
     }
 }

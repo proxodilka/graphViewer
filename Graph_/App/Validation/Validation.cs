@@ -16,6 +16,7 @@ namespace Graph_
        
         private void validateButtons()
         {
+            //resetButton.Enabled = graphVisual.isCanvasDirty;
             ChangeVertValue_ValueChanged(changeVertValue, new EventArgs());
             traversalStartVertex_ValueChanged(traversalStartVertex, new EventArgs());
             FromEdgeValue_ValueChanged(fromEdgeValue, new EventArgs());

@@ -15,12 +15,14 @@ namespace Graph_
     {
         WFCanvas.WFCanvasContext context;
         private List<Tuple<Color, List<PointF>>> curves;
+        private List<Tuple<Color, PointF[]>> staticPoints;
         private List<Tuple<Color, function>> curveFunctions;
 
         public Curves(WFCanvas.WFCanvasContext context)
         {
             this.context = context;
             this.curves = new List<Tuple<Color, List<PointF>>>();
+            this.staticPoints = new List<Tuple<Color, PointF[]>>();
             this.curveFunctions = new List<Tuple<Color, function>>();
         }
 
@@ -34,6 +36,13 @@ namespace Graph_
             Color color = _color ?? Color.Red;
             curveFunctions.Add(new Tuple<Color, function>(color, value));
             return curveFunctions.Count() - 1;
+        }
+
+        public int addCurve(PointF[] points, Color? _color = null)
+        {
+            Color color = _color ?? Color.Red;
+            staticPoints.Add(new Tuple<Color, PointF[]>(color, points));
+            return staticPoints.Count - 1;
         }
 
         public bool changeCurveFunction(int id, function value, Color? _color = null)
@@ -93,11 +102,23 @@ namespace Graph_
                 context.graph.DrawCurve(new Pen(color), curve.ToArray());
             }
 
+            foreach (Tuple<Color, PointF[]> curveSource in staticPoints)
+            {
+                int scale = context.scale;
+                PointF center = context.center;
+
+                Color color = curveSource.Item1;
+                PointF[] curve = curveSource.Item2.Select(point=>new PointF(point.X*scale+center.X, center.Y-point.Y*scale)).ToArray();
+
+                context.graph.DrawCurve(new Pen(color, 2), curve);
+            }
+
         }
 
         public void clear()
         {
             curves.Clear();
+            staticPoints.Clear();
             curveFunctions.Clear();
         }
     }

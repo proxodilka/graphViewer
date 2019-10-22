@@ -16,7 +16,7 @@ namespace Graph_
 
         private Dictionary<int, HashSet<int>> parseList(StreamReader stream)
         {
-            int cureLine = 0, cureVertex=-1;
+            int cureVertex=-1;
             Dictionary<int, HashSet<int>> result = new Dictionary<int, HashSet<int>>();
             Dictionary<string, int> options = new Dictionary<string, int>();
 
@@ -34,6 +34,7 @@ namespace Graph_
             {
                 result.Add(cureVertex, new HashSet<int>());
                 currentString = (string[])slice(currentString, 2);
+
                 int[] adjacentVertices = currentString.Select(el => int.Parse(el)).ToArray();
                 foreach (int adjacentVertex in adjacentVertices)
                 {
@@ -42,21 +43,36 @@ namespace Graph_
 
                 if (stream.Peek() == -1)
                     break;
+                
                 currentString = stream.ReadLine().Split(' ');
                 cureVertex = int.Parse(currentString[0]);
+    
             }
 
             return result;
         }
         private int[][] parseMatrix(StreamReader stream, int? _verticesNumber = null)
         {
-            int cureLine = 0;
-            int verticesNumber = _verticesNumber ?? int.Parse(stream.ReadLine());
-            int[][] matrix = new int[verticesNumber][];
+            int verticesNumber= _verticesNumber??0;
+            int cureVertex = 0;
+            string[] currentString = new string[0];
+            Dictionary<string, int> options = new Dictionary<string, int>();
 
-            for (int i = 0; i < verticesNumber; i++)
+            do
             {
-                matrix[i] = stream.ReadLine().Split(' ').Select(el => int.Parse(el)).ToArray();
+                if (currentString.Length == 3) { options.Add(currentString[0], int.Parse(currentString[2])); }
+                currentString = stream.ReadLine().Split(' ');
+            } while (stream.Peek() != -1 && !int.TryParse(currentString[0], out cureVertex));
+
+            if (options.ContainsKey("vertices_number"))
+                verticesNumber = options["vertices_number"];
+
+            int[][] matrix = new int[verticesNumber][];
+            matrix[0] = currentString.Select(el => int.Parse(el)).ToArray();
+
+            for (int i = 1; i < verticesNumber; i++)
+            {
+                matrix[i] = stream.ReadLine().Split(' ').Select(el => int.Parse(el)).ToArray(); 
             }
 
             return matrix;
@@ -102,5 +118,6 @@ namespace Graph_
             Array.Copy(arr, start, res, 0, end - start + 1);
             return res;
         }
+
     }
 }

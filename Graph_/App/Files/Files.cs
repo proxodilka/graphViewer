@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Graph_.GraphVisual_;
 
 namespace Graph_
 {
     public partial class MainWindow : Form
     {
+        string unknownFileError = "Неизвестный тип файла",
+               parseError = "Не могу распарсить граф, проверьте файл.";
         private void newFile()
         {
 
@@ -36,6 +39,7 @@ namespace Graph_
         private void openFile(string filePath)
         {
             currentFilePath = filePath;
+            
 
             hasPath = true;
             isModified = false;
@@ -46,23 +50,38 @@ namespace Graph_
 
             if (type.Length == 1)
             {
-                if (type[0] == "undetected_type") return;
-                else if (type[0] == "adjacency_matrix") { int[][] adjacencyMatrix = parseMatrix(fileStream); graph = new Graph(adjacencyMatrix); }
-                else if (type[0] == "adjacency_list") { graph = new Graph(parseList(fileStream)); }
-                else return;
+                if (type[0] == "undetected_type") { onError(unknownFileError); return; }
+                else if (type[0] == "adjacency_matrix") {
+                    int[][] adjacencyMatrix = null;
+
+                    try{ adjacencyMatrix = parseMatrix(fileStream); }
+                    catch { onError(parseError); return; }
+
+                    graph = new Graph(adjacencyMatrix);
+                }
+                else if (type[0] == "adjacency_list") {
+                    try { graph = new Graph(parseList(fileStream)); }
+                    catch { onError(parseError); return; }
+                }
+                else { onError(unknownFileError); return; };
             }
             else if (type.Length == 3)
             {
-                if (type[0] == "adjacency_matrix") { int[][] adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2])); graph = new Graph(adjacencyMatrix); }
-                else return;
+                if (type[0] == "adjacency_matrix") {
+                    int[][] adjacencyMatrix = null;
+                    try { adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2])); }
+                    catch { onError(parseError); return; }
+                    graph = new Graph(adjacencyMatrix);
+                }
+                else { onError(unknownFileError); return; };
             }
 
             fileStream.Close();
 
-            subscribe();
-
             graphVisual = new GraphVisual(plot, graph);
             graphAlgo = new GraphAlgo(graph);
+            subscribe();
+
             appState = "ready";
             handleAppState();
             updateInputBounds();
@@ -106,6 +125,25 @@ namespace Graph_
             }
 
             return true;
+        }
+
+        private void showError(Exception e, string errorType)
+        {
+            string lineN = e.Data["lineN"].ToString(),
+                   type = e.Data["type"].ToString(),
+                   line = e.Data["line"].ToString();
+
+            onError(errorType, $"Тип = {type}\n" +
+                                $"Ошибка в строке = {lineN}\n" +
+                                $"Строка = \"{line}\"");
+        }
+
+        private void onError(params string[] text)
+        {
+            string result = "";
+            for (int i = 0; i < text.Length; i++)
+                result += text[i];
+            MessageBox.Show(result, "Ошибка открытия файла", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

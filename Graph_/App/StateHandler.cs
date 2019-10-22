@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Graph_.GraphVisual_;
 
 namespace Graph_
 {
@@ -34,6 +35,7 @@ namespace Graph_
             traversalStartVertex.Enabled = !onAnimation;
             isDfs.Enabled = !onAnimation;
             isBfs.Enabled = !onAnimation;
+            isConnectedComponents.Enabled = !onAnimation;
             resetButton.Enabled = !onAnimation;
 
             if (onAnimation)
@@ -103,11 +105,20 @@ namespace Graph_
             graph.edgeModified += onModify;
             graph.edgeModified += updateInfo;
             graph.edgeModified += updateInputBounds;
+
+            graphVisual.didUpdate += onGraphicsUpdate;
+            onGraphicsUpdate(graphVisual);
         }
 
         private void onModify(object sender, GraphEventArgs e)
         {
             isModified = true;
+        }
+
+        private void onGraphicsUpdate(object sender)
+        {
+            Console.WriteLine("onRender");
+            resetButton.Enabled = (sender as GraphVisual).isCanvasDirty;
         }
     }
 }

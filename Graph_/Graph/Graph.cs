@@ -77,7 +77,7 @@ namespace Graph_
             return vertexNumber;
         }
 
-        public bool addEdge(int from, int to)
+        public bool addEdge(int from, int to, bool withoutEvent=false)
         {
             if (!hasVertex(from) || !hasVertex(to) || hasEdge(from, to))
             {
@@ -88,7 +88,7 @@ namespace Graph_
             graph[to].Add(from);
             edgesNumber++;
 
-            edgeModified?.Invoke(this, new GraphEventArgs(Math.Min(from, to), Math.Max(from, to)));
+            if (!withoutEvent) edgeModified?.Invoke(this, new GraphEventArgs(Math.Min(from, to), Math.Max(from, to)));
             return true;
         }
 
@@ -111,7 +111,7 @@ namespace Graph_
             return true;
         }
 
-        public bool removeEdge(int from, int to)
+        public bool removeEdge(int from, int to, bool withoutEvent = false)
         {
             if (!hasVertex(from) || !hasVertex(to) || !hasEdge(from, to))
             {
@@ -122,7 +122,7 @@ namespace Graph_
             graph[to].Remove(from);
             edgesNumber--;
 
-            edgeModified?.Invoke(this, new GraphEventArgs(Math.Min(from, to), Math.Max(from, to)));
+            if (!withoutEvent) edgeModified?.Invoke(this, new GraphEventArgs(Math.Min(from, to), Math.Max(from, to)));
             return true;
         }
 
@@ -147,6 +147,36 @@ namespace Graph_
             }
 
             return ans;
+        }
+
+        public void makeGraphComplete()
+        {
+            List<int> vertices = new List<int>(graph.Keys);
+
+            foreach(int srcVertex in vertices)
+            {
+                foreach(int vertex in vertices)
+                {
+                    addEdge(srcVertex, vertex, true);
+                }
+            }
+
+            vertexModified?.Invoke(this, new GraphEventArgs());
+        }
+
+        public void clearEdges()
+        {
+            List<int> vertices = new List<int>(graph.Keys);
+
+            foreach (int srcVertex in vertices)
+            {
+                foreach (int vertex in vertices)
+                {
+                    removeEdge(srcVertex, vertex, true);
+                }
+            }
+
+            vertexModified?.Invoke(this, new GraphEventArgs());
         }
 
         public Dictionary<int, HashSet<int>> get()

@@ -58,6 +58,7 @@
     <Compile Include="App\Validation\Validation_InputsHandler.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Canvas\Colors.cs" />
     <Compile Include="Canvas\objects\Circle.cs" />
     <Compile Include="Canvas\objects\Circles.cs" />
     <Compile Include="Canvas\objects\Curves.cs" />

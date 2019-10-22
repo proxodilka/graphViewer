@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Graph_.Canvas;
+using Graph_.GraphVisual_;
 
 namespace Graph_
 {
@@ -23,6 +25,28 @@ namespace Graph_
         MainWindow mainWindow;
         Graph graph;
         GraphAlgo graphAlgo;
+
+        private void MakeGraphComplete_Click(object sender, EventArgs e)
+        {
+            int goingToAdd = graph.verticesNumber + (graph.verticesNumber * (graph.verticesNumber - 1)) / 2 - graph.edgesNumber;
+
+
+            //DialogResult result = MessageBox.Show($"Сейчас в граф будет добавлено {goingToAdd} вершин. " +
+            //                    $"Это может занять продолжительное время," +
+            //                    $" продолжить?", "Сделать граф полным?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (/*result == DialogResult.Yes*/true)
+                graph.makeGraphComplete();
+        }
+
+        private void ClearEdges_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы действительно хотите удалить все ребра в графе?",
+                                  "Очистить граф?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (result == DialogResult.Yes)
+                graph.clearEdges();
+        }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -41,6 +65,13 @@ namespace Graph_
             InitializeComponent();
             handleAppState();
             newFile();
+            //openFile(@"C:\Users\len\Documents\pikto.txt");
+            int x = 2;
+            //Colors colorManager = new Colors();
+
+
+            //Console.WriteLine(colorManager.calcContrastRatio(Color.White, Color.Green));
+            //Console.WriteLine(colorManager.calcContrastRatio(Color.Black, Color.Green));
             //openFile(@"C:\Users\len\Documents\1.txt");
         }
 

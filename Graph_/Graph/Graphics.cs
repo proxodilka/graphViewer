@@ -8,16 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using Graph_.Canvas;
 
-namespace Graph_
+namespace Graph_.GraphVisual_
 {
+    delegate void eventListener(object sender);
     class GraphVisual
     {
         Graph graph;
         WFCanvas plot;
+        Colors colors;
         int maxY, maxX;
-        HashSet<int> activeVertices, markedVertices;
-        bool animationStoped = false;
+        HashSet<int> activeVertices;
+        Dictionary<int, Color> markedVertices;
+        bool animationStoped = false, hasActiveVertex=false;
+        public bool isCanvasDirty { get; internal set; }
+        public event eventListener didUpdate;
 
         public GraphVisual(PictureBox field, Graph _graph)
         {
@@ -25,9 +31,11 @@ namespace Graph_
             graph = _graph;
             graph.edgeModified += onEdgesChanged;
             graph.vertexModified += onVertexChanged;
+            isCanvasDirty = false;
 
             activeVertices = new HashSet<int>();
-            markedVertices = new HashSet<int>();
+            markedVertices = new Dictionary<int, Color>();
+            colors = new Colors();
 
             render();
         }
@@ -61,17 +69,20 @@ namespace Graph_
                 PointF coords = getCoordsByN(ind);
 
                 Circle circle = new Circle(coords.X, coords.Y, 1, true);
-                circle.fillColor = markedVertices.Contains(i)?Color.Green:Color.White;
+                Color fillColor = markedVertices.ContainsKey(i) ? markedVertices[i] : Color.White;
+
+                circle.fillColor = fillColor;
                 circle.isActive = activeVertices.Contains(i);
 
                 plot.Circles.addCircle(circle, i);
-                plot.Texts.addText((i).ToString(), coords.X, coords.Y);
+                plot.Texts.addText((i).ToString(), coords.X, coords.Y, Colors.getTextColorByBackground(fillColor));
                 ind++;
             }
         }
 
         private void drawEdges()
         {
+            int ind = 0;
             foreach (var vertex in graph.get())
             {
                 int i = vertex.Key;
@@ -88,37 +99,53 @@ namespace Graph_
                     PointF startPoint = new PointF(start.X, start.Y);
                     PointF endPoint = new PointF(end.X, end.Y);
 
-                    plot.Lines.addLine(startPoint, endPoint, Color.Black);
-                }
+                    if (Object.Equals(startPoint, endPoint))
+                    {
+                        int angleDif = 15;
+                        float centerAngle = -2.0f * 180.0f * ind / graph.verticesNumber + 180;
+                        PointF[] points = new PointF[5] { startPoint,
+                                                          Circle.calcPointOnCircle(centerAngle+angleDif, true, start.X, start.Y, 1.75f),
+                                                          Circle.calcPointOnCircle(centerAngle, true, start.X, start.Y, 2.25f),
+                                                          Circle.calcPointOnCircle(centerAngle-angleDif, true, start.X, start.Y, 1.75f), endPoint };
 
+                        plot.Curves.addCurve(points, Color.Black);
+                    }
+                    else
+                        plot.Lines.addLine(startPoint, endPoint, Color.Black);
+                }
+                ind++;
             }
         }
 
         private int calcScale()
         {
+            int baseCoef = 200;
+            while (baseCoef < graph.verticesNumber)
+                baseCoef *= 2;
             if (graph.verticesNumber == 0) return 1;
-            int ans = graph.verticesNumber > 5 ? (220 / graph.verticesNumber) : (150 / graph.verticesNumber);
+            int ans = graph.verticesNumber > 5 ? (baseCoef / graph.verticesNumber) : (150 / graph.verticesNumber);
             return ans;
         }
 
-        async public Task<bool> animate(List<int> path)
+        async public Task<bool> animate(List<Tuple<int, int>> path)
         {
             reset();
-            foreach (int vertex in path)
+            
+            int delay = 600;
+            foreach (var pair in path)
             {
-                activeVertices.Add(vertex);
-                render();
-                await Task.Delay(600);
-                if (animationStoped) { animationStoped = false; return true; }
+                int vertex = pair.Item1, color = pair.Item2;
+                setActive(vertex, Convert.ToBoolean(delay));
+                await Task.Delay(delay);
+                if (animationStoped) { animationStoped = false; delay = 0; }
 
-                markedVertices.Add(vertex);
-                render();
-                await Task.Delay(600);
-                if (animationStoped) { animationStoped = false; return true; }
+                markVertex(vertex, color, Convert.ToBoolean(delay));
+                await Task.Delay(delay);
+                if (animationStoped) { animationStoped = false; delay = 0; }
 
-                activeVertices.Remove(vertex);
-                render();
             }
+            isCanvasDirty = true;
+            setActive(false);
             return true;
         }
 
@@ -132,12 +159,14 @@ namespace Graph_
             plot.setScale(calcScale());
   
             plot.render();
+            didUpdate?.Invoke(this);
         }
 
         public void reset()
         {
             markedVertices.Clear();
             activeVertices.Clear();
+            isCanvasDirty = false;
             render();
         }
 
@@ -146,17 +175,25 @@ namespace Graph_
             animationStoped = true;
         }
 
-        public void setActive(int vertexNumber)
+        public void setActive(int vertexNumber, bool rerender=true)
         {
             activeVertices.Clear();
             activeVertices.Add(vertexNumber);
-            render();
+            hasActiveVertex = true;
+            if (rerender) render();
+        }
+
+        public void markVertex(int vertexNumber, int color = 1, bool rerender = true)
+        {
+            markedVertices[vertexNumber] = colors.getColor(color - 1);
+            if (rerender) render();
         }
 
         public void setActive(bool x)
         {
             activeVertices.Clear();
-            render();
+            if (hasActiveVertex) render();
+            hasActiveVertex = false;
         }
     }
 }
