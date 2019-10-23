@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace Graph_
 {
     
-    public class WFCanvas
+    public partial class WFCanvas
     {
 
         public class WFCanvasContext
@@ -30,18 +30,28 @@ namespace Graph_
         }
 
         int h, w, scale;
-        bool noAxis = false, isMousePressed=false;
+        bool noAxis = true, isMousePressed=false, scalable;
         PointF center, baseCenter;
         PictureBox field;
         Bitmap img;
         Graphics graph;
 
+        public int minScale = 1, maxScale = 9999999;
         public Curves Curves;
         public Lines Lines;
         public Circles Circles;
         public Texts Texts;
         
-        public WFCanvas(PictureBox _field)
+        private void init()
+        {
+            img?.Dispose();
+            graph?.Dispose();
+            img = new Bitmap(w, h);
+            graph = Graphics.FromImage(img);
+            graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+        }
+
+        public WFCanvas(PictureBox _field, bool _scalable=true)
         {
             h = _field.Height;
             w = _field.Width;
@@ -51,10 +61,9 @@ namespace Graph_
             baseCenter = new PointF(w / 2.0f, h / 2.0f);
 
             scale = 15;
+            scalable = _scalable;
 
-            img = new Bitmap(w, h);
-            graph = Graphics.FromImage(img);
-            graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            init();
 
 
             field.MouseHover += onFieldHover;
@@ -75,13 +84,14 @@ namespace Graph_
 
         public void setScale(int value)
         {
-            scale = value;
+            scale = value < minScale ? minScale : value;
+            scale = scale > maxScale ? maxScale : scale;
             render();
         }
 
         private void drawAxis()
         {
-            graph.DrawLine(new Pen(Color.Black), 0, center.Y, center.X * 2, center.Y); //OX
+            graph.DrawLine(new Pen(Color.Black), 0, center.Y, w, center.Y); //OX
             graph.DrawLine(new Pen(Color.Black), center.X, 0, center.X, w); //OY
         }
 
@@ -98,12 +108,14 @@ namespace Graph_
             Lines.draw();
             Circles.draw();
             Texts.draw();
-            
-            field.Image = img;
+
+            //field.Image = img;
+            field.Refresh();
         }
 
         public void clear()
         {
+            //init();
             graph.Clear(Color.Transparent);
             field.Image = img;
             
@@ -124,69 +136,8 @@ namespace Graph_
             center = new PointF(w / 2.0f, h / 2.0f);
         }
 
-        private void onFieldHover(object sender, EventArgs e)
-        {
-            field.Cursor = Cursors.Hand; 
-        }
+        
 
-        Point prev=new Point(0,0);
-
-        private void onFieldMouseMove(object sender, MouseEventArgs e)
-        {
-            if (isMousePressed)
-            {
-                //Console.WriteLine($"mouse :{e.Location}");
-                //Console.WriteLine($"center :{center}");
-                Point cure = e.Location;
-                if (!Object.Equals(prev,cure))
-                {
-                    Point delta = new Point(prev.X - cure.X, prev.Y - cure.Y);
-                    //Console.WriteLine($"delta: {delta}");
-                    center = new PointF(center.X-delta.X, center.Y-delta.Y);
-                    //Console.WriteLine($"center: {center}");
-                    render();
-                    prev = cure;
-                }
-                
-            }
-            else
-            {
-                prev = e.Location;
-            }
-        }
-
-        private void onFieldMouseUp(object sender, MouseEventArgs e)
-        {
-            isMousePressed = false;
-        }
-
-        private void onFieldMouseDown(object sender, MouseEventArgs e)
-        {
-            isMousePressed = true;
-            //prev = new Point(0, 0);
-        }
-
-        private void onFieldWheel(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine($"center: {center}");
-            Console.WriteLine($"location: {e.Location}");
-            PointF delta = new PointF((baseCenter.X - e.X)/scale, (baseCenter.Y - e.Y)/scale);
-            Console.WriteLine($"delta: {delta}");
-
-            //
-            //center = new PointF(baseCenter.X+baseCenter.X-e.X, baseCenter.Y+baseCenter.Y-e.Y);
-            //center = e.Location;
-            //center = new PointF(e.X/scale, e.Y/scale);
-            if (e.Delta > 0)
-            {
-                setScale(scale + 1);
-                
-            }
-            else
-            {
-                setScale(scale - 1);
-            } 
-            
-        }
+        
     }
 }

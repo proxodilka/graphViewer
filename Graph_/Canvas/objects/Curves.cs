@@ -99,7 +99,7 @@ namespace Graph_
                 Color color = curveSource.Item1;
                 List<PointF> curve = curveSource.Item2;
 
-                context.graph.DrawCurve(new Pen(color), curve.ToArray());
+                context.graph.DrawCurve(new Pen(color, 2), curve.ToArray());
             }
 
             foreach (Tuple<Color, PointF[]> curveSource in staticPoints)

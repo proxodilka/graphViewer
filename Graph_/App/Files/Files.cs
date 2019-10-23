@@ -22,15 +22,13 @@ namespace Graph_
             fileName = "New graph.txt";
             currentFilePath = fileName;
 
-            isModified = false;
-            hasPath = false;
-            graph = new Graph();
-            graphVisual = new GraphVisual(plot, graph);
-            graphAlgo = new GraphAlgo(graph);
-
-            subscribe();
+            
+            graph.rewriteGraph();
+            graphVisual.init();
 
             appState = "ready";
+            isModified = false;
+            hasPath = false;
             handleAppState();
             updateInputBounds();
 
@@ -52,9 +50,7 @@ namespace Graph_
                 hasPath = true;
                 isModified = false;
                 currentFilePath = filePath;
-                graphVisual = new GraphVisual(plot, graph);
-                graphAlgo = new GraphAlgo(graph);
-                subscribe();
+                graphVisual.init();
 
                 appState = "ready";
                 handleAppState();

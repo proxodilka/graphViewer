@@ -30,18 +30,37 @@ namespace Graph_
 
         public Graph()
         {
+            init();   
+        }
+        public Graph(int[][] adjacencyMatrix):this()
+        {
+            rewriteGraph(adjacencyMatrix);
+        }
+
+        public Graph(Dictionary<int, HashSet<int>> adjacencyList):this()
+        {
+            rewriteGraph(adjacencyList);
+        }
+
+        private void init()
+        {
             availableVerticesNumbers = new SortedSet<int>();
             for (int i = 0; i < MaxVerticesNumber; i++) { availableVerticesNumbers.Add(i); }
             graph = new Dictionary<int, HashSet<int>>();
             edgesNumber = 0; verticesNumber = 0;
         }
-        public Graph(int[][] adjacencyMatrix):this()
-        {      
-            for (int i = 0; i < adjacencyMatrix.Length; i++) {
-                addVertex(i);
-                for (int j = 0; j < adjacencyMatrix.Length; j++) {
-                    if (adjacencyMatrix[i][j] == 1) {
-                        addEdge(i, j);
+
+        public void rewriteGraph(int[][] adjacencyMatrix)
+        {
+            init();
+            for (int i = 0; i < adjacencyMatrix.Length; i++)
+            {
+                addVertex(i, true);
+                for (int j = 0; j < adjacencyMatrix.Length; j++)
+                {
+                    if (adjacencyMatrix[i][j] == 1)
+                    {
+                        addEdge(i, j, true);
                     }
                 }
             }
@@ -49,20 +68,29 @@ namespace Graph_
             vertexModified?.Invoke(this, new GraphEventArgs());
         }
 
-        public Graph(Dictionary<int, HashSet<int>> adjacencyList):this()
+        public void rewriteGraph(Dictionary<int, HashSet<int>> adjacencyList)
         {
-            foreach(var listValue in adjacencyList){
+            init();
+            foreach (var listValue in adjacencyList)
+            {
                 int vertex = listValue.Key;
-                addVertex(vertex);
-                foreach(int adjacentVertex in listValue.Value){
-                    addEdge(vertex, adjacentVertex);
+                addVertex(vertex, true);
+                foreach (int adjacentVertex in listValue.Value)
+                {
+                    addEdge(vertex, adjacentVertex, true);
                 }
             }
 
             vertexModified?.Invoke(this, new GraphEventArgs());
         }
 
-        public int addVertex(int? _vertexNumber=null)
+        public void rewriteGraph()
+        {
+            init();
+            vertexModified?.Invoke(this, new GraphEventArgs());
+        }
+
+        public int addVertex(int? _vertexNumber=null, bool withoutEvent=false)
         {
             int vertexNumber = _vertexNumber ?? getNumber();
             if (graph.ContainsKey(vertexNumber)) {
@@ -73,7 +101,7 @@ namespace Graph_
             verticesNumber++;
             availableVerticesNumbers.Remove(vertexNumber);
 
-            vertexModified?.Invoke(this, new GraphEventArgs());
+            if (!withoutEvent) vertexModified?.Invoke(this, new GraphEventArgs());
             return vertexNumber;
         }
 

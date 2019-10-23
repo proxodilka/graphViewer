@@ -121,13 +121,13 @@ namespace Graph_
                     try
                     {
                         int[][] adjacencyMatrix = parseMatrix(fileStream);
-                        graph = new Graph(adjacencyMatrix);
+                        graph.rewriteGraph(adjacencyMatrix);
                     }
                     catch { onError(parseError); return false; }
                 }
                 else if (type[0] == "adjacency_list")
                 {
-                    try { graph = new Graph(parseList(fileStream)); }
+                    try { graph.rewriteGraph(parseList(fileStream)); }
                     catch { onError(parseError); return false; }
                 }
                 else { onError(unknownFileError); return false; };
@@ -139,7 +139,7 @@ namespace Graph_
                     try
                     {
                         int[][] adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2]));
-                        graph = new Graph(adjacencyMatrix);
+                        graph.rewriteGraph(adjacencyMatrix);
                     }
                     catch { onError(parseError); return false; }
                 }

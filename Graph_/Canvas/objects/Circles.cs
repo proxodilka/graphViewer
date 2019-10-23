@@ -76,12 +76,20 @@ namespace Graph_
                 Circle circle = pair.Value;
                 RectangleF rect = circle.getAsRectangle();
 
+                
+
                 rect.X = rect.X * scale + center.X;
                 rect.Y = center.Y - rect.Y * scale;
 
                 rect.Width *= scale;
                 rect.Height *= scale;
 
+                if (rect.X < 0 && rect.Y < 0 && rect.X + rect.Width < 0 && rect.Y + rect.Height < 0 ||
+                    rect.X < 0 && rect.Y < 0 && rect.X + rect.Width < 0 && rect.Height < 0)
+                {
+                    Console.WriteLine("drawing canceled");
+                    continue;
+                }
                 Pen pen = new Pen(circle.isActive?circle.activeColor:circle.borderColor,
                                   circle.isActive?basePenWidth*2:basePenWidth);
                 context.graph.DrawEllipse(pen, rect);

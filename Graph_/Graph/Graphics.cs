@@ -31,7 +31,14 @@ namespace Graph_.GraphVisual_
             graph = _graph;
             graph.edgeModified += onEdgesChanged;
             graph.vertexModified += onVertexChanged;
-            isCanvasDirty = true;
+            init();
+        }
+
+        public void init()
+        {
+            isCanvasDirty = false;
+            animationStoped = false;
+            hasActiveVertex = false;
 
             activeVertices = new HashSet<int>();
             markedVertices = new Dictionary<int, Color>();
@@ -172,6 +179,12 @@ namespace Graph_.GraphVisual_
         {
             markedVertices.Clear();
             activeVertices.Clear();
+            isCanvasDirty = false;
+            render();
+        }
+
+        public void centrate()
+        {
             render(true);
         }
 

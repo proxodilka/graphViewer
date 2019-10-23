@@ -59,6 +59,11 @@ namespace Graph_
             
         }
 
+        private void CentrateButton_Click(object sender, EventArgs e)
+        {
+            graphVisual.centrate();
+        }
+
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closingFile()) e.Cancel=true;
@@ -72,12 +77,19 @@ namespace Graph_
         
         public MainWindow()
         {
+            InitializeComponent();
             mainWindow = this;
             KeyPreview = true;
-            InitializeComponent();
+            this.DoubleBuffered = true;
+            graph = new Graph();
+            graphVisual = new GraphVisual(plot, graph);
+            graphAlgo = new GraphAlgo(graph);
+
+            subscribe();
+            
             handleAppState();
             newFile();
-            openFile(@"C:\Users\len\Documents\bfs_vs_dfs.txt");
+            //openFile(@"C:\Users\len\Documents\bfs_vs_dfs.txt");
             //Colors colorManager = new Colors();
 
 

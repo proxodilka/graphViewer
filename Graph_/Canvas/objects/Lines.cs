@@ -44,31 +44,34 @@ namespace Graph_
             return true;
         }
 
-        //public int addLineY(float Y_value, Color? _color = null)
-        //{
-        //    Color color = _color ?? Color.Black;
-        //    function f = delegate (double x) { return Y_value; };
-        //    addCurveFunction(f, color);
-        //    return curveFunctions.Count() - 1;
-        //}
+        public int addLineY(float Y_value, Color? _color = null)
+        {
+            
+            Color color = _color ?? Color.Black;
+            return addLine(new PointF(-context.w, Y_value), new PointF(context.w, Y_value), color);
+        }
 
-        //public bool changeLineY(int id, float Y_value, Color? _color = null)
-        //{
-        //    function f = delegate (double x) { return Y_value; };
-        //    return changeCurveFunction(id, f, _color);
-        //}
+        public bool changeLineY(int id, float Y_value, Color? _color = null)
+        {
+            //Color color = _color ?? Color.Black;
+            return changeLine(id, new PointF(-context.w, Y_value), new PointF(context.w, Y_value));
+        }
 
         public void draw()
         {
+            int scale = context.scale, w = context.w, h = context.h;
+            PointF center = context.center;
+
             foreach (Tuple<Color, Tuple<PointF, PointF>> line in lines)
             {
                 Color color = line.Item1;
                 PointF start = line.Item2.Item1, end = line.Item2.Item2;
 
-                start.X = start.X * context.scale + context.center.X; start.Y = context.center.Y - start.Y * context.scale;
-                end.X = end.X * context.scale + context.center.X; end.Y = context.center.Y - end.Y * context.scale;
+                start.X = start.X * scale + center.X; start.Y = center.Y - start.Y * scale;
+                end.X = end.X * scale + center.X; end.Y = center.Y - end.Y * scale;
 
-
+                if (start.Y > 2 * h || start.Y < -2 * h || end.Y > 2 * h || end.Y < -2 * h)
+                    continue;
                 context.graph.DrawLine(new Pen(color, 2), start, end);
             }
         }

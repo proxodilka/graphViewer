@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.navigationMenu = new System.Windows.Forms.MenuStrip();
             this.fileOption = new System.Windows.Forms.ToolStripMenuItem();
             this.newFileOption = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,9 +39,10 @@
             this.exitOption = new System.Windows.Forms.ToolStripMenuItem();
             this.graphRoot = new System.Windows.Forms.Panel();
             this.plot = new System.Windows.Forms.PictureBox();
-            this.resetButton = new System.Windows.Forms.Button();
             this.vertexValue = new System.Windows.Forms.Label();
             this.edgesValue = new System.Windows.Forms.Label();
+            this.centrateButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.changeVertexTab = new System.Windows.Forms.TabPage();
             this.changeVertValue = new System.Windows.Forms.NumericUpDown();
@@ -152,9 +154,9 @@
             // 
             this.graphRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.graphRoot.Controls.Add(this.plot);
-            this.graphRoot.Controls.Add(this.resetButton);
             this.graphRoot.Controls.Add(this.vertexValue);
             this.graphRoot.Controls.Add(this.edgesValue);
+            this.graphRoot.Controls.Add(this.centrateButton);
             this.graphRoot.Location = new System.Drawing.Point(13, 28);
             this.graphRoot.Name = "graphRoot";
             this.graphRoot.Size = new System.Drawing.Size(821, 519);
@@ -170,16 +172,6 @@
             this.plot.TabStop = false;
             this.plot.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Plot_GiveFeedback);
             this.plot.QueryContinueDrag += new System.Windows.Forms.QueryContinueDragEventHandler(this.Plot_QueryContinueDrag);
-            // 
-            // resetButton
-            // 
-            this.resetButton.Location = new System.Drawing.Point(745, 495);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(75, 23);
-            this.resetButton.TabIndex = 3;
-            this.resetButton.Text = "reset";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // vertexValue
             // 
@@ -198,6 +190,27 @@
             this.edgesValue.Size = new System.Drawing.Size(54, 13);
             this.edgesValue.TabIndex = 1;
             this.edgesValue.Text = "Edges: 16;";
+            // 
+            // centrateButton
+            // 
+            this.centrateButton.Location = new System.Drawing.Point(745, 495);
+            this.centrateButton.Name = "centrateButton";
+            this.centrateButton.Size = new System.Drawing.Size(75, 23);
+            this.centrateButton.TabIndex = 3;
+            this.centrateButton.Text = "centrate";
+            this.centrateButton.UseVisualStyleBackColor = true;
+            this.centrateButton.Click += new System.EventHandler(this.CentrateButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.resetButton.Location = new System.Drawing.Point(185, 26);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(83, 27);
+            this.resetButton.TabIndex = 3;
+            this.resetButton.Text = "Очистить";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // tabControl
             // 
@@ -375,6 +388,7 @@
             // traversalTab
             // 
             this.traversalTab.Controls.Add(this.isConnectedComponents);
+            this.traversalTab.Controls.Add(this.resetButton);
             this.traversalTab.Controls.Add(this.traversalStartVertex);
             this.traversalTab.Controls.Add(this.startTraversal);
             this.traversalTab.Controls.Add(this.isDfs);
@@ -479,6 +493,7 @@
             this.Controls.Add(this.navigationMenu);
             this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.navigationMenu;
             this.Name = "MainWindow";
             this.Text = "GraphViewer";
@@ -545,6 +560,7 @@
         private System.Windows.Forms.RadioButton isConnectedComponents;
         private System.Windows.Forms.Button makeGraphComplete;
         private System.Windows.Forms.Button clearEdges;
+        private System.Windows.Forms.Button centrateButton;
     }
 }
 

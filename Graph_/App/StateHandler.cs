@@ -84,11 +84,13 @@ namespace Graph_
                 case "setup":
                     {
                         tabControl.Enabled = false;
+                        centrateButton.Enabled = false;
                         currentFilePath = "";
                         break;
                     }
                 case "ready":
                     {
+                        centrateButton.Enabled = true;
                         tabControl.Enabled = true;
                         break;
                     }
