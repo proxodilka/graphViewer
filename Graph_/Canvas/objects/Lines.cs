@@ -70,8 +70,8 @@ namespace Graph_
                 start.X = start.X * scale + center.X; start.Y = center.Y - start.Y * scale;
                 end.X = end.X * scale + center.X; end.Y = center.Y - end.Y * scale;
 
-                if (start.Y > 2 * h || start.Y < -2 * h || end.Y > 2 * h || end.Y < -2 * h)
-                    continue;
+                //if (start.Y > 2 * h || start.Y < -2 * h || end.Y > 2 * h || end.Y < -2 * h)
+                //    continue;
                 context.graph.DrawLine(new Pen(color, 2), start, end);
             }
         }
