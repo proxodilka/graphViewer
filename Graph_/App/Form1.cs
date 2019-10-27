@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using System.IO;
 using Graph_.Canvas;
 using Graph_.GraphVisual_;
+using Graph_.Properties;
+using System.Threading;
+using System.Globalization;
+using Graph_.Localization;
 
 namespace Graph_
 {
@@ -43,8 +47,8 @@ namespace Graph_
 
         private void ClearEdges_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Вы действительно хотите удалить все ребра в графе?",
-                                  "Очистить граф?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            DialogResult result = MessageBox.Show(titles.clearGraphRequest,
+                                  titles.clearGraphTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (result == DialogResult.Yes)
                 graph.clearEdges();
@@ -66,6 +70,12 @@ namespace Graph_
             graphVisual.centrate();
         }
 
+        private void settingsOption_Click(object sender, EventArgs e)
+        {
+            Settings settingsForm = new Settings();
+            settingsForm.ShowDialog();
+        }
+
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!closingFile()) e.Cancel=true;
@@ -76,10 +86,29 @@ namespace Graph_
             graphVisual.reset();
         }
 
+        private void initLanguage()
+        {
+
+            string userLang = Properties.Settings.Default.Language;
+            if (userLang == "auto")
+            {
+                userLang = Thread.CurrentThread.CurrentCulture.Name;
+                Properties.Settings.Default.Language = userLang;
+                Properties.Settings.Default.Save();
+            }
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(userLang);
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(userLang);
+
+            Console.WriteLine(Thread.CurrentThread.CurrentCulture.NativeName);
+        }
+
         
         public MainWindow()
         {
+            initLanguage();
+
             InitializeComponent();
+
             mainWindow = this;
             KeyPreview = true;
             this.DoubleBuffered = true;
@@ -89,9 +118,11 @@ namespace Graph_
             history = new List<Dictionary<int, HashSet<int>>>();
 
             subscribe();
-            
             handleAppState();
-            newFile();
+            if (Properties.Settings.Default.CreateFileAtStartup) newFile();
+            //Console.WriteLine(Resources.Culture);
+            //Properties.Settings.Default.CreateFileAtStartup = false;
+            //Properties.Settings.Default.Save();
             //openFile(@"C:\Users\len\Documents\bfs_vs_dfs.txt");
             //Colors colorManager = new Colors();
 

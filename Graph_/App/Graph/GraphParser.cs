@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Graph_.Localization;
 
 namespace Graph_
 {
@@ -115,7 +116,7 @@ namespace Graph_
         {
             if (type.Length == 1)
             {
-                if (type[0] == "undetected_type") { onError(unknownFileError); return false; }
+                if (type[0] == "undetected_type") { onError(titles.unknownFileError); return false; }
                 else if (type[0] == "adjacency_matrix")
                 {
                     try
@@ -123,14 +124,14 @@ namespace Graph_
                         int[][] adjacencyMatrix = parseMatrix(fileStream);
                         graph.rewriteGraph(adjacencyMatrix);
                     }
-                    catch { onError(parseError); return false; }
+                    catch { onError(titles.parseError); return false; }
                 }
                 else if (type[0] == "adjacency_list")
                 {
                     try { graph.rewriteGraph(parseList(fileStream)); }
-                    catch { onError(parseError); return false; }
+                    catch { onError(titles.parseError); return false; }
                 }
-                else { onError(unknownFileError); return false; };
+                else { onError(titles.unknownFileError); return false; };
             }
             else if (type.Length == 3)
             {
@@ -141,9 +142,9 @@ namespace Graph_
                         int[][] adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2]));
                         graph.rewriteGraph(adjacencyMatrix);
                     }
-                    catch { onError(parseError); return false; }
+                    catch { onError(titles.parseError); return false; }
                 }
-                else { onError(unknownFileError); return false; };
+                else { onError(titles.unknownFileError); return false; };
             }
 
             return true;

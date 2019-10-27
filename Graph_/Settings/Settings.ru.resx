@@ -117,4 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="settingsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>352, 85</value>
+  </data>
+  <data name="settingsLabel.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="languageLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 88</value>
+  </data>
+  <data name="languageLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 21</value>
+  </data>
+  <data name="languageLabel.Text" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="languagesComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 88</value>
+  </data>
+  <data name="isCreateNewFileCheckBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Unicode MS, 11.25pt</value>
+  </data>
+  <data name="isCreateNewFileCheckBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>34, 115</value>
+  </data>
+  <data name="isCreateNewFileCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>276, 24</value>
+  </data>
+  <data name="isCreateNewFileCheckBox.Text" xml:space="preserve">
+    <value>Создавать новый файл при запуске</value>
+  </data>
+  <data name="saveSettingsButton.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
 </root>

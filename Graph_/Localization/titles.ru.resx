@@ -117,4 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="clearGraphRequest" xml:space="preserve">
+    <value>Вы дейстительно хотите удалить все ребра графа?</value>
+  </data>
+  <data name="clearGraphTitle" xml:space="preserve">
+    <value>Очистить граф?</value>
+  </data>
+  <data name="edgesTitle" xml:space="preserve">
+    <value>Ребер:</value>
+  </data>
+  <data name="fileErrorTitle" xml:space="preserve">
+    <value>Ошибка открытия файла</value>
+  </data>
+  <data name="parseError" xml:space="preserve">
+    <value>При парсинге графа произошла ошибка, проверьте файл.</value>
+  </data>
+  <data name="saveFileRequest" xml:space="preserve">
+    <value>Вы хотите сохранить изменения в файле</value>
+  </data>
+  <data name="savingChangesMessage" xml:space="preserve">
+    <value>Изменения языка вступят в силу после перезапуска.</value>
+  </data>
+  <data name="settingsTitle" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="StartTitle" xml:space="preserve">
+    <value>Старт</value>
+  </data>
+  <data name="StopTitle" xml:space="preserve">
+    <value>Стоп</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="unknownFileError" xml:space="preserve">
+    <value>Неизвестный тип файла.</value>
+  </data>
+  <data name="verticesTitle" xml:space="preserve">
+    <value>Вершин:</value>
+  </data>
 </root>

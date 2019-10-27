@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Graph_.GraphVisual_;
+using Graph_.Localization;
 
 namespace Graph_
 {
@@ -41,11 +42,11 @@ namespace Graph_
 
             if (onAnimation)
             {
-                startTraversal.Text = "Стоп";
+                startTraversal.Text = titles.StopTitle;
             }
             else
             {
-                startTraversal.Text = "Старт";
+                startTraversal.Text = titles.StartTitle;
             }
 
         }
@@ -73,8 +74,8 @@ namespace Graph_
             string fileNameTitle = fileName + (isModified ? "*" : "");
             mainWindow.Text = $"{fileNameTitle} - {title}";
             filePathLabel.Text = currentFilePath;
-            vertexValue.Text = $"Vertices: {graph?.verticesNumber}";
-            edgesValue.Text = $"Edges: {graph?.edgesNumber}";
+            vertexValue.Text = $"{titles.verticesTitle} {graph?.verticesNumber}";
+            edgesValue.Text = $"{titles.edgesTitle} {graph?.edgesNumber}";
             if (isModified) { filePathLabel.Text += "*"; }
         }
 
@@ -86,6 +87,9 @@ namespace Graph_
                     {
                         tabControl.Enabled = false;
                         centrateButton.Enabled = false;
+                        plot.Enabled = false;
+                        saveAsFileOption.Enabled = false;
+                        saveFileOption.Enabled = false;
                         currentFilePath = "";
                         break;
                     }
@@ -93,6 +97,9 @@ namespace Graph_
                     {
                         centrateButton.Enabled = true;
                         tabControl.Enabled = true;
+                        plot.Enabled = true;
+                        saveAsFileOption.Enabled = true;
+                        saveFileOption.Enabled = true;
                         break;
                     }
             }
@@ -117,6 +124,8 @@ namespace Graph_
         {
             isModified = true;
             history.Add(graph.get());
+
+            undoButton.Enabled = true;
             if (history.Count > 20)
             {
                 history.RemoveAt(0);

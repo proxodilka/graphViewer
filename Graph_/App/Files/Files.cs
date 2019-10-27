@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Graph_.GraphVisual_;
+using Graph_.Localization;
 
 namespace Graph_
 {
     public partial class MainWindow : Form
     {
-        string unknownFileError = "Неизвестный тип файла",
-               parseError = "Не могу распарсить граф, проверьте файл.";
+        string unknownFileError = "1",
+               parseError = titles.parseError;
         private void newFile()
         {
 
@@ -89,7 +90,7 @@ namespace Graph_
         private bool handleExit()
         {
             if (!isModified) return true;
-            DialogResult result = MessageBox.Show($"Вы хотите сохранить изменения в файле {currentFilePath}?", title,
+            DialogResult result = MessageBox.Show($"{titles.saveFileRequest} {currentFilePath}?", title,
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
             switch (result)
@@ -117,7 +118,7 @@ namespace Graph_
             string result = "";
             for (int i = 0; i < text.Length; i++)
                 result += text[i];
-            MessageBox.Show(result, "Ошибка открытия файла", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(result, titles.fileErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
