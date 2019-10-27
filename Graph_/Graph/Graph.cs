@@ -210,7 +210,12 @@ namespace Graph_
 
         public Dictionary<int, HashSet<int>> get()
         {
-            return graph;
+            Dictionary<int, HashSet<int>> copy = new Dictionary<int, HashSet<int>>();
+            foreach(var pair in graph)
+            {
+                copy.Add(pair.Key, new HashSet<int>(pair.Value));
+            }
+            return copy;
         }
 
         public int getNumber()

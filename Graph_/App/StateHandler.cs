@@ -14,6 +14,7 @@ namespace Graph_
 {
     public partial class MainWindow : Form
     {
+        
         private bool closingFile()
         {
             bool allowToClose;
@@ -115,12 +116,25 @@ namespace Graph_
         private void onModify(object sender, GraphEventArgs e)
         {
             isModified = true;
+            history.Add(graph.get());
+            if (history.Count > 20)
+            {
+                history.RemoveAt(0);
+            }
         }
 
         private void onGraphicsUpdate(object sender)
         {
             Console.WriteLine("onRender");
             resetButton.Enabled = (sender as GraphVisual).isCanvasDirty;
+        }
+
+        private void UndoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (history.Count == 1) return;
+            history.RemoveAt(history.Count - 1);
+            graph.rewriteGraph(history.Last());
+            history.RemoveAt(history.Count - 1);
         }
     }
 }

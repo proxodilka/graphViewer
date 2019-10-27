@@ -69,6 +69,8 @@
             this.openGraphFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.filePathLabel = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.navigationMenu.SuspendLayout();
             this.graphRoot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plot)).BeginInit();
@@ -85,7 +87,8 @@
             // navigationMenu
             // 
             this.navigationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileOption});
+            this.fileOption,
+            this.editToolStripMenuItem});
             this.navigationMenu.Location = new System.Drawing.Point(0, 0);
             this.navigationMenu.Name = "navigationMenu";
             this.navigationMenu.Size = new System.Drawing.Size(846, 24);
@@ -481,6 +484,22 @@
             this.saveFileDialog.DefaultExt = "\"txt\"";
             this.saveFileDialog.SupportMultiDottedExtensions = true;
             // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            this.undoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -561,6 +580,8 @@
         private System.Windows.Forms.Button makeGraphComplete;
         private System.Windows.Forms.Button clearEdges;
         private System.Windows.Forms.Button centrateButton;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
     }
 }
 

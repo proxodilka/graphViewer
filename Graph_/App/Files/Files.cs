@@ -22,7 +22,7 @@ namespace Graph_
             fileName = "New graph.txt";
             currentFilePath = fileName;
 
-            
+            history.Clear();
             graph.rewriteGraph();
             graphVisual.init();
 
@@ -47,6 +47,8 @@ namespace Graph_
 
             if (fileOk)
             {
+                history.Clear();
+                history.Add(graph.get());
                 hasPath = true;
                 isModified = false;
                 currentFilePath = filePath;

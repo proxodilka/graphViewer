@@ -26,6 +26,8 @@ namespace Graph_
         Graph graph;
         GraphAlgo graphAlgo;
 
+        List<Dictionary<int, HashSet<int>>> history;
+
         private void MakeGraphComplete_Click(object sender, EventArgs e)
         {
             int goingToAdd = graph.verticesNumber + (graph.verticesNumber * (graph.verticesNumber - 1)) / 2 - graph.edgesNumber;
@@ -84,6 +86,7 @@ namespace Graph_
             graph = new Graph();
             graphVisual = new GraphVisual(plot, graph);
             graphAlgo = new GraphAlgo(graph);
+            history = new List<Dictionary<int, HashSet<int>>>();
 
             subscribe();
             
