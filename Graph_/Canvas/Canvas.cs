@@ -39,7 +39,7 @@ namespace Graph_
         }
 
         int h, w, scale;
-        bool noAxis = false, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
+        bool noAxis = true, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
         PointF center, baseCenter;
         PictureBox field;
         Bitmap img;
@@ -53,8 +53,8 @@ namespace Graph_
         
         private void init()
         {
-            img?.Dispose();
-            graph?.Dispose();
+            //img?.Dispose();
+            //graph?.Dispose();
             img = new Bitmap(w, h);
             graph = Graphics.FromImage(img);
             graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -88,7 +88,20 @@ namespace Graph_
             field.MouseUp += onFieldMouseUp;
             field.MouseMove += onFieldMouseMove;
             field.MouseWheel += onFieldWheel;
+            field.SizeChanged += onSizeChanged;
 
+            render();
+        }
+
+        private void onSizeChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("size changed");
+            h = field.Height;
+            w = field.Width;
+
+            //center = new PointF(w / 2.0f, h / 2.0f);
+            baseCenter = new PointF(w / 2.0f, h / 2.0f);
+            init();
             render();
         }
 

@@ -163,19 +163,19 @@
             // 
             // graphRoot
             // 
+            resources.ApplyResources(this.graphRoot, "graphRoot");
             this.graphRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.graphRoot.Controls.Add(this.plot);
             this.graphRoot.Controls.Add(this.vertexValue);
             this.graphRoot.Controls.Add(this.edgesValue);
             this.graphRoot.Controls.Add(this.centrateButton);
             this.graphRoot.Controls.Add(this.edgesAtCircleButton);
-            resources.ApplyResources(this.graphRoot, "graphRoot");
+            this.graphRoot.Controls.Add(this.plot);
             this.graphRoot.Name = "graphRoot";
             // 
             // plot
             // 
-            this.plot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.plot, "plot");
+            this.plot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.plot.Name = "plot";
             this.plot.TabStop = false;
             this.plot.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Plot_GiveFeedback);
@@ -214,10 +214,10 @@
             // 
             // tabControl
             // 
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.changeVertexTab);
             this.tabControl.Controls.Add(this.changeEdgesTab);
             this.tabControl.Controls.Add(this.traversalTab);
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TabControl_Selecting);
@@ -399,7 +399,6 @@
             this.Controls.Add(this.graphRoot);
             this.Controls.Add(this.navigationMenu);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.navigationMenu;
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
