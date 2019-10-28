@@ -23,6 +23,15 @@ namespace Graph_
             public Graphics graph { get { return ContextProvider.graph; } }
             public PointF center { get { return ContextProvider.center; } }
 
+            public PictureBox field { get { return ContextProvider.field; } }
+
+            public bool isMousePressed { get { return ContextProvider.isMousePressed; } }
+
+            public bool onMouse { get { return ContextProvider.childControleMouse; } set { ContextProvider.childControleMouse = value; } }
+            public bool mouseRestricted { get { return ContextProvider.restrintChildControleMouse; } }
+
+            public Point prevMousePosition { get { return ContextProvider.prev; } }
+
             public WFCanvasContext(WFCanvas _ContextProvider)
             {
                 ContextProvider = _ContextProvider;
@@ -30,7 +39,7 @@ namespace Graph_
         }
 
         int h, w, scale;
-        bool noAxis = true, isMousePressed=false, scalable;
+        bool noAxis = false, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
         PointF center, baseCenter;
         PictureBox field;
         Bitmap img;
@@ -59,18 +68,13 @@ namespace Graph_
             field = _field;
             center = new PointF(w / 2.0f, h / 2.0f);
             baseCenter = new PointF(w / 2.0f, h / 2.0f);
+            childControleMouse = false;
+            restrintChildControleMouse = false;
 
             scale = 15;
             scalable = _scalable;
 
             init();
-
-
-            field.MouseHover += onFieldHover;
-            field.MouseDown += onFieldMouseDown;
-            field.MouseUp += onFieldMouseUp;
-            field.MouseMove += onFieldMouseMove;
-            field.MouseWheel += onFieldWheel;
 
             WFCanvasContext context = new WFCanvasContext(this);
 
@@ -78,6 +82,12 @@ namespace Graph_
             Lines = new Lines(context);
             Circles = new Circles(context);
             Texts = new Texts(context);
+
+            field.MouseHover += onFieldHover;
+            field.MouseDown += onFieldMouseDown;
+            field.MouseUp += onFieldMouseUp;
+            field.MouseMove += onFieldMouseMove;
+            field.MouseWheel += onFieldWheel;
 
             render();
         }
@@ -136,8 +146,13 @@ namespace Graph_
             center = new PointF(w / 2.0f, h / 2.0f);
         }
 
-        
+        public PointF getCurrentCenterCoords()
+        {
+            return new PointF((baseCenter.X-center.X)/scale, -(baseCenter.Y- center.Y)/scale);
+        }
 
-        
+
+
+
     }
 }

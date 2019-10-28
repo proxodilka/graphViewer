@@ -14,11 +14,19 @@ namespace Graph_
     {
         WFCanvas.WFCanvasContext context;
         private List<Tuple<Color, Tuple<PointF, PointF>>> lines;
+        private List<Line> properLines;
 
         public Lines(WFCanvas.WFCanvasContext context)
         {
             this.context = context;
             this.lines = new List<Tuple<Color, Tuple<PointF, PointF>>>();
+            properLines = new List<Line>();
+        }
+
+        public int addLine(Line line)
+        {
+            properLines.Add(line);
+            return properLines.Count() - 1;
         }
 
         public int addLine(PointF start, PointF end, Color? _color = null)
@@ -74,11 +82,21 @@ namespace Graph_
                 //    continue;
                 context.graph.DrawLine(new Pen(color, 2), start, end);
             }
+
+            foreach (Line line in properLines)
+            {
+                PointF lineStart = line.Start,
+                       lineEnd   = line.End,
+                       start = new PointF(lineStart.X*scale+center.X, center.Y - lineStart.Y*scale),
+                       end   = new PointF(lineEnd.X * scale + center.X, center.Y - lineEnd.Y * scale);
+                context.graph.DrawLine(new Pen(line.Color, 2), start, end);
+            }
         }
 
         public void clear()
         {
             lines.Clear();
+            properLines.Clear();
         }
     }
 }

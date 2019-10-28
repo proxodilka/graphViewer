@@ -60,11 +60,15 @@
     </Compile>
     <Compile Include="Canvas\Colors.cs" />
     <Compile Include="Canvas\MouseHandler.cs" />
-    <Compile Include="Canvas\objects\Circle.cs" />
-    <Compile Include="Canvas\objects\Circles.cs" />
-    <Compile Include="Canvas\objects\Curves.cs" />
-    <Compile Include="Canvas\objects\Lines.cs" />
-    <Compile Include="Canvas\objects\Texts.cs" />
+    <Compile Include="Canvas\MutablePoint.cs" />
+    <Compile Include="Canvas\objects\Circle\Circle.cs" />
+    <Compile Include="Canvas\objects\Circle\CircleMouseHandler.cs" />
+    <Compile Include="Canvas\objects\Circle\Circles.cs" />
+    <Compile Include="Canvas\objects\Curve\Curves.cs" />
+    <Compile Include="Canvas\objects\Line\Line.cs" />
+    <Compile Include="Canvas\objects\Line\Lines.cs" />
+    <Compile Include="Canvas\objects\Text\Text.cs" />
+    <Compile Include="Canvas\objects\Text\Texts.cs" />
     <Compile Include="App\Files\Files.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,11 +80,12 @@
     </Compile>
     <Compile Include="Graph\Graph.cs" />
     <Compile Include="Graph\GraphAlgo.cs" />
-    <Compile Include="Graph\Graphics.cs" />
+    <Compile Include="Graph\GraphVisual\Graphics.cs" />
     <Compile Include="Canvas\Canvas.cs" />
     <Compile Include="App\Graph\GraphParser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Graph\GraphVisual\Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App\StateHandler.cs">

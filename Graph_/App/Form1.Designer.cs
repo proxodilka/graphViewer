@@ -45,6 +45,7 @@
             this.vertexValue = new System.Windows.Forms.Label();
             this.edgesValue = new System.Windows.Forms.Label();
             this.centrateButton = new System.Windows.Forms.Button();
+            this.edgesAtCircleButton = new System.Windows.Forms.Button();
             this.resetButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.changeVertexTab = new System.Windows.Forms.TabPage();
@@ -87,15 +88,14 @@
             // 
             // navigationMenu
             // 
-            resources.ApplyResources(this.navigationMenu, "navigationMenu");
             this.navigationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileOption,
             this.editToolStripMenuItem});
+            resources.ApplyResources(this.navigationMenu, "navigationMenu");
             this.navigationMenu.Name = "navigationMenu";
             // 
             // fileOption
             // 
-            resources.ApplyResources(this.fileOption, "fileOption");
             this.fileOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newFileOption,
             this.openFileOption,
@@ -105,54 +105,55 @@
             this.settingsOption,
             this.exitOption});
             this.fileOption.Name = "fileOption";
+            resources.ApplyResources(this.fileOption, "fileOption");
             // 
             // newFileOption
             // 
-            resources.ApplyResources(this.newFileOption, "newFileOption");
             this.newFileOption.Name = "newFileOption";
+            resources.ApplyResources(this.newFileOption, "newFileOption");
             this.newFileOption.Click += new System.EventHandler(this.NewFileOption_Click);
             // 
             // openFileOption
             // 
-            resources.ApplyResources(this.openFileOption, "openFileOption");
             this.openFileOption.Name = "openFileOption";
+            resources.ApplyResources(this.openFileOption, "openFileOption");
             this.openFileOption.Click += new System.EventHandler(this.OpenFileOption_Click);
             // 
             // saveFileOption
             // 
-            resources.ApplyResources(this.saveFileOption, "saveFileOption");
             this.saveFileOption.Name = "saveFileOption";
+            resources.ApplyResources(this.saveFileOption, "saveFileOption");
             this.saveFileOption.Click += new System.EventHandler(this.SaveFileOption_Click);
             // 
             // saveAsFileOption
             // 
-            resources.ApplyResources(this.saveAsFileOption, "saveAsFileOption");
             this.saveAsFileOption.Name = "saveAsFileOption";
+            resources.ApplyResources(this.saveAsFileOption, "saveAsFileOption");
             this.saveAsFileOption.Click += new System.EventHandler(this.SaveAsFileOption_Click);
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // settingsOption
             // 
-            resources.ApplyResources(this.settingsOption, "settingsOption");
             this.settingsOption.Name = "settingsOption";
+            resources.ApplyResources(this.settingsOption, "settingsOption");
             this.settingsOption.Click += new System.EventHandler(this.settingsOption_Click);
             // 
             // exitOption
             // 
-            resources.ApplyResources(this.exitOption, "exitOption");
             this.exitOption.Name = "exitOption";
+            resources.ApplyResources(this.exitOption, "exitOption");
             this.exitOption.Click += new System.EventHandler(this.ExitOption_Click);
             // 
             // editToolStripMenuItem
             // 
-            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.undoButton});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
             // 
             // undoButton
             // 
@@ -162,18 +163,19 @@
             // 
             // graphRoot
             // 
-            resources.ApplyResources(this.graphRoot, "graphRoot");
             this.graphRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.graphRoot.Controls.Add(this.plot);
             this.graphRoot.Controls.Add(this.vertexValue);
             this.graphRoot.Controls.Add(this.edgesValue);
             this.graphRoot.Controls.Add(this.centrateButton);
+            this.graphRoot.Controls.Add(this.edgesAtCircleButton);
+            resources.ApplyResources(this.graphRoot, "graphRoot");
             this.graphRoot.Name = "graphRoot";
             // 
             // plot
             // 
-            resources.ApplyResources(this.plot, "plot");
             this.plot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            resources.ApplyResources(this.plot, "plot");
             this.plot.Name = "plot";
             this.plot.TabStop = false;
             this.plot.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Plot_GiveFeedback);
@@ -196,6 +198,13 @@
             this.centrateButton.UseVisualStyleBackColor = true;
             this.centrateButton.Click += new System.EventHandler(this.CentrateButton_Click);
             // 
+            // edgesAtCircleButton
+            // 
+            resources.ApplyResources(this.edgesAtCircleButton, "edgesAtCircleButton");
+            this.edgesAtCircleButton.Name = "edgesAtCircleButton";
+            this.edgesAtCircleButton.UseVisualStyleBackColor = true;
+            this.edgesAtCircleButton.Click += new System.EventHandler(this.edgesAtCircleButton_Click);
+            // 
             // resetButton
             // 
             resources.ApplyResources(this.resetButton, "resetButton");
@@ -205,21 +214,21 @@
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.changeVertexTab);
             this.tabControl.Controls.Add(this.changeEdgesTab);
             this.tabControl.Controls.Add(this.traversalTab);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TabControl_Selecting);
             // 
             // changeVertexTab
             // 
-            resources.ApplyResources(this.changeVertexTab, "changeVertexTab");
             this.changeVertexTab.Controls.Add(this.changeVertValue);
             this.changeVertexTab.Controls.Add(this.deleteVertex);
             this.changeVertexTab.Controls.Add(this.addVertex);
             this.changeVertexTab.Controls.Add(this.changeVertexesLabel);
+            resources.ApplyResources(this.changeVertexTab, "changeVertexTab");
             this.changeVertexTab.Name = "changeVertexTab";
             this.changeVertexTab.UseVisualStyleBackColor = true;
             // 
@@ -250,7 +259,6 @@
             // 
             // changeEdgesTab
             // 
-            resources.ApplyResources(this.changeEdgesTab, "changeEdgesTab");
             this.changeEdgesTab.Controls.Add(this.clearEdges);
             this.changeEdgesTab.Controls.Add(this.makeGraphComplete);
             this.changeEdgesTab.Controls.Add(this.toEdgeValue);
@@ -260,6 +268,7 @@
             this.changeEdgesTab.Controls.Add(this.deleteEdge);
             this.changeEdgesTab.Controls.Add(this.addEdge);
             this.changeEdgesTab.Controls.Add(this.changeEdgesLabel);
+            resources.ApplyResources(this.changeEdgesTab, "changeEdgesTab");
             this.changeEdgesTab.Name = "changeEdgesTab";
             this.changeEdgesTab.UseVisualStyleBackColor = true;
             // 
@@ -320,7 +329,6 @@
             // 
             // traversalTab
             // 
-            resources.ApplyResources(this.traversalTab, "traversalTab");
             this.traversalTab.Controls.Add(this.isConnectedComponents);
             this.traversalTab.Controls.Add(this.resetButton);
             this.traversalTab.Controls.Add(this.traversalStartVertex);
@@ -328,6 +336,7 @@
             this.traversalTab.Controls.Add(this.isDfs);
             this.traversalTab.Controls.Add(this.isBfs);
             this.traversalTab.Controls.Add(this.startedVertex);
+            resources.ApplyResources(this.traversalTab, "traversalTab");
             this.traversalTab.Name = "traversalTab";
             this.traversalTab.UseVisualStyleBackColor = true;
             // 
@@ -370,10 +379,6 @@
             resources.ApplyResources(this.startedVertex, "startedVertex");
             this.startedVertex.Name = "startedVertex";
             // 
-            // openGraphFileDialog
-            // 
-            resources.ApplyResources(this.openGraphFileDialog, "openGraphFileDialog");
-            // 
             // filePathLabel
             // 
             resources.ApplyResources(this.filePathLabel, "filePathLabel");
@@ -382,7 +387,6 @@
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "\"txt\"";
-            resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             this.saveFileDialog.SupportMultiDottedExtensions = true;
             // 
             // MainWindow
@@ -465,6 +469,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem undoButton;
         private System.Windows.Forms.ToolStripMenuItem settingsOption;
+        private System.Windows.Forms.Button edgesAtCircleButton;
     }
 }
 

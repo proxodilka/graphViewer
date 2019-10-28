@@ -10,19 +10,23 @@ namespace Graph_
 
     class GraphEventArgs
     {
-        int from { get; }
-        int to { get; }
+        public int[] Vertices { get; }
+        public int[] Edges { get; }
 
-        public GraphEventArgs(int from =-1, int to =-1)
+        public GraphEventArgs(int[] vertices, int [] edges)
         {
-            this.from = from; this.to = to;
+            Vertices = vertices; Edges = edges;
         }
     }
 
     class Graph
     {
+        public event eventListener vertexAdded;
+        public event eventListener vertexRemoved;
         public event eventListener vertexModified;
         public event eventListener edgeModified;
+        public event eventListener rewrite;
+
         Dictionary<int, HashSet<int>> graph; //Key - vertex number, Value - Set of adjacency vertices
         public int verticesNumber, edgesNumber, maxVertexNumber=0;
         SortedSet<int> availableVerticesNumbers;
@@ -65,7 +69,8 @@ namespace Graph_
                 }
             }
 
-            vertexModified?.Invoke(this, new GraphEventArgs());
+            rewrite?.Invoke(this, new GraphEventArgs(graph.Keys.ToArray(), new int[0] ));
+            vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
         public void rewriteGraph(Dictionary<int, HashSet<int>> adjacencyList)
@@ -81,13 +86,15 @@ namespace Graph_
                 }
             }
 
-            vertexModified?.Invoke(this, new GraphEventArgs());
+            rewrite?.Invoke(this, new GraphEventArgs(graph.Keys.ToArray(), new int[0]));
+            vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
         public void rewriteGraph()
         {
             init();
-            vertexModified?.Invoke(this, new GraphEventArgs());
+            rewrite?.Invoke(this, new GraphEventArgs(graph.Keys.ToArray(), new int[0]));
+            vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
         public int addVertex(int? _vertexNumber=null, bool withoutEvent=false)
@@ -101,7 +108,11 @@ namespace Graph_
             verticesNumber++;
             availableVerticesNumbers.Remove(vertexNumber);
 
-            if (!withoutEvent) vertexModified?.Invoke(this, new GraphEventArgs());
+            if (!withoutEvent)
+            {
+                vertexAdded?.Invoke(this, new GraphEventArgs(new int[1] { vertexNumber }, new int[0]));
+                vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
+            }
             return vertexNumber;
         }
 
@@ -116,7 +127,7 @@ namespace Graph_
             graph[to].Add(from);
             edgesNumber++;
 
-            if (!withoutEvent) edgeModified?.Invoke(this, new GraphEventArgs(Math.Min(from, to), Math.Max(from, to)));
+            if (!withoutEvent) edgeModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
             return true;
         }
 
@@ -135,7 +146,8 @@ namespace Graph_
             }
 
             availableVerticesNumbers.Add(vertexNumber);
-            vertexModified?.Invoke(this, new GraphEventArgs());
+            vertexRemoved?.Invoke(this, new GraphEventArgs(new int[1] { vertexNumber }, new int[0]));
+            vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
             return true;
         }
 
@@ -150,7 +162,7 @@ namespace Graph_
             graph[to].Remove(from);
             edgesNumber--;
 
-            if (!withoutEvent) edgeModified?.Invoke(this, new GraphEventArgs(Math.Min(from, to), Math.Max(from, to)));
+            if (!withoutEvent) edgeModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
             return true;
         }
 
@@ -190,7 +202,7 @@ namespace Graph_
                 }
             }
 
-            edgeModified?.Invoke(this, new GraphEventArgs());
+            edgeModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
         public void clearEdges()
@@ -205,7 +217,7 @@ namespace Graph_
                 }
             }
 
-            edgeModified?.Invoke(this, new GraphEventArgs());
+            edgeModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
         public Dictionary<int, HashSet<int>> get()

@@ -18,7 +18,7 @@ namespace Graph_
         {
             if (!scalable) return;
 
-            if (isMousePressed)
+            if (isMousePressed && !childControleMouse)
             {
                 //Console.WriteLine($"mouse :{e.Location}");
                 //Console.WriteLine($"center :{center}");
@@ -29,7 +29,6 @@ namespace Graph_
                     //Console.WriteLine($"delta: {delta}");
                     center = new PointF(center.X - delta.X, center.Y - delta.Y);
                     //Console.WriteLine($"center: {center}");
-                    render();
                     prev = cure;
                 }
 
@@ -38,18 +37,24 @@ namespace Graph_
             {
                 prev = e.Location;
             }
+
+            if (isMousePressed)
+                render();
         }
 
         private void onFieldMouseUp(object sender, MouseEventArgs e)
         {
             if (!scalable) return;
             isMousePressed = false;
+            restrintChildControleMouse = false;
         }
 
         private void onFieldMouseDown(object sender, MouseEventArgs e)
         {
             if (!scalable) return;
             isMousePressed = true;
+            if (!childControleMouse)
+                restrintChildControleMouse = true;
             //prev = new Point(0, 0);
         }
 

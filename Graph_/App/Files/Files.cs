@@ -25,7 +25,7 @@ namespace Graph_
 
             history.Clear();
             graph.rewriteGraph();
-            graphVisual.init();
+            //graphVisual.init();
 
             appState = "ready";
             isModified = false;
@@ -53,7 +53,7 @@ namespace Graph_
                 hasPath = true;
                 isModified = false;
                 currentFilePath = filePath;
-                graphVisual.init();
+                //graphVisual.init();
 
                 appState = "ready";
                 handleAppState();
@@ -71,6 +71,7 @@ namespace Graph_
             fileStream.WriteLine($"edges_number : {graph.edgesNumber}");
 
             fileStream.Write(graph.getAsList());
+            fileStream.Write(graphVisual.getNodesCoordsAsString());
 
             fileStream.Close();
 

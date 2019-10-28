@@ -142,7 +142,11 @@ namespace Graph_
         {
             if (history.Count == 1) return;
             history.RemoveAt(history.Count - 1);
+
+            var nodesCoordinates = graphVisual.getNodesCoords();
             graph.rewriteGraph(history.Last());
+            graphVisual.setNodesCoords(nodesCoordinates);
+
             history.RemoveAt(history.Count - 1);
         }
     }

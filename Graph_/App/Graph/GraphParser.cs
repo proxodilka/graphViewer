@@ -15,11 +15,16 @@ namespace Graph_
     public partial class MainWindow : Form
     {
 
-        private Dictionary<int, HashSet<int>> parseList(StreamReader stream)
+        /// <summary>
+        /// Returns tuple of adjacency list and nodes coordinates
+        /// </summary>
+        private Tuple<Dictionary<int, HashSet<int>>, Dictionary<int,PointF>> parseList(StreamReader stream)
         {
             int cureVertex=-1;
             Dictionary<int, HashSet<int>> result = new Dictionary<int, HashSet<int>>();
             Dictionary<string, int> options = new Dictionary<string, int>();
+            Dictionary<int, PointF> coordinates = new Dictionary<int, PointF>();
+            bool hasCoordinates = false;
 
             string[] currentString = new string[0];
             do
@@ -46,11 +51,24 @@ namespace Graph_
                     break;
                 
                 currentString = stream.ReadLine().Split(' ');
-                cureVertex = int.Parse(currentString[0]);
-    
+                if (currentString[0] == "coordinates")
+                {
+                    hasCoordinates = true;
+                    break;
+                }
+                cureVertex = int.Parse(currentString[0]); 
             }
 
-            return result;
+            while (hasCoordinates && stream.Peek() != -1)
+            {
+                currentString = stream.ReadLine().Split(' ');
+
+                int vertexNumber = int.Parse(currentString[0]);
+                PointF coords = new PointF(float.Parse(currentString[2]), float.Parse(currentString[3]));
+                coordinates.Add(vertexNumber, coords);
+            }
+
+            return new Tuple<Dictionary<int, HashSet<int>>, Dictionary<int, PointF>>(result, coordinates);
         }
         private int[][] parseMatrix(StreamReader stream, int? _verticesNumber = null)
         {
@@ -128,8 +146,10 @@ namespace Graph_
                 }
                 else if (type[0] == "adjacency_list")
                 {
-                    try { graph.rewriteGraph(parseList(fileStream)); }
-                    catch { onError(titles.parseError); return false; }
+                    var parseResult = parseList(fileStream);
+                    /*try { */graph.rewriteGraph(parseResult.Item1);/* }*/
+                    graphVisual.setNodesCoords(parseResult.Item2);
+                    //catch { onError(titles.parseError); return false; }
                 }
                 else { onError(titles.unknownFileError); return false; };
             }

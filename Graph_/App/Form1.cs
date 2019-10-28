@@ -86,6 +86,11 @@ namespace Graph_
             graphVisual.reset();
         }
 
+        private void edgesAtCircleButton_Click(object sender, EventArgs e)
+        {
+            graphVisual.resetNodesCoords();
+        }
+
         private void initLanguage()
         {
 
@@ -102,11 +107,19 @@ namespace Graph_
             Console.WriteLine(Thread.CurrentThread.CurrentCulture.NativeName);
         }
 
+        private void tests()
+        {
+            PointF x = new PointF(0, 0);
+            PointF a = x;
+            PointF b = x;
+            a.X = 20;
+            Console.WriteLine($"a: {a} b: {b} x: {x}");
+        }
         
         public MainWindow()
         {
             initLanguage();
-
+            tests();
             InitializeComponent();
 
             mainWindow = this;

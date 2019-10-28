@@ -21,16 +21,22 @@ namespace Graph_.GraphVisual_
         int maxY, maxX;
         HashSet<int> activeVertices;
         Dictionary<int, Color> markedVertices;
+        Dictionary<int, Node> nodes;
         bool animationStoped = false, hasActiveVertex=false;
         public bool isCanvasDirty { get; internal set; }
         public event eventListener didUpdate;
+
+        bool isInited;
 
         public GraphVisual(PictureBox field, Graph _graph)
         {
             plot = new WFCanvas(field);
             graph = _graph;
             graph.edgeModified += onEdgesChanged;
-            graph.vertexModified += onVertexChanged;
+            graph.vertexAdded += onVertexAdded;
+            graph.vertexRemoved += onVertexRemoved;
+            graph.rewrite += onRewrite;
+            isInited = false;
             init();
         }
 
@@ -43,12 +49,36 @@ namespace Graph_.GraphVisual_
             activeVertices = new HashSet<int>();
             markedVertices = new Dictionary<int, Color>();
             colors = new Colors();
+            nodes = new Dictionary<int, Node>();
+            onRewrite(nodes, new GraphEventArgs(graph.get().Keys.ToArray(), new int[0]));
+            render();
+            isInited = true;
+        }
 
+        private void onVertexAdded(object sender, GraphEventArgs e)
+        {
+            int vertexNumber = e.Vertices[0];
+            nodes.Add(vertexNumber, new Node(vertexNumber, vertexNumber.ToString(), plot.getCurrentCenterCoords()));
             render();
         }
 
-        private void onVertexChanged(object sender, GraphEventArgs e)
+        private void onVertexRemoved(object sender, GraphEventArgs e)
         {
+            nodes.Remove(e.Vertices[0]);
+            render();
+        }
+
+        private void onRewrite(object sender, GraphEventArgs e)
+        {
+            reset(true);
+            nodes.Clear();
+            int ind = 0;
+            foreach(int vertexNumber in e.Vertices)
+            {
+                //if (!nodes.ContainsKey(vertexNumber))
+                    nodes.Add(vertexNumber, new Node(vertexNumber, vertexNumber.ToString(), getCoordsByN(ind)));
+                ind++;
+            }
             render(true);
         }
 
@@ -67,62 +97,54 @@ namespace Graph_.GraphVisual_
             return new PointF(x, y);
         }
 
-        private void drawVertecies()
+        public void resetNodesCoords()
         {
+            Dictionary<int, PointF> coords = new Dictionary<int, PointF>();
+
             int ind = 0;
-            foreach (var vertex in graph.get())
+            foreach(int vertexNumber in graph.get().Keys)
             {
-                int i = vertex.Key;
-                PointF coords = getCoordsByN(ind);
-
-                Circle circle = new Circle(coords.X, coords.Y, 1, true);
-                Color fillColor = markedVertices.ContainsKey(i) ? markedVertices[i] : Color.White;
-
-                circle.fillColor = fillColor;
-                circle.isActive = activeVertices.Contains(i);
-
-                plot.Circles.addCircle(circle, i);
-                plot.Texts.addText((i).ToString(), coords.X, coords.Y, Colors.getTextColorByBackground(fillColor));
+                coords[vertexNumber] = getCoordsByN(ind);
                 ind++;
+            }
+            setNodesCoords(coords);
+        }
+
+        private void drawVertices()
+        {
+            foreach(Node node in nodes.Values)
+            {
+                bool isNodeActive = activeVertices.Contains(node.ID);
+                bool isNodeMarked = markedVertices.ContainsKey(node.ID);
+                Color color = Color.White;
+                if (isNodeMarked)
+                    color = markedVertices[node.ID];
+
+                node.draw(plot, isNodeActive, isNodeMarked, color);
             }
         }
 
         private void drawEdges()
         {
-            int ind = 0;
-            foreach (var vertex in graph.get())
-            {
-                int i = vertex.Key;
-                HashSet<int> adj = vertex.Value;
+            var adjacenctList = graph.get();
+            foreach(var pair in adjacenctList)
+            {              
+                int vertexNumber = pair.Key;
+                int[] adjacenciesVertices = pair.Value.ToArray();
 
-                Circle start = plot.Circles.getCircle(i);
-
-                foreach (int adj_vertex in adj)
+                foreach (int adjacencyVertex in adjacenciesVertices)
                 {
-                    if (adj_vertex < i)
+                    if (adjacencyVertex <= vertexNumber)
                         continue;
-                    Circle end = plot.Circles.getCircle(adj_vertex);
 
-                    PointF startPoint = new PointF(start.X, start.Y);
-                    PointF endPoint = new PointF(end.X, end.Y);
+                    Node startNode = nodes[vertexNumber],
+                         endNode = nodes[adjacencyVertex];
 
-                    if (Object.Equals(startPoint, endPoint))
-                    {
-                        int angleDif = 15;
-                        float centerAngle = -2.0f * 180.0f * ind / graph.verticesNumber + 180;
-                        PointF[] points = new PointF[5] { startPoint,
-                                                          Circle.calcPointOnCircle(centerAngle+angleDif, true, start.X, start.Y, 1.75f),
-                                                          Circle.calcPointOnCircle(centerAngle, true, start.X, start.Y, 2.25f),
-                                                          Circle.calcPointOnCircle(centerAngle-angleDif, true, start.X, start.Y, 1.75f), endPoint };
-
-                        plot.Curves.addCurve(points, Color.Black);
-                    }
-                    else
-                        plot.Lines.addLine(startPoint, endPoint, Color.Black);
+                    Line edge = new Line(startNode.MutableCenter, endNode.MutableCenter, Color.Black);
+                    plot.Lines.addLine(edge);
                 }
-                ind++;
             }
-        }
+        }      
 
         private int calcScale()
         {
@@ -155,11 +177,45 @@ namespace Graph_.GraphVisual_
             setActive(false);
             return true;
         }
+        
+        public void setNodesCoords(Dictionary<int, PointF> coordinates)
+        {
+            foreach(var pair in coordinates)
+            {
+                int vertexNumber = pair.Key;
+                PointF newCenter = pair.Value;
+                if (nodes.ContainsKey(vertexNumber))
+                    nodes[vertexNumber].Center = newCenter;
+            }
+            render();
+        }
+
+        public Dictionary<int, PointF> getNodesCoords()
+        {
+            Dictionary<int, PointF> result = new Dictionary<int, PointF>();
+            foreach(Node node in nodes.Values)
+            {
+                result.Add(node.ID, node.Center);
+            }
+
+            return result;
+        }
+
+        public string getNodesCoordsAsString()
+        {
+            string result = "coordinates //VERTEX_NUMBER : X Y\n";
+            Dictionary<int, PointF> coordinates = getNodesCoords();
+            foreach(var pair in coordinates)
+            {
+                result += $"{pair.Key} : {pair.Value.X} {pair.Value.Y}\n";
+            }
+            return result;
+        }
 
         private void render(bool isResetCenter=false)
         {
             plot.reset();
-            drawVertecies();
+            drawVertices();
             drawEdges();
             
 
@@ -175,12 +231,14 @@ namespace Graph_.GraphVisual_
             didUpdate?.Invoke(this);
         }
 
-        public void reset()
+        public void reset(bool withoutRender=false)
         {
             markedVertices.Clear();
             activeVertices.Clear();
             isCanvasDirty = false;
-            render();
+            animationStoped = false;
+            hasActiveVertex = false;
+            if (!withoutRender) render();
         }
 
         public void centrate()

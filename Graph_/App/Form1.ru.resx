@@ -190,6 +190,16 @@
   <data name="centrateButton.Text" xml:space="preserve">
     <value>центрировать</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="edgesAtCircleButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="edgesAtCircleButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 23</value>
+  </data>
+  <data name="edgesAtCircleButton.Text" xml:space="preserve">
+    <value>вершины по кругу</value>
+  </data>
   <data name="resetButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 27</value>
   </data>

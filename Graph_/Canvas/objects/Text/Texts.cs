@@ -14,11 +14,13 @@ namespace Graph_
     {
         WFCanvas.WFCanvasContext context;
         private List<Tuple<Color, Tuple<string, float, float>>> texts;
+        List<Text> properTexts;
 
         public Texts(WFCanvas.WFCanvasContext context)
         {
             this.context = context;
             this.texts = new List<Tuple<Color, Tuple<string, float, float>>>();
+            properTexts = new List<Text>();
         }
 
         public int addText(string text, float x = 0, float y = 0, Color? _color=null)
@@ -30,8 +32,17 @@ namespace Graph_
             return texts.Count() - 1;
         }
 
+        public int addText(Text text)
+        {
+            properTexts.Add(text);
+
+            return properTexts.Count() - 1;
+        }
+
         public void draw()
         {
+            PointF center = context.center;
+            int scale = context.scale;
             foreach (var textProps in texts)
             {
                 int fontSize = 1 * context.scale;
@@ -55,11 +66,29 @@ namespace Graph_
 
                 //DEBUG: graph.DrawRectangle(new Pen(Color.Red), textArea);
             }
+
+            foreach (Text text in properTexts)
+            {
+                Rectangle textArea = text.getAsTranslatedRectangle(scale, center);
+                Font font = text.getCalcedFont(context.scale);
+                //Font font = text.Font;
+                Color color = text.Color;
+                String _text = text.String;
+
+                StringFormat alignCenter = new StringFormat();
+                alignCenter.Alignment = StringAlignment.Center;
+                alignCenter.LineAlignment = StringAlignment.Center;
+
+                context.graph.DrawString(_text, font, new SolidBrush(color), textArea, alignCenter);
+
+                //DEBUG: graph.DrawRectangle(new Pen(Color.Red), textArea);
+            }
         }
 
         public void clear()
         {
             texts.Clear();
+            properTexts.Clear();
         }
     }
 }

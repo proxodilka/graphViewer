@@ -10,15 +10,20 @@ using System.Windows.Forms;
 
 namespace Graph_
 {
-    public class Circles
+    public partial class Circles
     {
         WFCanvas.WFCanvasContext context;
         private Dictionary<int, Circle> circles;
+        Circle draggedCircle;
 
         public Circles(WFCanvas.WFCanvasContext context)
         {
             this.context = context;
             this.circles = new Dictionary<int, Circle>();
+
+            context.field.MouseDown += onMouseDown;
+            context.field.MouseUp += onMouseUp;
+            context.field.MouseMove += onDragging;
         }
 
         public int addCircle(float r, float x = 0, float y = 0, Color? _color = null)
