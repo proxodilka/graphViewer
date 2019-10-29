@@ -40,7 +40,7 @@ namespace Graph_
         }
 
         int h, w, scale;
-        bool noAxis = false, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
+        bool noAxis = true, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
         PointF center, baseCenter;
         PictureBox field;
         Bitmap img;
@@ -51,11 +51,6 @@ namespace Graph_
         public Lines Lines;
         public Circles Circles;
         public Texts Texts;
-        
-        public PointF translateCoords(PointF PictureBoxCoords)
-        {
-            return new PointF((PictureBoxCoords.X - center.X) / scale, -(PictureBoxCoords.Y - center.Y) / scale);
-        }
 
         private void init()
         {
@@ -115,6 +110,7 @@ namespace Graph_
         {
             scale = value < minScale ? minScale : value;
             scale = scale > maxScale ? maxScale : scale;
+            //scale = 1;
             render();
         }
 
@@ -165,13 +161,58 @@ namespace Graph_
             center = new PointF(w / 2.0f, h / 2.0f);
         }
 
-        public PointF getCurrentCenterCoords()
+        public void setCenter(PointF newCenter)
         {
-            return new PointF((baseCenter.X-center.X)/scale, -(baseCenter.Y- center.Y)/scale);
+            center = translateRelatedCoords(newCenter);
+        }
+        public PointF getCurrentCenterCoords(bool noScale=false)
+        {
+            int _scale = noScale ? 1 : scale;
+            return new PointF((baseCenter.X-center.X)/_scale, -(baseCenter.Y- center.Y)/_scale);
+        }
+
+        public PointF translateCoords(PointF PictureBoxCoords)
+        {
+            return new PointF((PictureBoxCoords.X - center.X) / scale, -(PictureBoxCoords.Y - center.Y) / scale);
+        }
+
+        public PointF translateRelatedCoords(PointF relatedCoords, int? _customScale = null)
+        {
+            int customScale = _customScale ?? scale;
+            return new PointF((-relatedCoords.X * customScale + baseCenter.X), (baseCenter.Y + relatedCoords.Y * customScale));
+        }
+
+        public PointF _translateRelatedCoords(PointF relatedCoords, int? _customScale = null)
+        {
+            int customScale = _customScale ?? scale;
+            return new PointF((relatedCoords.X * customScale + baseCenter.X), (baseCenter.Y - relatedCoords.Y * customScale));
+        }
+
+        public PointF translateRelatedCoordsToCurrentCenter(PointF relatedCoords, int? _customScale = null)
+        {
+            int customScale = _customScale ?? scale;
+            PointF e = baseCenter;
+            PointF delta = new PointF((center.X - e.X) / scale, (center.Y - e.Y) / scale);
+            if (customScale < scale) { delta.X = -delta.X; delta.Y = -delta.Y; }
+            PointF _center = new PointF(center.X + Math.Abs(customScale - scale) * delta.X, center.Y + Math.Abs(customScale - scale) * delta.Y);
+            return new PointF((relatedCoords.X * customScale + _center.X), (_center.Y - relatedCoords.Y * customScale));
+        }
+
+        public void setScaleWithCorrection(int value)
+        {
+            PointF e = baseCenter;
+            PointF delta = new PointF((center.X - e.X) / scale, (center.Y - e.Y) / scale);
+            if (value < scale) { delta.X = -delta.X; delta.Y = -delta.Y; }
+            center = new PointF(center.X + Math.Abs(value-scale)*delta.X, center.Y + Math.Abs(value - scale) * delta.Y);
+            scale = value < minScale ? minScale : value;
+            scale = scale > maxScale ? maxScale : scale;
+ 
+            render();
         }
 
 
-
+        public int W { get { return w; } }
+        public int H { get { return h; } }
 
     }
 }

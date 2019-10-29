@@ -198,7 +198,7 @@ namespace Graph_
 
             var nodesCoordinates = graphVisual.getNodesCoords();
             graph.rewriteGraph(history.Last());
-            graphVisual.setNodesCoords(nodesCoordinates);
+            graphVisual.setNodesCoords(nodesCoordinates, true);
 
             history.RemoveAt(history.Count - 1);
         }

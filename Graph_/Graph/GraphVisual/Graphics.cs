@@ -57,7 +57,7 @@ namespace Graph_.GraphVisual_
             plot.onMouseMove += onMouseMove;
 
             onRewrite(nodes, new GraphEventArgs(graph.get().Keys.ToArray(), new int[0]));
-            render();
+            render(true);
             isInited = true;
         }
 
@@ -70,8 +70,9 @@ namespace Graph_.GraphVisual_
             
             if (isResetCenter)
             {
-                plot.setScale(calcScale());
-                plot.resetCenter();
+                //plot.setScale(calcScale());
+                plot.setCenter(getPreferedCenter());
+                plot.setScaleWithCorrection(calcScale());
             }
 
             plot.render();

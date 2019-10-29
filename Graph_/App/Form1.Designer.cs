@@ -41,11 +41,11 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoButton = new System.Windows.Forms.ToolStripMenuItem();
             this.graphRoot = new System.Windows.Forms.Panel();
-            this.plot = new System.Windows.Forms.PictureBox();
             this.vertexValue = new System.Windows.Forms.Label();
             this.edgesValue = new System.Windows.Forms.Label();
             this.centrateButton = new System.Windows.Forms.Button();
             this.edgesAtCircleButton = new System.Windows.Forms.Button();
+            this.plot = new System.Windows.Forms.PictureBox();
             this.resetButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.changeVertexTab = new System.Windows.Forms.TabPage();
@@ -172,15 +172,6 @@
             this.graphRoot.Controls.Add(this.plot);
             this.graphRoot.Name = "graphRoot";
             // 
-            // plot
-            // 
-            resources.ApplyResources(this.plot, "plot");
-            this.plot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.plot.Name = "plot";
-            this.plot.TabStop = false;
-            this.plot.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Plot_GiveFeedback);
-            this.plot.QueryContinueDrag += new System.Windows.Forms.QueryContinueDragEventHandler(this.Plot_QueryContinueDrag);
-            // 
             // vertexValue
             // 
             resources.ApplyResources(this.vertexValue, "vertexValue");
@@ -204,6 +195,15 @@
             this.edgesAtCircleButton.Name = "edgesAtCircleButton";
             this.edgesAtCircleButton.UseVisualStyleBackColor = true;
             this.edgesAtCircleButton.Click += new System.EventHandler(this.edgesAtCircleButton_Click);
+            // 
+            // plot
+            // 
+            resources.ApplyResources(this.plot, "plot");
+            this.plot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.plot.Name = "plot";
+            this.plot.TabStop = false;
+            this.plot.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Plot_GiveFeedback);
+            this.plot.QueryContinueDrag += new System.Windows.Forms.QueryContinueDragEventHandler(this.Plot_QueryContinueDrag);
             // 
             // resetButton
             // 

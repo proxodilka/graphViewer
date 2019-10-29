@@ -120,7 +120,7 @@ namespace Graph_
         public MainWindow()
         {
             initLanguage();
-            tests();
+            //tests();
             InitializeComponent();
 
             mainWindow = this;
@@ -138,7 +138,7 @@ namespace Graph_
             //Console.WriteLine(Resources.Culture);
             //Properties.Settings.Default.CreateFileAtStartup = false;
             //Properties.Settings.Default.Save();
-            openFile(@"C:\Users\len\Documents\bfs_vs_dfs.txt");
+            //openFile(@"C:\Users\len\Documents\center_test.txt");
             //Colors colorManager = new Colors();
 
 

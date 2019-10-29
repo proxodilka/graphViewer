@@ -120,42 +120,11 @@
   <metadata name="navigationMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="navigationMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="navigationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>843, 24</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="navigationMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="navigationMenu.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;navigationMenu.Name" xml:space="preserve">
-    <value>navigationMenu</value>
-  </data>
-  <data name="&gt;&gt;navigationMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;navigationMenu.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;navigationMenu.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="fileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="fileOption.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="newFileOption.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newFileOption.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
   </data>
@@ -204,12 +173,13 @@
   <data name="exitOption.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
-  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 20</value>
+  <data name="fileOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
   </data>
-  <data name="editToolStripMenuItem.Text" xml:space="preserve">
-    <value>Edit</value>
+  <data name="fileOption.Text" xml:space="preserve">
+    <value>File</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="undoButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -222,116 +192,38 @@
   <data name="undoButton.Text" xml:space="preserve">
     <value>Undo</value>
   </data>
-  <data name="graphRoot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
   </data>
-  <data name="&gt;&gt;vertexValue.Name" xml:space="preserve">
-    <value>vertexValue</value>
+  <data name="editToolStripMenuItem.Text" xml:space="preserve">
+    <value>Edit</value>
   </data>
-  <data name="&gt;&gt;vertexValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vertexValue.Parent" xml:space="preserve">
-    <value>graphRoot</value>
-  </data>
-  <data name="&gt;&gt;vertexValue.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;edgesValue.Name" xml:space="preserve">
-    <value>edgesValue</value>
-  </data>
-  <data name="&gt;&gt;edgesValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;edgesValue.Parent" xml:space="preserve">
-    <value>graphRoot</value>
-  </data>
-  <data name="&gt;&gt;edgesValue.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;centrateButton.Name" xml:space="preserve">
-    <value>centrateButton</value>
-  </data>
-  <data name="&gt;&gt;centrateButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;centrateButton.Parent" xml:space="preserve">
-    <value>graphRoot</value>
-  </data>
-  <data name="&gt;&gt;centrateButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;edgesAtCircleButton.Name" xml:space="preserve">
-    <value>edgesAtCircleButton</value>
-  </data>
-  <data name="&gt;&gt;edgesAtCircleButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;edgesAtCircleButton.Parent" xml:space="preserve">
-    <value>graphRoot</value>
-  </data>
-  <data name="&gt;&gt;edgesAtCircleButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;plot.Name" xml:space="preserve">
-    <value>plot</value>
-  </data>
-  <data name="&gt;&gt;plot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plot.Parent" xml:space="preserve">
-    <value>graphRoot</value>
-  </data>
-  <data name="&gt;&gt;plot.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="graphRoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 28</value>
-  </data>
-  <data name="graphRoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>821, 519</value>
-  </data>
-  <data name="graphRoot.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;graphRoot.Name" xml:space="preserve">
-    <value>graphRoot</value>
-  </data>
-  <data name="&gt;&gt;graphRoot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;graphRoot.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;graphRoot.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="plot.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="navigationMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="plot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="navigationMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>843, 24</value>
   </data>
-  <data name="plot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>820, 492</value>
-  </data>
-  <data name="plot.TabIndex" type="System.Int32, mscorlib">
+  <data name="navigationMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;plot.Name" xml:space="preserve">
-    <value>plot</value>
+  <data name="navigationMenu.Text" xml:space="preserve">
+    <value>menuStrip1</value>
   </data>
-  <data name="&gt;&gt;plot.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;navigationMenu.Name" xml:space="preserve">
+    <value>navigationMenu</value>
   </data>
-  <data name="&gt;&gt;plot.Parent" xml:space="preserve">
-    <value>graphRoot</value>
+  <data name="&gt;&gt;navigationMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;plot.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;navigationMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;navigationMenu.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="graphRoot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="vertexValue.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -447,6 +339,54 @@
   <data name="&gt;&gt;edgesAtCircleButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="plot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="plot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="plot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="plot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>820, 492</value>
+  </data>
+  <data name="plot.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;plot.Name" xml:space="preserve">
+    <value>plot</value>
+  </data>
+  <data name="&gt;&gt;plot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plot.Parent" xml:space="preserve">
+    <value>graphRoot</value>
+  </data>
+  <data name="&gt;&gt;plot.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="graphRoot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 28</value>
+  </data>
+  <data name="graphRoot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>821, 519</value>
+  </data>
+  <data name="graphRoot.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;graphRoot.Name" xml:space="preserve">
+    <value>graphRoot</value>
+  </data>
+  <data name="&gt;&gt;graphRoot.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;graphRoot.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;graphRoot.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="resetButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 12pt</value>
   </data>
@@ -476,138 +416,6 @@
   </data>
   <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.Name" xml:space="preserve">
-    <value>changeVertexTab</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesTab.Name" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesTab.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesTab.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;traversalTab.Name" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;traversalTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;traversalTab.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;traversalTab.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 554</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>818, 116</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;changeVertValue.Name" xml:space="preserve">
-    <value>changeVertValue</value>
-  </data>
-  <data name="&gt;&gt;changeVertValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeVertValue.Parent" xml:space="preserve">
-    <value>changeVertexTab</value>
-  </data>
-  <data name="&gt;&gt;changeVertValue.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;deleteVertex.Name" xml:space="preserve">
-    <value>deleteVertex</value>
-  </data>
-  <data name="&gt;&gt;deleteVertex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;deleteVertex.Parent" xml:space="preserve">
-    <value>changeVertexTab</value>
-  </data>
-  <data name="&gt;&gt;deleteVertex.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;addVertex.Name" xml:space="preserve">
-    <value>addVertex</value>
-  </data>
-  <data name="&gt;&gt;addVertex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addVertex.Parent" xml:space="preserve">
-    <value>changeVertexTab</value>
-  </data>
-  <data name="&gt;&gt;addVertex.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;changeVertexesLabel.Name" xml:space="preserve">
-    <value>changeVertexesLabel</value>
-  </data>
-  <data name="&gt;&gt;changeVertexesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeVertexesLabel.Parent" xml:space="preserve">
-    <value>changeVertexTab</value>
-  </data>
-  <data name="&gt;&gt;changeVertexesLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="changeVertexTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="changeVertexTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="changeVertexTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>810, 90</value>
-  </data>
-  <data name="changeVertexTab.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="changeVertexTab.Text" xml:space="preserve">
-    <value>Vertices</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.Name" xml:space="preserve">
-    <value>changeVertexTab</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;changeVertexTab.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="changeVertValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 9.75pt</value>
@@ -711,137 +519,32 @@
   <data name="&gt;&gt;changeVertexesLabel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;clearEdges.Name" xml:space="preserve">
-    <value>clearEdges</value>
-  </data>
-  <data name="&gt;&gt;clearEdges.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;clearEdges.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;clearEdges.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;makeGraphComplete.Name" xml:space="preserve">
-    <value>makeGraphComplete</value>
-  </data>
-  <data name="&gt;&gt;makeGraphComplete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;makeGraphComplete.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;makeGraphComplete.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;toEdgeValue.Name" xml:space="preserve">
-    <value>toEdgeValue</value>
-  </data>
-  <data name="&gt;&gt;toEdgeValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toEdgeValue.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;toEdgeValue.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;fromEdgeValue.Name" xml:space="preserve">
-    <value>fromEdgeValue</value>
-  </data>
-  <data name="&gt;&gt;fromEdgeValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fromEdgeValue.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;fromEdgeValue.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;toLabel.Name" xml:space="preserve">
-    <value>toLabel</value>
-  </data>
-  <data name="&gt;&gt;toLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toLabel.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;toLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;fromLabel.Name" xml:space="preserve">
-    <value>fromLabel</value>
-  </data>
-  <data name="&gt;&gt;fromLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;fromLabel.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;fromLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;deleteEdge.Name" xml:space="preserve">
-    <value>deleteEdge</value>
-  </data>
-  <data name="&gt;&gt;deleteEdge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;deleteEdge.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;deleteEdge.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;addEdge.Name" xml:space="preserve">
-    <value>addEdge</value>
-  </data>
-  <data name="&gt;&gt;addEdge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;addEdge.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;addEdge.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesLabel.Name" xml:space="preserve">
-    <value>changeEdgesLabel</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesLabel.Parent" xml:space="preserve">
-    <value>changeEdgesTab</value>
-  </data>
-  <data name="&gt;&gt;changeEdgesLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="changeEdgesTab.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="changeVertexTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="changeEdgesTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>813, 90</value>
+  <data name="changeVertexTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="changeEdgesTab.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="changeVertexTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>810, 90</value>
   </data>
-  <data name="changeEdgesTab.Text" xml:space="preserve">
-    <value>Edges</value>
+  <data name="changeVertexTab.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;changeEdgesTab.Name" xml:space="preserve">
-    <value>changeEdgesTab</value>
+  <data name="changeVertexTab.Text" xml:space="preserve">
+    <value>Vertices</value>
   </data>
-  <data name="&gt;&gt;changeEdgesTab.Type" xml:space="preserve">
+  <data name="&gt;&gt;changeVertexTab.Name" xml:space="preserve">
+    <value>changeVertexTab</value>
+  </data>
+  <data name="&gt;&gt;changeVertexTab.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;changeEdgesTab.Parent" xml:space="preserve">
+  <data name="&gt;&gt;changeVertexTab.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;changeEdgesTab.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;changeVertexTab.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="clearEdges.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 9pt</value>
@@ -1086,104 +789,29 @@
   <data name="&gt;&gt;changeEdgesLabel.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;isConnectedComponents.Name" xml:space="preserve">
-    <value>isConnectedComponents</value>
-  </data>
-  <data name="&gt;&gt;isConnectedComponents.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;isConnectedComponents.Parent" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;isConnectedComponents.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;traversalStartVertex.Name" xml:space="preserve">
-    <value>traversalStartVertex</value>
-  </data>
-  <data name="&gt;&gt;traversalStartVertex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;traversalStartVertex.Parent" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;traversalStartVertex.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;startTraversal.Name" xml:space="preserve">
-    <value>startTraversal</value>
-  </data>
-  <data name="&gt;&gt;startTraversal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;startTraversal.Parent" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;startTraversal.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;isDfs.Name" xml:space="preserve">
-    <value>isDfs</value>
-  </data>
-  <data name="&gt;&gt;isDfs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;isDfs.Parent" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;isDfs.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;isBfs.Name" xml:space="preserve">
-    <value>isBfs</value>
-  </data>
-  <data name="&gt;&gt;isBfs.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;isBfs.Parent" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;isBfs.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;startedVertex.Name" xml:space="preserve">
-    <value>startedVertex</value>
-  </data>
-  <data name="&gt;&gt;startedVertex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;startedVertex.Parent" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;startedVertex.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="traversalTab.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="changeEdgesTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="traversalTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="changeEdgesTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>810, 90</value>
   </data>
-  <data name="traversalTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>813, 90</value>
+  <data name="changeEdgesTab.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="traversalTab.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="changeEdgesTab.Text" xml:space="preserve">
+    <value>Edges</value>
   </data>
-  <data name="traversalTab.Text" xml:space="preserve">
-    <value>Traversals</value>
+  <data name="&gt;&gt;changeEdgesTab.Name" xml:space="preserve">
+    <value>changeEdgesTab</value>
   </data>
-  <data name="&gt;&gt;traversalTab.Name" xml:space="preserve">
-    <value>traversalTab</value>
-  </data>
-  <data name="&gt;&gt;traversalTab.Type" xml:space="preserve">
+  <data name="&gt;&gt;changeEdgesTab.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;traversalTab.Parent" xml:space="preserve">
+  <data name="&gt;&gt;changeEdgesTab.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;traversalTab.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;changeEdgesTab.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="isConnectedComponents.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1355,6 +983,54 @@
   </data>
   <data name="&gt;&gt;startedVertex.ZOrder" xml:space="preserve">
     <value>6</value>
+  </data>
+  <data name="traversalTab.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="traversalTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="traversalTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>810, 90</value>
+  </data>
+  <data name="traversalTab.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="traversalTab.Text" xml:space="preserve">
+    <value>Traversals</value>
+  </data>
+  <data name="&gt;&gt;traversalTab.Name" xml:space="preserve">
+    <value>traversalTab</value>
+  </data>
+  <data name="&gt;&gt;traversalTab.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;traversalTab.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;traversalTab.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 554</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>818, 116</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="openGraphFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>156, 16</value>
