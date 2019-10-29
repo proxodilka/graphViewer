@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Graph_.Localization;
+using System.Globalization;
 
 namespace Graph_
 {
@@ -64,7 +65,8 @@ namespace Graph_
                 currentString = stream.ReadLine().Split(' ');
 
                 int vertexNumber = int.Parse(currentString[0]);
-                PointF coords = new PointF(float.Parse(currentString[2]), float.Parse(currentString[3]));
+                PointF coords = new PointF(float.Parse(currentString[2].Replace(',','.'), CultureInfo.CreateSpecificCulture("en-us")),
+                                           float.Parse(currentString[3].Replace(',','.'), CultureInfo.CreateSpecificCulture("en-us")));
                 coordinates.Add(vertexNumber, coords);
             }
 
@@ -146,10 +148,12 @@ namespace Graph_
                 }
                 else if (type[0] == "adjacency_list")
                 {
-                    var parseResult = parseList(fileStream);
-                    /*try { */graph.rewriteGraph(parseResult.Item1);/* }*/
-                    graphVisual.setNodesCoords(parseResult.Item2);
-                    //catch { onError(titles.parseError); return false; }
+                    try {
+                        var parseResult = parseList(fileStream);
+                        graph.rewriteGraph(parseResult.Item1);
+                        graphVisual.setNodesCoords(parseResult.Item2);
+                    }
+                    catch { onError(titles.parseError); return false; }    
                 }
                 else { onError(titles.unknownFileError); return false; };
             }
