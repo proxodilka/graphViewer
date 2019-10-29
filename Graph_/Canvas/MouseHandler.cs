@@ -13,11 +13,12 @@ namespace Graph_
     public partial class WFCanvas
     {
         Point prev = new Point(0, 0);
+        bool mouseMoved=false;
 
         private void onFieldMouseMove(object sender, MouseEventArgs e)
         {
             if (!scalable) return;
-
+            mouseMoved = true;
             if (isMousePressed && !childControleMouse)
             {
                 //Console.WriteLine($"mouse :{e.Location}");
@@ -40,6 +41,7 @@ namespace Graph_
 
             if (isMousePressed)
                 render();
+            onMouseMove?.Invoke(sender, e);
         }
 
         private void onFieldMouseUp(object sender, MouseEventArgs e)
@@ -47,6 +49,10 @@ namespace Graph_
             if (!scalable) return;
             isMousePressed = false;
             restrintChildControleMouse = false;
+            if (!mouseMoved)
+            {
+                onClick?.Invoke(sender, e);
+            }
         }
 
         private void onFieldMouseDown(object sender, MouseEventArgs e)
@@ -55,6 +61,7 @@ namespace Graph_
             isMousePressed = true;
             if (!childControleMouse)
                 restrintChildControleMouse = true;
+            mouseMoved = false;
             //prev = new Point(0, 0);
         }
 

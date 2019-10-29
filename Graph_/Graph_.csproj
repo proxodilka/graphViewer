@@ -85,6 +85,10 @@
     <Compile Include="App\Graph\GraphParser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Graph\GraphVisual\Graphics_coordinates.cs" />
+    <Compile Include="Graph\GraphVisual\Graphics_draw.cs" />
+    <Compile Include="Graph\GraphVisual\Graphics_eventsHandler.cs" />
+    <Compile Include="Graph\GraphVisual\Graphics_verticesStateHandler.cs" />
     <Compile Include="Graph\GraphVisual\Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,6 +25,7 @@ namespace Graph_
         bool isModified = false, hasPath=false, onAnimation=false;
         int traversalTabIndex = 2;
 
+        WFCanvas canvas;
         GraphVisual graphVisual;
         MainWindow mainWindow;
         Graph graph;
@@ -125,8 +126,9 @@ namespace Graph_
             mainWindow = this;
             KeyPreview = true;
             this.DoubleBuffered = true;
+            canvas = new WFCanvas(plot);
             graph = new Graph();
-            graphVisual = new GraphVisual(plot, graph);
+            graphVisual = new GraphVisual(canvas, graph);
             graphAlgo = new GraphAlgo(graph);
             history = new List<Dictionary<int, HashSet<int>>>();
 

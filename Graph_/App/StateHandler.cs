@@ -15,7 +15,8 @@ namespace Graph_
 {
     public partial class MainWindow : Form
     {
-        
+        bool makingEdgeOnCanvas = false;
+        int MakingEdgeOnCanvasFromVertex = -1;
         private bool closingFile()
         {
             bool allowToClose;
@@ -118,6 +119,58 @@ namespace Graph_
 
             graphVisual.didUpdate += onGraphicsUpdate;
             onGraphicsUpdate(graphVisual);
+
+            canvas.onClick += onCanvasClick;
+        }
+
+        private void onCanvasClick(object sender, MouseEventArgs e)
+        {
+            PointF coords = canvas.translateCoords(e.Location);
+            int clickedNode = graphVisual.getNodeByCoords(coords);
+            Tuple<int, int> clickedEdge = graphVisual.getEdgeByCoords(coords);
+
+            if (clickedEdge!=null && e.Button == MouseButtons.Right) //click on existing edge (removing this edge)
+            {
+                graph.removeEdge(clickedEdge.Item1, clickedEdge.Item2);
+            }
+            else if (clickedNode==-1 && makingEdgeOnCanvas) //click on empty field while making edge
+            {
+                graphVisual.unbindLineFromVertex(MakingEdgeOnCanvasFromVertex);
+
+                makingEdgeOnCanvas = false;
+                MakingEdgeOnCanvasFromVertex = -1;
+                return;
+            }
+            else if (e.Button == MouseButtons.Left && clickedNode == -1) //left click on empty field (creating new vertex)
+            {
+                int newVertexNumber = graph.addVertex();
+                graphVisual.setNodeCoords(newVertexNumber, coords);
+
+            }
+            else if (e.Button == MouseButtons.Right && clickedNode != -1) //right click on existing vertex (removing this vertex)
+            {
+                graph.removeVertex(clickedNode);
+            }
+            else if (e.Button == MouseButtons.Left && clickedNode != -1) //left click on existing vertex (trying to make new edge)
+            {
+                if (makingEdgeOnCanvas)
+                {
+                    graph.addEdge(MakingEdgeOnCanvasFromVertex, clickedNode);
+                    graphVisual.unbindLineFromVertex(MakingEdgeOnCanvasFromVertex);
+
+                    makingEdgeOnCanvas = false;
+                    MakingEdgeOnCanvasFromVertex = -1;
+                }
+                else
+                {
+                    makingEdgeOnCanvas = true;
+                    MakingEdgeOnCanvasFromVertex = clickedNode;
+
+                    graphVisual.bindLineToVertex(clickedNode);
+                }
+            }
+
+
         }
 
         private void onModify(object sender, GraphEventArgs e)

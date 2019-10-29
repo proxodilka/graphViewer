@@ -10,10 +10,11 @@ using System.Windows.Forms;
 
 namespace Graph_
 {
-    
+    public delegate void WFCanvasEventDelegate(object sender, MouseEventArgs e);
     public partial class WFCanvas
     {
-
+        public event WFCanvasEventDelegate onClick;
+        public event WFCanvasEventDelegate onMouseMove;
         public class WFCanvasContext
         {
             WFCanvas ContextProvider;
@@ -39,7 +40,7 @@ namespace Graph_
         }
 
         int h, w, scale;
-        bool noAxis = true, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
+        bool noAxis = false, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
         PointF center, baseCenter;
         PictureBox field;
         Bitmap img;
@@ -51,6 +52,11 @@ namespace Graph_
         public Circles Circles;
         public Texts Texts;
         
+        public PointF translateCoords(PointF PictureBoxCoords)
+        {
+            return new PointF((PictureBoxCoords.X - center.X) / scale, -(PictureBoxCoords.Y - center.Y) / scale);
+        }
+
         private void init()
         {
             //img?.Dispose();

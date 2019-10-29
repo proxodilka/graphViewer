@@ -46,6 +46,11 @@ namespace Graph_.GraphVisual_
             plot.Texts.addText(text);
         }
 
+        public bool isPointIn(PointF point)
+        {
+            return circle.isPointIn(point);
+        }
+
         public PointF Center
         {
             get

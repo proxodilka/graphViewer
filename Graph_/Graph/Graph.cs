@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Graph_
 {
-    delegate void eventListener(object sender, GraphEventArgs e);
+    public delegate void eventListener(object sender, GraphEventArgs e);
 
-    class GraphEventArgs
+    public class GraphEventArgs
     {
         public int[] Vertices { get; }
         public int[] Edges { get; }
@@ -19,7 +19,7 @@ namespace Graph_
         }
     }
 
-    class Graph
+    public class Graph
     {
         public event eventListener vertexAdded;
         public event eventListener vertexRemoved;
