@@ -13,13 +13,14 @@ namespace Graph_
     public class Lines
     {
         WFCanvas.WFCanvasContext context;
+
         private List<Tuple<Color, Tuple<PointF, PointF>>> lines;
         private List<Line> properLines;
 
-        public Lines(WFCanvas.WFCanvasContext context)
+        public Lines(WFCanvas.WFCanvasContext _context)
         {
-            this.context = context;
-            this.lines = new List<Tuple<Color, Tuple<PointF, PointF>>>();
+            context = _context;
+            lines = new List<Tuple<Color, Tuple<PointF, PointF>>>();
             properLines = new List<Line>();
         }
 

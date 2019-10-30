@@ -118,7 +118,7 @@ namespace Graph_
 
         public bool addEdge(int from, int to, bool withoutEvent=false)
         {
-            if (!hasVertex(from) || !hasVertex(to) || hasEdge(from, to))
+            if (!hasVertex(from) || !hasVertex(to) || hasEdge(from, to) || from==to)
             {
                 return false;
             }

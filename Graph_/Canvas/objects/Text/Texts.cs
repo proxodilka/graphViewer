@@ -45,16 +45,17 @@ namespace Graph_
             int scale = context.scale;
             foreach (var textProps in texts)
             {
-                int fontSize = 1 * context.scale;
+                int fontSize = 1 * scale;
 
                 Color color = textProps.Item1;
                 var _text = textProps.Item2;
 
                 string text = _text.Item1;
-                float x = _text.Item2 * context.scale + context.center.X;
-                float y = context.center.Y - _text.Item3 * context.scale;
+                float x = _text.Item2 * scale + center.X;
+                float y = context.center.Y - _text.Item3 * scale;
 
-                Rectangle textArea = new Rectangle((int)x - fontSize * text.Length / 2, (int)y - fontSize / 2, fontSize * text.Length, fontSize);
+                Rectangle textArea = new Rectangle((int)x - fontSize * text.Length / 2,
+                                                   (int)y - fontSize / 2, fontSize * text.Length, fontSize);
 
                 StringFormat alignCenter = new StringFormat();
                 alignCenter.Alignment = StringAlignment.Center;

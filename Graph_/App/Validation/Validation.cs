@@ -41,10 +41,12 @@ namespace Graph_
         private void validateFromToGroup()
         {
             int fromValue = (int)fromEdgeValue.Value, toValue = (int)toEdgeValue.Value;
-            bool fromRes = validateButton(fromValue, addEdge), toRes = validateButton(toValue, addEdge),
-                 hasEdgeRes = graph.hasEdge(fromValue, toValue);
+            bool fromRes = validateButton(fromValue, addEdge),
+                 toRes = validateButton(toValue, addEdge),
+                 hasEdgeRes = graph.hasEdge(fromValue, toValue),
+                 NotEquals = fromValue!=toValue; //if from==to you cannot add edge
 
-            addEdge.Enabled = fromRes && toRes;
+            addEdge.Enabled = fromRes && toRes && NotEquals;
             deleteEdge.Enabled = fromRes && toRes && hasEdgeRes;
         }
     }

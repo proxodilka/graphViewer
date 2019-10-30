@@ -106,6 +106,7 @@ namespace Graph_.GraphVisual_
         {
             if (getNodeByCoords(coords) != -1)
                 return null;
+            Dictionary<double, Tuple<int, int>> deviations = new Dictionary<double, Tuple<int, int>>();
 
             var adjacenctList = graph.get();
             foreach (var pair in adjacenctList)
@@ -135,17 +136,24 @@ namespace Graph_.GraphVisual_
                       || (k < 0 && (coords.X > p1.X || coords.X < p2.X || coords.Y < p1.Y || coords.Y > p2.Y))) 
                         continue;
 
-                    int delta = 2;
-                    Func<double, double> f1 = (x) => x * k + c + delta,
-                                         f2 = (x) => x * k + c + - delta;
+                    int delta = 1;
+                    Func<double, double> f1 = (x) => x * k + c + Math.Abs(k) * delta,
+                                         f2 = (x) => x * k + c - Math.Abs(k) * delta,
+                                         f3 = (x) => x * k + c;
 
                     if (coords.Y<=f1(coords.X) && coords.Y >= f2(coords.X))
                     {
-                        return new Tuple<int, int>(vertexNumber, adjacencyVertex);
+                        double deviation = Math.Abs(f3(coords.X) - coords.Y);
+                        deviations[deviation] = new Tuple<int, int>(vertexNumber, adjacencyVertex);
                     }
                 }
             }
-            return null;
+
+            if (deviations.Count == 0)
+                return null;
+
+            double minDiviation = deviations.Keys.Min();
+            return deviations[minDiviation];
         }
 
         public Dictionary<int, PointF> getNodesCoords()

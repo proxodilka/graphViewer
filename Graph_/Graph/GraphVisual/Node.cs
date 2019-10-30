@@ -39,6 +39,7 @@ namespace Graph_.GraphVisual_
                 circle.fillColor = color;
             else
                 circle.fillColor = Color.White;
+
             plot.Circles.addCircle(circle);
 
             text.Color = Colors.getTextColorByBackground(circle.fillColor);

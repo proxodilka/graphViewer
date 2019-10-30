@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Graph_.Localization {
+namespace Graph_.App.Localization {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Graph_.Localization {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Graph_.Localization.titles", typeof(titles).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Graph_.App.Localization.titles", typeof(titles).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
