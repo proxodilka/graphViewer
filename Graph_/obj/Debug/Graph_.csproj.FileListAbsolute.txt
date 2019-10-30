@@ -12,5 +12,5 @@ C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.MainWindow.ru.resources
 C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\ru\Graph_.resources.dll
 C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.Settings.resources
 C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.Settings.ru.resources
-C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.Localization.titles.resources
-C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.Localization.titles.ru.resources
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.App.Localization.titles.resources
+C:\Users\len\source\repos\Graph_\Graph_\obj\Debug\Graph_.App.Localization.titles.ru.resources

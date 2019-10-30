@@ -98,18 +98,18 @@
     <Compile Include="App\Validation\Validation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\Settings.cs">
+    <Compile Include="App\Settings\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings\Settings.Designer.cs">
+    <Compile Include="App\Settings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Localization\titles.ru.Designer.cs">
+    <Compile Include="App\Localization\titles.ru.Designer.cs">
       <DependentUpon>titles.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Localization\titles.Designer.cs">
+    <Compile Include="App\Localization\titles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>titles.resx</DependentUpon>
@@ -130,17 +130,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Settings\Settings.resx">
+    <EmbeddedResource Include="App\Settings\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Settings\Settings.ru.resx">
+    <EmbeddedResource Include="App\Settings\Settings.ru.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\titles.ru.resx">
+    <EmbeddedResource Include="App\Localization\titles.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>titles.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Localization\titles.resx">
+    <EmbeddedResource Include="App\Localization\titles.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>titles.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -158,7 +158,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Localization\ru\" />
+    <Folder Include="App\Localization\ru\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

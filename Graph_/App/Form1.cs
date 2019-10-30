@@ -13,7 +13,7 @@ using Graph_.GraphVisual_;
 using Graph_.Properties;
 using System.Threading;
 using System.Globalization;
-using Graph_.Localization;
+using Graph_.App.Localization;
 
 namespace Graph_
 {

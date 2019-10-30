@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using Graph_.Localization;
+using Graph_.App.Localization;
 using System.Globalization;
 
 namespace Graph_

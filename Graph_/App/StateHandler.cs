@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Graph_.GraphVisual_;
-using Graph_.Localization;
+using Graph_.App.Localization;
 
 namespace Graph_
 {
