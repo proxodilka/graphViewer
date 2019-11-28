@@ -46,79 +46,109 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\Files\Files_ButtonsHandler.cs">
+    <Compile Include="Pages\Main\App\Files\Files_ButtonsHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Graph\GraphModify_ButtonsHandler.cs">
+    <Compile Include="Pages\Main\App\Graph\GraphModify_ButtonsHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\TraversalHandler.cs">
+    <Compile Include="Pages\Main\App\TraversalHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Validation\Validation_InputsHandler.cs">
+    <Compile Include="Pages\Main\App\Validation\Validation_InputsHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Canvas\Colors.cs" />
-    <Compile Include="Canvas\MouseHandler.cs" />
-    <Compile Include="Canvas\MutablePoint.cs" />
-    <Compile Include="Canvas\objects\Circle\Circle.cs" />
-    <Compile Include="Canvas\objects\Circle\CircleMouseHandler.cs" />
-    <Compile Include="Canvas\objects\Circle\Circles.cs" />
-    <Compile Include="Canvas\objects\Curve\Curves.cs" />
-    <Compile Include="Canvas\objects\Line\Line.cs" />
-    <Compile Include="Canvas\objects\Line\Lines.cs" />
-    <Compile Include="Canvas\objects\Text\Text.cs" />
-    <Compile Include="Canvas\objects\Text\Texts.cs" />
-    <Compile Include="App\Files\Files.cs">
+    <Compile Include="Pages\Main\Canvas\Colors.cs" />
+    <Compile Include="Pages\Main\Canvas\MouseHandler.cs" />
+    <Compile Include="Pages\Main\Canvas\MutablePoint.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Circle\Circle.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Circle\CircleMouseHandler.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Circle\Circles.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Curve\Curve.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Curve\CurveGetter.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Curve\Curves.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\ICanvasObjectContainer.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Line\Line.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Line\Lines.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Polygon\Polygon.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Polygon\Polygons.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Text\Text.cs" />
+    <Compile Include="Pages\Main\Canvas\objects\Text\Texts.cs" />
+    <Compile Include="Pages\Main\App\Files\Files.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Form1.cs">
+    <Compile Include="Pages\Main\App\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Form1.Designer.cs">
+    <Compile Include="Pages\Main\App\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graph\Graph.cs" />
-    <Compile Include="Graph\GraphAlgo.cs" />
-    <Compile Include="Graph\GraphVisual\Graphics.cs" />
-    <Compile Include="Canvas\Canvas.cs" />
-    <Compile Include="App\Graph\GraphParser.cs">
+    <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\BFS.cs" />
+    <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\BNB.cs" />
+    <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\Greedy.cs" />
+    <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\TSP.cs" />
+    <Compile Include="Pages\Main\Graph\Graph\GraphRewriter.cs" />
+    <Compile Include="Pages\Main\Graph\Graph\GraphGetter.cs" />
+    <Compile Include="Pages\MatrixSettings\GraphWeightSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graph\GraphVisual\Graphics_coordinates.cs" />
-    <Compile Include="Graph\GraphVisual\Graphics_draw.cs" />
-    <Compile Include="Graph\GraphVisual\Graphics_eventsHandler.cs" />
-    <Compile Include="Graph\GraphVisual\Graphics_verticesStateHandler.cs" />
-    <Compile Include="Graph\GraphVisual\Node.cs" />
+    <Compile Include="Pages\MatrixSettings\GraphWeightSettings.Designer.cs">
+      <DependentUpon>GraphWeightSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Main\Graph\Graph\Graph.cs" />
+    <Compile Include="Pages\Main\Graph\GraphAlgo\GraphAlgo.cs" />
+    <Compile Include="Pages\Main\Graph\GraphVisual\Edge.cs" />
+    <Compile Include="Pages\Main\Graph\GraphVisual\Graphics.cs" />
+    <Compile Include="Pages\Main\Canvas\Canvas.cs" />
+    <Compile Include="Pages\Main\App\Graph\GraphParser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Main\Graph\GraphVisual\Graphics_coordinates.cs" />
+    <Compile Include="Pages\Main\Graph\GraphVisual\Graphics_draw.cs" />
+    <Compile Include="Pages\Main\Graph\GraphVisual\Graphics_eventsHandler.cs" />
+    <Compile Include="Pages\Main\Graph\GraphVisual\Graphics_verticesStateHandler.cs" />
+    <Compile Include="Pages\Main\Graph\GraphVisual\Node.cs" />
+    <Compile Include="Pages\MatrixSettings\MatrixComponent\Matrix.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\MatrixSettings\MatrixComponent\Matrix.Designer.cs">
+      <DependentUpon>Matrix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="App\StateHandler.cs">
+    <Compile Include="Pages\Main\App\StateHandler.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Validation\Validation.cs">
+    <Compile Include="Pages\Main\App\Validation\Validation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Settings\Settings.cs">
+    <Compile Include="Pages\Settings\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\Settings\Settings.Designer.cs">
+    <Compile Include="Pages\Settings\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="App\Localization\titles.ru.Designer.cs">
+    <Compile Include="Pages\Main\App\Localization\titles.ru.Designer.cs">
       <DependentUpon>titles.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="App\Localization\titles.Designer.cs">
+    <Compile Include="Pages\Main\App\Localization\titles.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>titles.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="App\Form1.resx">
+    <EmbeddedResource Include="Pages\Main\App\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App\Form1.ru.resx">
+    <EmbeddedResource Include="Pages\Main\App\Form1.ru.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MatrixSettings\GraphWeightSettings.resx">
+      <DependentUpon>GraphWeightSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MatrixSettings\MatrixComponent\Matrix.resx">
+      <DependentUpon>Matrix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,17 +160,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="App\Settings\Settings.resx">
+    <EmbeddedResource Include="Pages\Settings\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App\Settings\Settings.ru.resx">
+    <EmbeddedResource Include="Pages\Settings\Settings.ru.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App\Localization\titles.ru.resx">
+    <EmbeddedResource Include="Pages\Main\App\Localization\titles.ru.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>titles.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="App\Localization\titles.resx">
+    <EmbeddedResource Include="Pages\Main\App\Localization\titles.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>titles.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -158,7 +188,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Localization\ru\" />
+    <Folder Include="Pages\Main\App\Localization\ru\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
