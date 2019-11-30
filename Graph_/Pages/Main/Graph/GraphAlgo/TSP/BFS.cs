@@ -8,7 +8,7 @@ namespace Graph_
 {
     public partial class TSP
     {
-        void BFS(List<int> way, long weight, int position, int stepNumber)
+        async void BFS(List<int> way, long weight, int position, int stepNumber)
         {
             if (stepNumber == numberOfVertices - 1) //if all vertices are visited
             {
@@ -18,6 +18,7 @@ namespace Graph_
                 {
                     ans = new List<int>(way);
                     currentOptimalWeight = weight;
+                    updater(new Tuple<int, List<int>>((int)currentOptimalWeight, ans));
                 }
                 way.RemoveAt(way.Count - 1);
                 weight -= matrix[position, start];
@@ -40,13 +41,15 @@ namespace Graph_
             }
         }
 
-        public Tuple<int, List<int>> bruteForceSearch()
+        public async void bruteForceSearch(Updater updater)
         {
+            this.updater = updater;
             setTSP(matrix, start);
             markedVertices[start] = true;
-            BFS(new List<int>() { start }, 0, start, 0);
+            Task.Run(()=>BFS(new List<int>() { start }, 0, start, 0));
+            //BFS(new List<int>() { start }, 0, start, 0);
 
-            return (currentOptimalWeight >= INF) ? null : new Tuple<int, List<int>>((int)currentOptimalWeight, ans);
+            //return (currentOptimalWeight >= INF) ? null : new Tuple<int, List<int>>((int)currentOptimalWeight, ans);
         }
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Graph_
 {
+    public delegate void Updater(Tuple<int, List<int>> ans);
     public partial class TSP
     {
+        Updater updater;
         long INF = (long)10e9;
         //long overflowValue = (long)10e1;
         long[,] matrix;

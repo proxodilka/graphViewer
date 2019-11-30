@@ -99,8 +99,10 @@ namespace Graph_
         public void TSP_BFS(int start)
         {
             //TSPSolver.setStart(start);
-            var ans = new TSP(graph.getAsMatrix(), start).branchAndBound();
-            Console.WriteLine($"weight: {ans.Item1} | way: {string.Join(" ", ans.Item2)}");
+  
+            new TSP(graph.getAsMatrix(), start).branchAndBound((ans)=>Console.WriteLine($"weight: {ans.Item1} | way: {string.Join(" ", ans.Item2)}"));
+            //var ans = new TSP(graph.getAsMatrix(), start).branchAndBound();
+            //Console.WriteLine($"weight: {ans.Item1} | way: {string.Join(" ", ans.Item2)}");
 
         }
 

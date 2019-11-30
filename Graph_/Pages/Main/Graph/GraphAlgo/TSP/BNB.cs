@@ -8,128 +8,244 @@ namespace Graph_
 {
     public partial class TSP
     {
-        struct Branch
+        class Branch
         {
-            long lowerBound, upperBound, currentWeight;
-            int position;
+            long lowerBound, currentWeight;
+            long[,] distances;
+            bool[] markedVertices;
+            Tuple<int, List<int>> upperBound;
+            int numberOfVertices;
             List<int> way;
 
-            public long LowerBound { get { return lowerBound; } set { lowerBound = value; } }
-            public long UpperBound { get { return upperBound; } set { upperBound = value; } }
-            public int Position { get { return position; } set { position = value; } }
-            public long CurrentWeight { get { return currentWeight; } set { currentWeight = value; } }
+            public int Position { get { return way[way.Count-1]; } }
+            public int Start { get { return way[0]; } }
+
+
+            public long LowerBound { get { return lowerBound; } }
+            public long UpperBound { get { return upperBound.Item1; } }
+
+            public Tuple<int, List<int>> Answer { get { return new Tuple<int, List<int>>(upperBound.Item1, new List<int>(upperBound.Item2)); } }
+
             public List<int> Way { get { return way; } }
 
-            public Branch(List<int> way, long lowerBound, long upperBound, long currentWeight, int position)
+            Branch(long[,] distances)
             {
-                this.way = way;
+                way = new List<int>();
+                markedVertices = new bool[distances.GetLength(0)];
+                this.distances = distances;
+                numberOfVertices = distances.GetLength(0);
+            }
+
+            public Branch(int start, long[,] distances) : this(distances)
+            {
+                addToPath(start);
+            }
+
+            public Branch(List<int> way, long lowerBound, long currentWeight, long[,] distances)
+            {
+                this.way = new List<int>(way);
                 this.lowerBound = lowerBound;
-                this.upperBound = upperBound;
-                this.position = position;
+                this.upperBound = new Tuple<int, List<int>>((int)10e6, new List<int>());
                 this.currentWeight = currentWeight;
+                this.distances = distances;
+                markedVertices = new bool[distances.GetLength(0)];
+                numberOfVertices = distances.GetLength(0);
             }
 
             public Branch(Branch other)
             {
                 lowerBound = other.lowerBound;
-                upperBound = other.upperBound;
-                position = other.position;
+                upperBound = new Tuple<int, List<int>>(other.upperBound.Item1, new List<int>(other.upperBound.Item2));
                 currentWeight = other.currentWeight;
                 way = new List<int>(other.way);
+                distances = other.distances;
+                markedVertices = new bool[distances.GetLength(0)];
+                numberOfVertices = other.numberOfVertices;
+                for (int i=0; i<markedVertices.Length; i++)
+                {
+                    markedVertices[i] = other.markedVertices[i];
+                }
             }
-        }
 
-        long getLowerBound(Branch branch)
-        {
-            long weight = branch.CurrentWeight;
-            bool[] markedVertices = new bool[numberOfVertices];
-            foreach (int vertex in branch.Way)
+            public bool isVisited(int vertex)
             {
+                return markedVertices[vertex];
+            }
+
+            void updateBounds()
+            {
+                getLowerBound();
+                getUpperBound();
+            }
+
+            public void addToPath(int vertex)
+            {
+                if (way.Count!=0) currentWeight += distances[way.Last(), vertex];
                 markedVertices[vertex] = true;
-            }
-            for(int i=0; i<matrix.GetLength(0); i++)
-            {
-                if (markedVertices[i] && i!=start)
-                {
-                    continue;
-                }
-                long minWeight = INF;
-                for(int j=0; j<matrix.GetLength(1); j++)
-                {
-                    minWeight = Math.Min(minWeight, matrix[i, j]);
-                }
-                weight += minWeight;
-            }
-            return weight;
-        }
-
-        long getUpperBound(Branch branch)
-        {
-            var result = greedyWrapper(branch.Way, branch.CurrentWeight, branch.Position, branch.Way.Count-1);
-            return result.Item1;
-        }
-
-        Branch BNB(HashSet<Branch> branches=null)
-        {
-            HashSet<Branch> newBranches = new HashSet<Branch>();
-            long minUpperBound = branches.Min((x) => x.UpperBound);
-            branches.RemoveWhere((x) => x.LowerBound > minUpperBound);
-            bool isFindingLastEdge = false;
-            if (branches.First().Way.Count == numberOfVertices)
-            {
-                foreach (Branch branch in branches)
-                {
-                    Branch branchToAdd = new Branch(branch);
-                    branchToAdd.Way.Add(start);
-                    branchToAdd.CurrentWeight += matrix[branchToAdd.Position, start];
-                    newBranches.Add(branchToAdd);
-                }
-                return BNB(newBranches);
-            }
-            if (branches.First().Way.Count == numberOfVertices+1)
-            {
-                Branch branchWithMinWeight = new Branch(new List<int>(), 0, 0, INF, 0);
-                foreach(Branch branch in branches)
-                {
-                    if (branch.CurrentWeight < branchWithMinWeight.CurrentWeight)
-                    {
-                        branchWithMinWeight = new Branch(branch);
-                    }
-                }
-                return branchWithMinWeight;
+                way.Add(vertex);
+                updateBounds();
             }
 
-            foreach (Branch branch in branches)
+            void getLowerBound()
             {
-                for(int i=0; i<matrix.GetLength(0); i++)
+                long weight = this.currentWeight;
+                
+                for(int i=0; i<numberOfVertices; i++)
                 {
-                    if (branch.Way.Contains(i) || i == branch.Position)
+                    if (markedVertices[i] && i!=way.Last())
                     {
                         continue;
                     }
-                    Branch branchToAdd = new Branch(branch);
 
-                    branchToAdd.Way.Add(i);
-                    branchToAdd.Position = i;
-                    branchToAdd.CurrentWeight += matrix[branch.Position, i];
+                    long minWeightInCol = (long)10e9;
+                    for(int j=0; j<numberOfVertices; j++)
+                    {
+                        if (distances[i, j] < minWeightInCol)
+                        {
+                            minWeightInCol = distances[i, j];
+                        }
+                    }
+                    weight += minWeightInCol;
+                }
 
-                    branchToAdd.LowerBound = getLowerBound(branchToAdd);
-                    branchToAdd.UpperBound = getUpperBound(branchToAdd);
+                lowerBound = weight;
+                
+            }
 
-                    newBranches.Add(branchToAdd);
+            void getUpperBound()
+            {
+
+                int newUpperBoundWeight = (int)currentWeight;
+                List<int> newUpperBoundWay = new List<int>(way);
+                int cureVertex;
+                for(int i=0; i<numberOfVertices-way.Count; i++)
+                {
+                    cureVertex = newUpperBoundWay.Last();
+
+                    int minAdjacencyVertexWeight = (int)10e6,
+                        minAdjacencyVertexId = 0;
+
+                    for(int j=0; j<numberOfVertices; j++)
+                    {
+                        if (markedVertices[j] || j == cureVertex)
+                        {
+                            continue;
+                        }
+                        if (distances[cureVertex, j] < minAdjacencyVertexWeight)
+                        {
+                            minAdjacencyVertexWeight = (int)distances[cureVertex, j];
+                            minAdjacencyVertexId = j;
+                        }
+
+                    }
+
+                    newUpperBoundWeight += minAdjacencyVertexWeight;
+                    newUpperBoundWay.Add(minAdjacencyVertexId);
+
+                }
+
+                cureVertex = newUpperBoundWay.Last();
+                newUpperBoundWeight += (int)distances[cureVertex, Start];
+                newUpperBoundWay.Add(Start);
+
+                upperBound = new Tuple<int, List<int>>(newUpperBoundWeight, newUpperBoundWay);
+            }
+
+        }
+
+        
+        void removeNotPerspectiveBranches(HashSet<Branch> branches)
+        {
+            Branch branchWithMinimumUpperBound = null;
+            int minimumUpperBound = (int)10e6;
+
+            foreach (Branch branch in branches)
+            {
+                if (branch.UpperBound < minimumUpperBound)
+                {
+                    branchWithMinimumUpperBound = branch;
+                    minimumUpperBound = (int)branch.UpperBound;
                 }
             }
 
-            return BNB(newBranches);
+            branches.RemoveWhere((branchToDel) => { return branchToDel.Equals(branchWithMinimumUpperBound) ? false : branchToDel.LowerBound >= minimumUpperBound; });
         }
 
-        public Tuple<int, List<int>> branchAndBound()
+        int currentBestAnswer = (int)10e6;
+
+        async void BNB()
         {
+            HashSet<Branch> branches = new HashSet<Branch>() { new Branch(start, matrix) };
+            List<Branch> branchesToAdd = new List<Branch>(),
+                         branchesToDel = new List<Branch>();
+
+            for (int i=0; i<numberOfVertices-1; i++)
+            {
+
+                removeNotPerspectiveBranches(branches);
+
+                branchesToAdd.Clear();
+                branchesToDel.Clear();
+                foreach (Branch branch in branches)
+                {
+                    branchesToDel.Add(branch);
+
+                    for(int j=0; j<numberOfVertices; j++)
+                    {
+                        Branch newBranch = new Branch(branch);
+                        if (newBranch.isVisited(j))
+                        {
+                            continue;
+                        }
+
+                        newBranch.addToPath(j);
+                        if (newBranch.UpperBound < currentBestAnswer)
+                        {
+                            currentBestAnswer = (int)newBranch.UpperBound;
+                            updater(newBranch.Answer);
+                        }
+                        branchesToAdd.Add(newBranch);
+                    }
+
+                    
+                }
+
+                foreach(Branch branch in branchesToDel)
+                {
+                    branches.Remove(branch);
+                }
+
+                foreach(Branch branch in branchesToAdd)
+                {
+                    branches.Add(branch);
+                }
+            }
+
+            removeNotPerspectiveBranches(branches);
+
+            Branch optimanBranch = null;
+            int optimalWeight = (int)10e6;
+
+            foreach (Branch branch in branches)
+            {
+                if (branch.Answer.Item1 < optimalWeight)
+                {
+                    optimanBranch = branch;
+                    optimalWeight = (int)branch.Answer.Item1;
+                }
+            }
+
+            updater(optimanBranch.Answer);
+            Console.WriteLine("done");
+        }
+
+        public async void branchAndBound(Updater updater)
+        {
+            this.updater = updater;
             setTSP(matrix, start);
             markedVertices[start] = true;
 
-            Branch ans = BNB(new HashSet<Branch>() { new Branch(new List<int>(){start}, 0, 0, 0, 0)  });
-            return (ans.CurrentWeight >= INF) ? null : new Tuple<int, List<int>>((int)ans.CurrentWeight, ans.Way);
+            Task.Run(()=>BNB());
         }
     }
 }
