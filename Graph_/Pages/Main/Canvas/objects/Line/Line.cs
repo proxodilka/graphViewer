@@ -79,6 +79,6 @@ namespace Graph_
         public MutablePoint MutableStart { get { return mutableStart; } }
         public MutablePoint MutableEnd { get { return mutableEnd; } }
 
-        public Color Color { get { return color; } }
+        public Color Color { get { return color; } set { color = value; } }
     }
 }

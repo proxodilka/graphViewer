@@ -19,10 +19,10 @@ namespace Graph_
         /// <summary>
         /// Returns tuple of adjacency list and nodes coordinates
         /// </summary>
-        private Tuple<Dictionary<int, Dictionary<int, int>>, Dictionary<int,PointF>, Dictionary<string, int>> parseList(StreamReader stream)
+        private Tuple<Dictionary<int, Dictionary<int, double>>, Dictionary<int,PointF>, Dictionary<string, int>> parseList(StreamReader stream)
         {
             int cureVertex=-1;
-            Dictionary<int, Dictionary<int, int>> result = new Dictionary<int, Dictionary<int, int>>();
+            Dictionary<int, Dictionary<int, double>> result = new Dictionary<int, Dictionary<int, double>>();
             Dictionary<string, int> options = new Dictionary<string, int>();
             Dictionary<int, PointF> coordinates = new Dictionary<int, PointF>();
             bool hasCoordinates = false;
@@ -39,7 +39,7 @@ namespace Graph_
 
             while (cureVertex!=-1)
             {
-                result.Add(cureVertex, new Dictionary<int, int>());
+                result.Add(cureVertex, new Dictionary<int, double>());
                 currentString = (string[])slice(currentString, 2);
 
                 //int[] adjacentVertices = currentString.Select(el => int.Parse(el)).ToArray();
@@ -47,7 +47,7 @@ namespace Graph_
                 {
                     string[] vertexWeight = vertexInfo.Split('-');
                     int vertex = int.Parse(vertexWeight[0]);
-                    int weight = vertexWeight.Length == 1 ? 1 : int.Parse(vertexWeight[1]);
+                    double weight = vertexWeight.Length == 1 ? 1 : double.Parse(vertexWeight[1].Replace(',', '.'), CultureInfo.CreateSpecificCulture("en-us"));
                     result[cureVertex].Add(vertex, weight);
                 }
 
@@ -73,9 +73,9 @@ namespace Graph_
                 coordinates.Add(vertexNumber, coords);
             }
 
-            return new Tuple<Dictionary<int, Dictionary<int, int>>, Dictionary<int, PointF>, Dictionary<string, int>>(result, coordinates, options);
+            return new Tuple<Dictionary<int, Dictionary<int, double>>, Dictionary<int, PointF>, Dictionary<string, int>>(result, coordinates, options);
         }
-        private int[][] parseMatrix(StreamReader stream, int? _verticesNumber = null)
+        private double[][] parseMatrix(StreamReader stream, int? _verticesNumber = null)
         {
             int verticesNumber= _verticesNumber??0;
             int cureVertex = 0;
@@ -91,12 +91,12 @@ namespace Graph_
             if (options.ContainsKey("vertices_number"))
                 verticesNumber = options["vertices_number"];
 
-            int[][] matrix = new int[verticesNumber][];
-            matrix[0] = currentString.Select(el => int.Parse(el)).ToArray();
+            double[][] matrix = new double[verticesNumber][];
+            matrix[0] = currentString.Select(el => double.Parse(el.Replace(',', '.'), CultureInfo.CreateSpecificCulture("en-us"))).ToArray();
 
             for (int i = 1; i < verticesNumber; i++)
             {
-                matrix[i] = stream.ReadLine().Split(' ').Select(el => int.Parse(el)).ToArray(); 
+                matrix[i] = stream.ReadLine().Split(' ').Select(el => double.Parse(el.Replace(',', '.'), CultureInfo.CreateSpecificCulture("en-us"))).ToArray(); 
             }
 
             return matrix;
@@ -144,7 +144,7 @@ namespace Graph_
                 {
                     try
                     {
-                        int[][] adjacencyMatrix = parseMatrix(fileStream);
+                        double[][] adjacencyMatrix = parseMatrix(fileStream);
                         graph.rewriteGraph(adjacencyMatrix);
                     }
                     catch { onError(titles.parseError); return false; }
@@ -168,7 +168,7 @@ namespace Graph_
                 {
                     try
                     {
-                        int[][] adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2]));
+                        double[][] adjacencyMatrix = parseMatrix(fileStream, int.Parse(type[2]));
                         graph.rewriteGraph(adjacencyMatrix);
                     }
                     catch { onError(titles.parseError); return false; }

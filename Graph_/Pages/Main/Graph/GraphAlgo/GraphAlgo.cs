@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Graph_
@@ -96,14 +97,21 @@ namespace Graph_
             return convertToRightAns(ans);
         }
 
-        public void TSP_BFS(int start)
+        public async Task<bool> TSP_BFS(int start, Updater updater, CancellationToken cancelation)
         {
-            //TSPSolver.setStart(start);
-  
-            new TSP(graph.getAsMatrix(), start).branchAndBound((ans)=>Console.WriteLine($"weight: {ans.Item1} | way: {string.Join(" ", ans.Item2)}"));
-            //var ans = new TSP(graph.getAsMatrix(), start).branchAndBound();
-            //Console.WriteLine($"weight: {ans.Item1} | way: {string.Join(" ", ans.Item2)}");
+            await new TSP(graph.getAsMatrix(), start).bruteForceSearch(updater, cancelation);
+            return true;
+        }
 
+        public async Task<bool> TSP_BNB(int start, Updater updater, CancellationToken cancelation)
+        {
+            await new TSP(graph.getAsMatrix(), start).branchAndBound(updater, cancelation);
+            return true;
+        }
+
+        public Tuple<int, List<int>> TSP_Greedy(int start)
+        {
+            return new TSP(graph.getAsMatrix(), start).greedy();
         }
 
         private void algoInit()

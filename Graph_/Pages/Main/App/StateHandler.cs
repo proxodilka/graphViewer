@@ -26,9 +26,18 @@ namespace Graph_
 
             return allowToClose;
         }
+
+        void onRewriteMatrix(object sender, int[,] matrix)
+        {
+            var nodesCoordinates = graphVisual.getNodesCoords();
+            graph.rewriteGraph(matrix);
+            graphVisual.setNodesCoords(nodesCoordinates, true);
+        }
+
         private void changeOnAnimationState()
         {
             onAnimation = !onAnimation;
+            isTabControlBlocked = onAnimation;
 
             foreach (TabPage tab in tabControl.TabPages)
             {
@@ -52,6 +61,43 @@ namespace Graph_
             }
 
         }
+
+        void changeOnTSPState(Button clickedTSPButton)
+        {
+            onTSP = !onTSP;
+            isTabControlBlocked = onTSP;
+
+            foreach (TabPage tab in tabControl.TabPages)
+            {
+                tab.Enabled = !onTSP;
+            }
+            tabControl.TabPages[TSPTabIndex].Enabled = true;
+
+            TSP_startBNBButton.Enabled = !onTSP;
+            TSP_startBFSButton.Enabled = !onTSP;
+            TSP_startGreedyButton.Enabled = !onTSP;
+            TSPStartVertex.Enabled = !onTSP;
+            //resetButton.Enabled = !onAnimation;
+
+            clickedTSPButton.Enabled = true;
+
+            if (onTSP)
+            {
+                clickedTSPButton.Text = titles.StopTitle;
+            }
+            else
+            {
+                clickedTSPButton.Text = clickedTSPButton.Tag.ToString();
+            }
+        }
+
+        private void TabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (isTabControlBlocked) { e.Cancel = true; return; }
+            if (tabControl.SelectedIndex == traversalTabIndex) { updateActiveVertex(); }
+            else { graphVisual.setActive(false); }
+        }
+
         private void updateInputBounds(object sender = null, GraphEventArgs e = null)
         {
             int maxVertexNumber = graph.getMaxVertexNumber();

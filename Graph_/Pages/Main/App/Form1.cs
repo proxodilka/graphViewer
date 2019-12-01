@@ -22,14 +22,16 @@ namespace Graph_
         string title = "GraphViewer";
         string currentFilePath="", fileName="";
         string appState = "setup";
-        bool isModified = false, hasPath=false, onAnimation=false;
+        bool isModified = false, hasPath=false, onAnimation=false, onTSP=false, isTabControlBlocked=false;
         int traversalTabIndex = 2;
+        int TSPTabIndex = 3;
 
         WFCanvas canvas;
         GraphVisual graphVisual;
         MainWindow mainWindow;
         Graph graph;
         GraphAlgo graphAlgo;
+        CancellationTokenSource TSPcancellationToken;
 
         List<Dictionary<int, HashSet<int>>> history;
 
@@ -93,6 +95,17 @@ namespace Graph_
             if (!closingFile()) e.Cancel=true;
         }
 
+        private void clearCanvasButton_Click(object sender, EventArgs e)
+        {
+            graphVisual.reset();
+        }
+
+        private void setWeightsByCoordsButton_Click(object sender, EventArgs e)
+        {
+            Dictionary<int, PointF> coords = graphVisual.getNodesCoords();
+
+        }
+
         private void ResetButton_Click(object sender, EventArgs e)
         {
             graphVisual.reset();
@@ -102,28 +115,6 @@ namespace Graph_
         {
             graphVisual.resetNodesCoords();
         }
-
-        void onRewriteMatrix(object sender, int[,] matrix)
-        {
-            var nodesCoordinates = graphVisual.getNodesCoords();
-            graph.rewriteGraph(matrix);
-            graphVisual.setNodesCoords(nodesCoordinates, true); 
-        }
-
-        private void startTSPButton_Click(object sender, EventArgs e)
-        {
-            graphAlgo.TSP_BFS((int)TSPStartVertex.Value);
-        }
-
-        //private void traversalStartVertex_ValueChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void TraversalStartVertex_KeyUp(object sender, KeyEventArgs e)
-        //{
-
-        //}
 
         private void initLanguage()
         {

@@ -27,8 +27,9 @@ namespace Graph_.GraphVisual_
         Dictionary<int, Color> markedVertices;
         Dictionary<int, Node> nodes;
         Dictionary<int, Line> bindedLines;
+        List<Tuple<int, int>> markedEdges;
         MutablePoint mouseCoords;
-        bool animationStoped = false, hasActiveVertex=false, hasBindedLines=false;
+        bool animationStoped = false, hasActiveVertex=false, hasBindedLines=false, isShowingPath=false;
         public bool isCanvasDirty { get; internal set; }
         public event eventListener didUpdate;
 
@@ -52,6 +53,8 @@ namespace Graph_.GraphVisual_
             isCanvasDirty = false;
             animationStoped = false;
             hasActiveVertex = false;
+            isShowingPath = false;
+
 
             activeVertices = new HashSet<int>();
             markedVertices = new Dictionary<int, Color>();
@@ -59,6 +62,7 @@ namespace Graph_.GraphVisual_
             nodes = new Dictionary<int, Node>();
             mouseCoords = new MutablePoint(new PointF(0, 0));
             bindedLines = new Dictionary<int, Line>();
+            markedEdges = new List<Tuple<int, int>>();
             plot.onMouseMove += onMouseMove;
 
             onRewrite(nodes, new GraphEventArgs(graph.get().Keys.ToArray(), new int[0]));
@@ -88,6 +92,8 @@ namespace Graph_.GraphVisual_
         {
             markedVertices.Clear();
             activeVertices.Clear();
+            markedEdges.Clear();
+            isShowingPath = false;
             isCanvasDirty = false;
             animationStoped = false;
             hasActiveVertex = false;

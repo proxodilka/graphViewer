@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Graph_
@@ -117,6 +118,12 @@ namespace Graph_
 
                 int newUpperBoundWeight = (int)currentWeight;
                 List<int> newUpperBoundWay = new List<int>(way);
+                bool[] tempMarkedVertices = new bool[markedVertices.Length];
+                for(int i=0; i<markedVertices.Length; i++)
+                {
+                    tempMarkedVertices[i] = markedVertices[i];
+                }
+
                 int cureVertex;
                 for(int i=0; i<numberOfVertices-way.Count; i++)
                 {
@@ -127,7 +134,7 @@ namespace Graph_
 
                     for(int j=0; j<numberOfVertices; j++)
                     {
-                        if (markedVertices[j] || j == cureVertex)
+                        if (tempMarkedVertices[j] || j == cureVertex)
                         {
                             continue;
                         }
@@ -139,6 +146,7 @@ namespace Graph_
 
                     }
 
+                    tempMarkedVertices[minAdjacencyVertexId] = true;
                     newUpperBoundWeight += minAdjacencyVertexWeight;
                     newUpperBoundWay.Add(minAdjacencyVertexId);
 
@@ -173,7 +181,7 @@ namespace Graph_
 
         int currentBestAnswer = (int)10e6;
 
-        async void BNB()
+        async void BNB(CancellationToken cancel)
         {
             HashSet<Branch> branches = new HashSet<Branch>() { new Branch(start, matrix) };
             List<Branch> branchesToAdd = new List<Branch>(),
@@ -188,6 +196,7 @@ namespace Graph_
                 branchesToDel.Clear();
                 foreach (Branch branch in branches)
                 {
+                    if (cancel.IsCancellationRequested) return;
                     branchesToDel.Add(branch);
 
                     for(int j=0; j<numberOfVertices; j++)
@@ -206,8 +215,8 @@ namespace Graph_
                         }
                         branchesToAdd.Add(newBranch);
                     }
+                    if (cancel.IsCancellationRequested) return;
 
-                    
                 }
 
                 foreach(Branch branch in branchesToDel)
@@ -219,6 +228,7 @@ namespace Graph_
                 {
                     branches.Add(branch);
                 }
+                if (cancel.IsCancellationRequested) return;
             }
 
             removeNotPerspectiveBranches(branches);
@@ -226,6 +236,7 @@ namespace Graph_
             Branch optimanBranch = null;
             int optimalWeight = (int)10e6;
 
+            if (cancel.IsCancellationRequested) return;
             foreach (Branch branch in branches)
             {
                 if (branch.Answer.Item1 < optimalWeight)
@@ -239,13 +250,14 @@ namespace Graph_
             Console.WriteLine("done");
         }
 
-        public async void branchAndBound(Updater updater)
+        public async Task<bool> branchAndBound(Updater updater, CancellationToken cancel)
         {
             this.updater = updater;
             setTSP(matrix, start);
             markedVertices[start] = true;
 
-            Task.Run(()=>BNB());
+            await Task.Run(()=>BNB(cancel), cancel);
+            return true;
         }
     }
 }

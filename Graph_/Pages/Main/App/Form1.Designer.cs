@@ -42,6 +42,7 @@
             this.undoButton = new System.Windows.Forms.ToolStripMenuItem();
             this.graphRoot = new System.Windows.Forms.Panel();
             this.vertexValue = new System.Windows.Forms.Label();
+            this.filePathLabel = new System.Windows.Forms.Label();
             this.edgesValue = new System.Windows.Forms.Label();
             this.centrateButton = new System.Windows.Forms.Button();
             this.edgesAtCircleButton = new System.Windows.Forms.Button();
@@ -71,7 +72,13 @@
             this.isBfs = new System.Windows.Forms.RadioButton();
             this.startedVertex = new System.Windows.Forms.Label();
             this.tspTab = new System.Windows.Forms.TabPage();
-            this.startTSPButton = new System.Windows.Forms.Button();
+            this.clearCanvasButton = new System.Windows.Forms.Button();
+            this.GreedySolutionLabel = new System.Windows.Forms.Label();
+            this.BFSSolutionLabel = new System.Windows.Forms.Label();
+            this.BNBSolutionLabel = new System.Windows.Forms.Label();
+            this.TSP_startGreedyButton = new System.Windows.Forms.Button();
+            this.TSP_startBFSButton = new System.Windows.Forms.Button();
+            this.TSP_startBNBButton = new System.Windows.Forms.Button();
             this.TSPStartVertex = new System.Windows.Forms.NumericUpDown();
             this.startedVertexTSPLabel = new System.Windows.Forms.Label();
             this.settingsTab = new System.Windows.Forms.TabPage();
@@ -79,8 +86,9 @@
             this.isWeightedCheckBox = new System.Windows.Forms.CheckBox();
             this.isDirectedCheckBox = new System.Windows.Forms.CheckBox();
             this.openGraphFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.filePathLabel = new System.Windows.Forms.Label();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.setWeightsByCoordsButton = new System.Windows.Forms.Button();
             this.navigationMenu.SuspendLayout();
             this.graphRoot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plot)).BeginInit();
@@ -95,6 +103,10 @@
             this.tspTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSPStartVertex)).BeginInit();
             this.settingsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navigationMenu
@@ -175,19 +187,25 @@
             // 
             // graphRoot
             // 
-            resources.ApplyResources(this.graphRoot, "graphRoot");
             this.graphRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.graphRoot.Controls.Add(this.vertexValue);
+            this.graphRoot.Controls.Add(this.filePathLabel);
             this.graphRoot.Controls.Add(this.edgesValue);
             this.graphRoot.Controls.Add(this.centrateButton);
             this.graphRoot.Controls.Add(this.edgesAtCircleButton);
             this.graphRoot.Controls.Add(this.plot);
+            resources.ApplyResources(this.graphRoot, "graphRoot");
             this.graphRoot.Name = "graphRoot";
             // 
             // vertexValue
             // 
             resources.ApplyResources(this.vertexValue, "vertexValue");
             this.vertexValue.Name = "vertexValue";
+            // 
+            // filePathLabel
+            // 
+            resources.ApplyResources(this.filePathLabel, "filePathLabel");
+            this.filePathLabel.Name = "filePathLabel";
             // 
             // edgesValue
             // 
@@ -226,12 +244,12 @@
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.changeVertexTab);
             this.tabControl.Controls.Add(this.changeEdgesTab);
             this.tabControl.Controls.Add(this.traversalTab);
             this.tabControl.Controls.Add(this.tspTab);
             this.tabControl.Controls.Add(this.settingsTab);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TabControl_Selecting);
@@ -273,6 +291,7 @@
             // 
             // changeEdgesTab
             // 
+            this.changeEdgesTab.Controls.Add(this.setWeightsByCoordsButton);
             this.changeEdgesTab.Controls.Add(this.clearEdges);
             this.changeEdgesTab.Controls.Add(this.makeGraphComplete);
             this.changeEdgesTab.Controls.Add(this.toEdgeValue);
@@ -395,19 +414,64 @@
             // 
             // tspTab
             // 
-            this.tspTab.Controls.Add(this.startTSPButton);
+            resources.ApplyResources(this.tspTab, "tspTab");
+            this.tspTab.Controls.Add(this.clearCanvasButton);
+            this.tspTab.Controls.Add(this.GreedySolutionLabel);
+            this.tspTab.Controls.Add(this.BFSSolutionLabel);
+            this.tspTab.Controls.Add(this.BNBSolutionLabel);
+            this.tspTab.Controls.Add(this.TSP_startGreedyButton);
+            this.tspTab.Controls.Add(this.TSP_startBFSButton);
+            this.tspTab.Controls.Add(this.TSP_startBNBButton);
             this.tspTab.Controls.Add(this.TSPStartVertex);
             this.tspTab.Controls.Add(this.startedVertexTSPLabel);
-            resources.ApplyResources(this.tspTab, "tspTab");
             this.tspTab.Name = "tspTab";
             this.tspTab.UseVisualStyleBackColor = true;
             // 
-            // startTSPButton
+            // clearCanvasButton
             // 
-            resources.ApplyResources(this.startTSPButton, "startTSPButton");
-            this.startTSPButton.Name = "startTSPButton";
-            this.startTSPButton.UseVisualStyleBackColor = true;
-            this.startTSPButton.Click += new System.EventHandler(this.startTSPButton_Click);
+            resources.ApplyResources(this.clearCanvasButton, "clearCanvasButton");
+            this.clearCanvasButton.Name = "clearCanvasButton";
+            this.clearCanvasButton.UseVisualStyleBackColor = true;
+            this.clearCanvasButton.Click += new System.EventHandler(this.clearCanvasButton_Click);
+            // 
+            // GreedySolutionLabel
+            // 
+            resources.ApplyResources(this.GreedySolutionLabel, "GreedySolutionLabel");
+            this.GreedySolutionLabel.Name = "GreedySolutionLabel";
+            // 
+            // BFSSolutionLabel
+            // 
+            resources.ApplyResources(this.BFSSolutionLabel, "BFSSolutionLabel");
+            this.BFSSolutionLabel.Name = "BFSSolutionLabel";
+            // 
+            // BNBSolutionLabel
+            // 
+            resources.ApplyResources(this.BNBSolutionLabel, "BNBSolutionLabel");
+            this.BNBSolutionLabel.Name = "BNBSolutionLabel";
+            // 
+            // TSP_startGreedyButton
+            // 
+            resources.ApplyResources(this.TSP_startGreedyButton, "TSP_startGreedyButton");
+            this.TSP_startGreedyButton.Name = "TSP_startGreedyButton";
+            this.TSP_startGreedyButton.Tag = "Greedy algorithm";
+            this.TSP_startGreedyButton.UseVisualStyleBackColor = true;
+            this.TSP_startGreedyButton.Click += new System.EventHandler(this.TSP_startGreedyButton_Click);
+            // 
+            // TSP_startBFSButton
+            // 
+            resources.ApplyResources(this.TSP_startBFSButton, "TSP_startBFSButton");
+            this.TSP_startBFSButton.Name = "TSP_startBFSButton";
+            this.TSP_startBFSButton.Tag = "Brute force search";
+            this.TSP_startBFSButton.UseVisualStyleBackColor = true;
+            this.TSP_startBFSButton.Click += new System.EventHandler(this.TSP_startBFSButton_Click);
+            // 
+            // TSP_startBNBButton
+            // 
+            resources.ApplyResources(this.TSP_startBNBButton, "TSP_startBNBButton");
+            this.TSP_startBNBButton.Name = "TSP_startBNBButton";
+            this.TSP_startBNBButton.Tag = "Branch N Bounds";
+            this.TSP_startBNBButton.UseVisualStyleBackColor = true;
+            this.TSP_startBNBButton.Click += new System.EventHandler(this.startTSPButton_Click);
             // 
             // TSPStartVertex
             // 
@@ -449,24 +513,37 @@
             this.isDirectedCheckBox.UseVisualStyleBackColor = true;
             this.isDirectedCheckBox.CheckedChanged += new System.EventHandler(this.isDirectedCheckBox_CheckedChanged);
             // 
-            // filePathLabel
-            // 
-            resources.ApplyResources(this.filePathLabel, "filePathLabel");
-            this.filePathLabel.Name = "filePathLabel";
-            // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "\"txt\"";
             this.saveFileDialog.SupportMultiDottedExtensions = true;
+            // 
+            // splitContainer1
+            // 
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.graphRoot);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl);
+            // 
+            // setWeightsByCoordsButton
+            // 
+            resources.ApplyResources(this.setWeightsByCoordsButton, "setWeightsByCoordsButton");
+            this.setWeightsByCoordsButton.Name = "setWeightsByCoordsButton";
+            this.setWeightsByCoordsButton.UseVisualStyleBackColor = true;
+            this.setWeightsByCoordsButton.Click += new System.EventHandler(this.setWeightsByCoordsButton_Click);
             // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.filePathLabel);
-            this.Controls.Add(this.tabControl);
-            this.Controls.Add(this.graphRoot);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.navigationMenu);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MainMenuStrip = this.navigationMenu;
@@ -493,6 +570,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.TSPStartVertex)).EndInit();
             this.settingsTab.ResumeLayout(false);
             this.settingsTab.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -551,7 +632,15 @@
         private System.Windows.Forms.TabPage tspTab;
         private System.Windows.Forms.NumericUpDown TSPStartVertex;
         private System.Windows.Forms.Label startedVertexTSPLabel;
-        private System.Windows.Forms.Button startTSPButton;
+        private System.Windows.Forms.Button TSP_startBNBButton;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button TSP_startGreedyButton;
+        private System.Windows.Forms.Button TSP_startBFSButton;
+        private System.Windows.Forms.Label GreedySolutionLabel;
+        private System.Windows.Forms.Label BFSSolutionLabel;
+        private System.Windows.Forms.Label BNBSolutionLabel;
+        private System.Windows.Forms.Button clearCanvasButton;
+        private System.Windows.Forms.Button setWeightsByCoordsButton;
     }
 }
 

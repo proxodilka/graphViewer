@@ -8,7 +8,7 @@ namespace Graph_
 {
     public partial class Graph
     {
-        public void rewriteGraph(int[][] adjacencyMatrix)
+        public void rewriteGraph<T>(T[][] adjacencyMatrix)
         {
             init();
 
@@ -21,7 +21,7 @@ namespace Graph_
             {
                 for (int j = 0; j < adjacencyMatrix.Length; j++)
                 {
-                    if (adjacencyMatrix[i][j] != 0)
+                    if (!adjacencyMatrix[i][j].Equals(0))
                     {
                         addEdge(i, j, adjacencyMatrix[i][j], true);
                     }
@@ -79,7 +79,7 @@ namespace Graph_
             vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
-        public void rewriteGraph(Dictionary<int, Dictionary<int, int>> adjacencyList)
+        public void rewriteGraph(Dictionary<int, Dictionary<int, double>> adjacencyList)
         {
             init();
 

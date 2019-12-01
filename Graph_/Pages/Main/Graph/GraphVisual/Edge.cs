@@ -16,13 +16,17 @@ namespace Graph_.GraphVisual_
     {
         Node from, to;
         bool isDirected, hasPair, hasWeight;
-        int orderInPair, weight;
+        int orderInPair;
+        string weight;
+        static Color baseColor = Color.Black;
+        public bool isHidden = false;
+        public Color Color;
         Line edge;
         Curve curve;
 
         private float offset { get { return (float)orderInPair / 2.0f; } }
 
-        public Edge(Node from, Node to, bool hasWeight = false, bool isDirected=false, bool hasPair=false, int weight=0, int orderInPair = 1)
+        public Edge(Node from, Node to, bool hasWeight = false, bool isDirected=false, bool hasPair=false, string weight="", int orderInPair = 1)
         {
             this.from = from;
             this.to = to;
@@ -33,9 +37,10 @@ namespace Graph_.GraphVisual_
             this.weight = weight;
             edge = Circle.getLineBetween(from.Cirle, to.Cirle);
             curve = createCurve(edge.MutableStart, edge.MutableEnd);
+            Color = Color.Black;
         }
 
-        public Edge(Node from, Node to, int weight) : this(from, to, true, false, false, weight) { }
+        public Edge(Node from, Node to, string weight) : this(from, to, true, false, false, weight) { }
         public Edge(Node from, Node to, bool isDirected) : this(from, to, false, isDirected) { }
 
 
@@ -61,7 +66,10 @@ namespace Graph_.GraphVisual_
 
         public void draw(WFCanvas plot)
         {
-
+            if (isHidden)
+            {
+                Color = Color.FromArgb(10, Color.Black);
+            }
             if (!hasPair || !isDirected)
             {
                 Polygon arrow = getArrowByLine(edge);
@@ -70,10 +78,11 @@ namespace Graph_.GraphVisual_
                 {
                     plot.Polygons.addPolygon(arrow);
                 }
-                if (hasWeight)
+                if (hasWeight && !isHidden)
                 {
                     plot.Texts.addText(weigthText);
                 }
+                edge.Color = Color;
                 plot.Lines.addLine(edge);
             }
             else
@@ -84,11 +93,11 @@ namespace Graph_.GraphVisual_
                 {
                     plot.Polygons.addPolygon(arrow);
                 }
-                if (hasWeight)
+                if (hasWeight && !isHidden)
                 {
                     plot.Texts.addText(weigthText);
                 }
-
+                curve.color = Color;
                 plot.Curves.addCurve(curve);   
             }
         }
@@ -113,7 +122,7 @@ namespace Graph_.GraphVisual_
             //    return new PointF(orderInPair == 1 ? -0.25f : 0.25f, 0.5f);
             //});
             
-            Text text = new Text(weight.ToString(), lineCenter, 0.5f, Color.Red);
+            Text text = new Text(weight, lineCenter, 0.5f, Color);
             return text;
         }
 
@@ -167,7 +176,7 @@ namespace Graph_.GraphVisual_
                         _ang2+=(float)Math.PI;
                     return new PointF(x2*(float)Math.Cos(_ang2) - y2*(float)Math.Sin(_ang2), y2*(float)Math.Cos(_ang2) + x2*(float)Math.Sin(_ang2));
                 })
-            }, Color.DimGray);
+            }, Color);
         }
 
         Polygon getArrowByCurve(Curve curve)
@@ -193,7 +202,7 @@ namespace Graph_.GraphVisual_
                         _ang2+=(float)Math.PI;
                     return new PointF(x2*(float)Math.Cos(_ang2) - y2*(float)Math.Sin(_ang2), y2*(float)Math.Cos(_ang2) + x2*(float)Math.Sin(_ang2));
                 })
-            }, Color.DimGray);
+            }, Color);
         }
     }
 }

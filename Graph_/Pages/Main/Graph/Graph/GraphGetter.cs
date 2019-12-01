@@ -55,12 +55,12 @@ namespace Graph_
             return copy;
         }
 
-        public Dictionary<int, Dictionary<int, int>> getWeighted()
+        public Dictionary<int, Dictionary<int, double>> getWeighted()
         {
-            Dictionary<int, Dictionary<int, int>> copy = new Dictionary<int, Dictionary<int, int>>();
+            Dictionary<int, Dictionary<int, double>> copy = new Dictionary<int, Dictionary<int, double>>();
             foreach (var pair in graph)
             {
-                copy.Add(pair.Key, new Dictionary<int, int>(pair.Value));
+                copy.Add(pair.Key, new Dictionary<int, double>(pair.Value));
             }
             return copy;
         }
@@ -72,7 +72,7 @@ namespace Graph_
             {
                 foreach (var vertex in pair.Value)
                 {
-                    matrix[pair.Key, vertex.Key] = vertex.Value;
+                    matrix[pair.Key, vertex.Key] = (int)vertex.Value;
                 }
             }
             if (!isDirected)

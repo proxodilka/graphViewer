@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Graph_
 {
     public partial class TSP
     {
-        async void BFS(List<int> way, long weight, int position, int stepNumber)
+        async void BFS(List<int> way, long weight, int position, int stepNumber, CancellationToken cancel)
         {
+            if (cancel.IsCancellationRequested) return;
             if (stepNumber == numberOfVertices - 1) //if all vertices are visited
             {
                 weight += matrix[position, start];
@@ -34,19 +36,22 @@ namespace Graph_
                 way.Add(i);
                 weight += matrix[position, i];
                 markedVertices[i] = true;
-                BFS(way, weight, i, stepNumber + 1);
+                if (cancel.IsCancellationRequested) return;
+                BFS(way, weight, i, stepNumber + 1, cancel);
+                if (cancel.IsCancellationRequested) return;
                 weight -= matrix[position, i];
                 way.RemoveAt(way.Count - 1);
                 markedVertices[i] = false;
             }
         }
 
-        public async void bruteForceSearch(Updater updater)
+        public async Task<bool> bruteForceSearch(Updater updater, CancellationToken cancel)
         {
             this.updater = updater;
             setTSP(matrix, start);
             markedVertices[start] = true;
-            Task.Run(()=>BFS(new List<int>() { start }, 0, start, 0));
+            await Task.Run(()=>BFS(new List<int>() { start }, 0, start, 0, cancel), cancel);
+            return true;
             //BFS(new List<int>() { start }, 0, start, 0);
 
             //return (currentOptimalWeight >= INF) ? null : new Tuple<int, List<int>>((int)currentOptimalWeight, ans);

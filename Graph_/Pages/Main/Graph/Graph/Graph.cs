@@ -28,7 +28,7 @@ namespace Graph_
         public event eventListener rewrite;
         public event eventListener isDirectedChanged;
 
-        Dictionary<int, Dictionary<int, int>> graph; //Key - vertex number, Value - Dictionary of adjacency vertices and weight of edge
+        Dictionary<int, Dictionary<int, double>> graph; //Key - vertex number, Value - Dictionary of adjacency vertices and weight of edge
         public int verticesNumber, edgesNumber, maxVertexNumber=0;
         SortedSet<int> availableVerticesNumbers;
         const int MaxVerticesNumber = 100000;
@@ -55,7 +55,7 @@ namespace Graph_
             this.isDirected = isDirected??this.isDirected;
             availableVerticesNumbers = new SortedSet<int>();
             for (int i = 0; i < MaxVerticesNumber; i++) { availableVerticesNumbers.Add(i); }
-            graph = new Dictionary<int, Dictionary<int, int>>();
+            graph = new Dictionary<int, Dictionary<int, double>>();
             edgesNumber = 0; verticesNumber = 0;
         }
 
@@ -66,7 +66,7 @@ namespace Graph_
                 return vertexNumber;
             }
 
-            graph.Add(vertexNumber, new Dictionary<int, int>());
+            graph.Add(vertexNumber, new Dictionary<int, double>());
             verticesNumber++;
             availableVerticesNumbers.Remove(vertexNumber);
 
@@ -93,7 +93,7 @@ namespace Graph_
             return true;
         }
 
-        public bool addEdge(int from, int to, int weight, bool withoutEvent = false)
+        public bool addEdge<T>(int from, int to, T weight, bool withoutEvent = false)
         {
             bool addingResult = addEdge(from, to, true);
             if (!addingResult)
@@ -101,7 +101,7 @@ namespace Graph_
                 return addingResult;
             }
 
-            graph[from][to] = weight;
+            graph[from][to] = Convert.ToDouble(weight);
             //if (!isDirected) graph[to][from] = weight;
             if (!withoutEvent) edgeModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
             return addingResult;

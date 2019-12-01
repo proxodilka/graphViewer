@@ -44,7 +44,22 @@ namespace Graph_.GraphVisual_
                     Node startNode = nodes[vertexNumber],
                          endNode = nodes[adjacencyVertex.Key];
 
-                    Edge edge = new Edge(startNode, endNode, isWeighted, isDirected, graph.hasEdge(endNode.ID, startNode.ID), adjacencyVertex.Value, startNode.ID<endNode.ID?1:2);
+                    Edge edge = new Edge(startNode, endNode, isWeighted, isDirected, graph.hasEdge(endNode.ID, startNode.ID), adjacencyVertex.Value.ToString(), startNode.ID<endNode.ID?1:2);
+                    if (isShowingPath)
+                    {
+                        //(a, b) => a.Item1 == b.Item1 && a.Item2 == b.Item2)
+                        Tuple<int, int> edgeAsTuple = new Tuple<int, int>(startNode.ID, endNode.ID);
+                        if (markedEdges.Contains(edgeAsTuple))
+                        {
+                            edge.Color = Color.Blue;
+                        }
+                        else
+                        {
+                            edge.isHidden = true;
+                        }
+                    }
+
+
                     edge.draw(plot);
                 }
             }
@@ -84,5 +99,19 @@ namespace Graph_.GraphVisual_
         {
             animationStoped = true;
         }
+
+        public void setPath(List<int> path)
+        {
+            isShowingPath = true;
+            markedEdges.Clear();
+            markedVertices.Clear();
+            for (int i=0; i<path.Count-1; i++)
+            {
+                markedEdges.Add(new Tuple<int, int>(path[i], path[i + 1]));
+                markedVertices.Add(path[i], Color.Blue);
+            }
+            render();
+        }
+
     }
 }

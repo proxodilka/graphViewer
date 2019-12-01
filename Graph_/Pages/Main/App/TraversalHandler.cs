@@ -39,12 +39,6 @@ namespace Graph_
             graphVisual.setActive((int)traversalStartVertex.Value);
         }
 
-        private void TabControl_Selecting(object sender, TabControlCancelEventArgs e)
-        {
-            if (onAnimation) { e.Cancel = true; return; }
-            if (tabControl.SelectedIndex == traversalTabIndex) { updateActiveVertex(); }
-            else { graphVisual.setActive(false); }
-        }
 
         private void TraversalStartVertex_KeyUp(object sender, KeyEventArgs e)
         {

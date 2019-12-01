@@ -220,10 +220,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;navigationMenu.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="graphRoot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+    <value>1</value>
   </data>
   <data name="vertexValue.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -232,7 +229,7 @@
     <value>True</value>
   </data>
   <data name="vertexValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 501</value>
+    <value>3, 478</value>
   </data>
   <data name="vertexValue.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 13</value>
@@ -255,6 +252,33 @@
   <data name="&gt;&gt;vertexValue.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="filePathLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="filePathLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 0</value>
+  </data>
+  <data name="filePathLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
+  </data>
+  <data name="filePathLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="filePathLabel.Text" xml:space="preserve">
+    <value>FIlePath</value>
+  </data>
+  <data name="&gt;&gt;filePathLabel.Name" xml:space="preserve">
+    <value>filePathLabel</value>
+  </data>
+  <data name="&gt;&gt;filePathLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;filePathLabel.Parent" xml:space="preserve">
+    <value>graphRoot</value>
+  </data>
+  <data name="&gt;&gt;filePathLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="edgesValue.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -262,7 +286,7 @@
     <value>True</value>
   </data>
   <data name="edgesValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 501</value>
+    <value>77, 478</value>
   </data>
   <data name="edgesValue.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
@@ -283,13 +307,13 @@
     <value>graphRoot</value>
   </data>
   <data name="&gt;&gt;edgesValue.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="centrateButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="centrateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>745, 495</value>
+    <value>750, 472</value>
   </data>
   <data name="centrateButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -310,13 +334,13 @@
     <value>graphRoot</value>
   </data>
   <data name="&gt;&gt;centrateButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="edgesAtCircleButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="edgesAtCircleButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 495</value>
+    <value>614, 473</value>
   </data>
   <data name="edgesAtCircleButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 23</value>
@@ -337,7 +361,7 @@
     <value>graphRoot</value>
   </data>
   <data name="&gt;&gt;edgesAtCircleButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="plot.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -349,7 +373,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="plot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>820, 492</value>
+    <value>842, 471</value>
   </data>
   <data name="plot.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -364,13 +388,16 @@
     <value>graphRoot</value>
   </data>
   <data name="&gt;&gt;plot.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
+  </data>
+  <data name="graphRoot.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="graphRoot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 28</value>
+    <value>0, 0</value>
   </data>
   <data name="graphRoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>821, 519</value>
+    <value>843, 498</value>
   </data>
   <data name="graphRoot.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -382,10 +409,10 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;graphRoot.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;graphRoot.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="resetButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 12pt</value>
@@ -413,9 +440,6 @@
   </data>
   <data name="&gt;&gt;resetButton.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="tabControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left, Right</value>
   </data>
   <data name="changeVertValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 9.75pt</value>
@@ -526,7 +550,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="changeVertexTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>810, 90</value>
+    <value>835, 129</value>
   </data>
   <data name="changeVertexTab.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -544,6 +568,36 @@
     <value>tabControl</value>
   </data>
   <data name="&gt;&gt;changeVertexTab.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="setWeightsByCoordsButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 9pt</value>
+  </data>
+  <data name="setWeightsByCoordsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="setWeightsByCoordsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 52</value>
+  </data>
+  <data name="setWeightsByCoordsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>274, 22</value>
+  </data>
+  <data name="setWeightsByCoordsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="setWeightsByCoordsButton.Text" xml:space="preserve">
+    <value>Set weights going by coords</value>
+  </data>
+  <data name="&gt;&gt;setWeightsByCoordsButton.Name" xml:space="preserve">
+    <value>setWeightsByCoordsButton</value>
+  </data>
+  <data name="&gt;&gt;setWeightsByCoordsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;setWeightsByCoordsButton.Parent" xml:space="preserve">
+    <value>changeEdgesTab</value>
+  </data>
+  <data name="&gt;&gt;setWeightsByCoordsButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="clearEdges.Font" type="System.Drawing.Font, System.Drawing">
@@ -574,7 +628,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;clearEdges.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="makeGraphComplete.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 9pt</value>
@@ -601,7 +655,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;makeGraphComplete.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="toEdgeValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 9.75pt</value>
@@ -625,7 +679,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;toEdgeValue.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="fromEdgeValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 9.75pt</value>
@@ -649,7 +703,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;fromEdgeValue.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="toLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -679,7 +733,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;toLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="fromLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -709,7 +763,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;fromLabel.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="deleteEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 27</value>
@@ -733,7 +787,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;deleteEdge.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="addEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 27</value>
@@ -757,7 +811,7 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;addEdge.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="changeEdgesLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -787,13 +841,13 @@
     <value>changeEdgesTab</value>
   </data>
   <data name="&gt;&gt;changeEdgesLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="changeEdgesTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
   <data name="changeEdgesTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>810, 90</value>
+    <value>835, 129</value>
   </data>
   <data name="changeEdgesTab.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -991,7 +1045,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="traversalTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>810, 90</value>
+    <value>835, 129</value>
   </data>
   <data name="traversalTab.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1011,29 +1065,218 @@
   <data name="&gt;&gt;traversalTab.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="startTSPButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>135, 26</value>
+  <data name="tspTab.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="startTSPButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="tspTab.AutoScrollMargin" type="System.Drawing.Size, System.Drawing">
+    <value>5, 5</value>
   </data>
-  <data name="startTSPButton.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+  <data name="clearCanvasButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 12pt</value>
   </data>
-  <data name="startTSPButton.Text" xml:space="preserve">
-    <value>button1</value>
+  <data name="clearCanvasButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;startTSPButton.Name" xml:space="preserve">
-    <value>startTSPButton</value>
+  <data name="clearCanvasButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 58</value>
   </data>
-  <data name="&gt;&gt;startTSPButton.Type" xml:space="preserve">
+  <data name="clearCanvasButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 27</value>
+  </data>
+  <data name="clearCanvasButton.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="clearCanvasButton.Text" xml:space="preserve">
+    <value>Clear canvas</value>
+  </data>
+  <data name="&gt;&gt;clearCanvasButton.Name" xml:space="preserve">
+    <value>clearCanvasButton</value>
+  </data>
+  <data name="&gt;&gt;clearCanvasButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;startTSPButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;clearCanvasButton.Parent" xml:space="preserve">
     <value>tspTab</value>
   </data>
-  <data name="&gt;&gt;startTSPButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;clearCanvasButton.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="GreedySolutionLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GreedySolutionLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 11.25pt</value>
+  </data>
+  <data name="GreedySolutionLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="GreedySolutionLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 85</value>
+  </data>
+  <data name="GreedySolutionLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 18</value>
+  </data>
+  <data name="GreedySolutionLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="GreedySolutionLabel.Text" xml:space="preserve">
+    <value>Weight: 14 | Path: 1-2-3-4-5-6-1</value>
+  </data>
+  <data name="&gt;&gt;GreedySolutionLabel.Name" xml:space="preserve">
+    <value>GreedySolutionLabel</value>
+  </data>
+  <data name="&gt;&gt;GreedySolutionLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GreedySolutionLabel.Parent" xml:space="preserve">
+    <value>tspTab</value>
+  </data>
+  <data name="&gt;&gt;GreedySolutionLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="BFSSolutionLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BFSSolutionLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 11.25pt</value>
+  </data>
+  <data name="BFSSolutionLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BFSSolutionLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 57</value>
+  </data>
+  <data name="BFSSolutionLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 18</value>
+  </data>
+  <data name="BFSSolutionLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="BFSSolutionLabel.Text" xml:space="preserve">
+    <value>Weight: 14 | Path: 1-2-3-4-5-6-1</value>
+  </data>
+  <data name="&gt;&gt;BFSSolutionLabel.Name" xml:space="preserve">
+    <value>BFSSolutionLabel</value>
+  </data>
+  <data name="&gt;&gt;BFSSolutionLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BFSSolutionLabel.Parent" xml:space="preserve">
+    <value>tspTab</value>
+  </data>
+  <data name="&gt;&gt;BFSSolutionLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BNBSolutionLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BNBSolutionLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 11.25pt</value>
+  </data>
+  <data name="BNBSolutionLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="BNBSolutionLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>255, 28</value>
+  </data>
+  <data name="BNBSolutionLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 18</value>
+  </data>
+  <data name="BNBSolutionLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="BNBSolutionLabel.Text" xml:space="preserve">
+    <value>Weight: 14 | Path: 1-2-3-4-5-6-1</value>
+  </data>
+  <data name="&gt;&gt;BNBSolutionLabel.Name" xml:space="preserve">
+    <value>BNBSolutionLabel</value>
+  </data>
+  <data name="&gt;&gt;BNBSolutionLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BNBSolutionLabel.Parent" xml:space="preserve">
+    <value>tspTab</value>
+  </data>
+  <data name="&gt;&gt;BNBSolutionLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TSP_startGreedyButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="TSP_startGreedyButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 84</value>
+  </data>
+  <data name="TSP_startGreedyButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 23</value>
+  </data>
+  <data name="TSP_startGreedyButton.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="TSP_startGreedyButton.Text" xml:space="preserve">
+    <value>Greedy algorithm</value>
+  </data>
+  <data name="&gt;&gt;TSP_startGreedyButton.Name" xml:space="preserve">
+    <value>TSP_startGreedyButton</value>
+  </data>
+  <data name="&gt;&gt;TSP_startGreedyButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TSP_startGreedyButton.Parent" xml:space="preserve">
+    <value>tspTab</value>
+  </data>
+  <data name="&gt;&gt;TSP_startGreedyButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TSP_startBFSButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="TSP_startBFSButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 56</value>
+  </data>
+  <data name="TSP_startBFSButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 23</value>
+  </data>
+  <data name="TSP_startBFSButton.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="TSP_startBFSButton.Text" xml:space="preserve">
+    <value>Brute force search</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBFSButton.Name" xml:space="preserve">
+    <value>TSP_startBFSButton</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBFSButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBFSButton.Parent" xml:space="preserve">
+    <value>tspTab</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBFSButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="TSP_startBNBButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 27</value>
+  </data>
+  <data name="TSP_startBNBButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 23</value>
+  </data>
+  <data name="TSP_startBNBButton.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="TSP_startBNBButton.Text" xml:space="preserve">
+    <value>Branch N Bounds</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBNBButton.Name" xml:space="preserve">
+    <value>TSP_startBNBButton</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBNBButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBNBButton.Parent" xml:space="preserve">
+    <value>tspTab</value>
+  </data>
+  <data name="&gt;&gt;TSP_startBNBButton.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="TSPStartVertex.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 11.25pt</value>
@@ -1057,7 +1300,7 @@
     <value>tspTab</value>
   </data>
   <data name="&gt;&gt;TSPStartVertex.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>7</value>
   </data>
   <data name="startedVertexTSPLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1090,13 +1333,13 @@
     <value>tspTab</value>
   </data>
   <data name="&gt;&gt;startedVertexTSPLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>8</value>
   </data>
   <data name="tspTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
   <data name="tspTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>810, 90</value>
+    <value>835, 129</value>
   </data>
   <data name="tspTab.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1210,7 +1453,7 @@
     <value>3, 2, 3, 2</value>
   </data>
   <data name="settingsTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>810, 90</value>
+    <value>835, 129</value>
   </data>
   <data name="settingsTab.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1230,11 +1473,14 @@
   <data name="&gt;&gt;settingsTab.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 554</value>
+    <value>0, 0</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>818, 116</value>
+    <value>843, 155</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1246,41 +1492,71 @@
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <metadata name="openGraphFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>156, 16</value>
   </metadata>
-  <data name="filePathLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="filePathLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 29</value>
-  </data>
-  <data name="filePathLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 13</value>
-  </data>
-  <data name="filePathLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;filePathLabel.Name" xml:space="preserve">
-    <value>filePathLabel</value>
-  </data>
-  <data name="&gt;&gt;filePathLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filePathLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;filePathLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>323, 3</value>
   </metadata>
+  <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 24</value>
+  </data>
+  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>843, 657</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>498</value>
+  </data>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
