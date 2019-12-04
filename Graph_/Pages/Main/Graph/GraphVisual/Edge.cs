@@ -55,7 +55,8 @@ namespace Graph_.GraphVisual_
         PointF getCenterOffsetByLine(Line line, float offset)
         {
             PointF pureCenter = new PointF((line.MutableStart.value.X + line.MutableEnd.value.X) / 2.0f, (line.MutableStart.value.Y + line.MutableEnd.value.Y) / 2.0f);
-            float angle = (float)Math.Atan((line.MutableEnd.value.Y - line.MutableStart.value.Y) / (line.MutableEnd.value.X - line.MutableStart.value.X));
+            float devidor = (line.MutableEnd.value.X - line.MutableStart.value.X);
+            float angle = (float)Math.Atan((line.MutableEnd.value.Y - line.MutableStart.value.Y) / (devidor==0?0.00001f:devidor));
             angle = -angle;
             PointF pOffset = new PointF(offset, offset);
             PointF result = new PointF(pOffset.X * (float)Math.Sin(angle), pOffset.Y * (float)Math.Cos(angle));

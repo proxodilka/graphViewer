@@ -56,13 +56,13 @@ namespace Graph_
             }
         }
 
-        void TSPAnswerHandler(Label target, Tuple<int, List<int>> answer)
+        void TSPAnswerHandler(Label target, Tuple<double, List<int>> answer)
         {
             if (target.InvokeRequired)
             {
                 this.Invoke(new MethodInvoker(() =>
                 {
-                    target.Text = $"Weight: {answer.Item1} | Path: {string.Join("-", answer.Item2)}";
+                    target.Text = $"Weight: {Math.Round(answer.Item1, 6)} | Path: {string.Join("-", answer.Item2)}";
                     Console.WriteLine($"Weight: {answer.Item1} | Path: {string.Join("-", answer.Item2)}");
                     graphVisual.setPath(answer.Item2);
                 }));

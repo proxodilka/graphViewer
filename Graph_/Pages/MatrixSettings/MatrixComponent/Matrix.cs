@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace matrixComponent
 {
@@ -36,20 +37,20 @@ namespace matrixComponent
             render();
         }
 
-        public Matrix(int[,] matrix) : this(matrix.GetLength(0), matrix.GetLength(1))
+        public Matrix(double [,] matrix) : this(matrix.GetLength(0), matrix.GetLength(1))
         {
             fillMatrix(matrix);
             render();
         }
 
-        public int[,] getMatrix()
+        public double[,] getMatrix()
         {
-            int[,] ans = new int[n, m];
+            double[,] ans = new double[n, m];
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    ans[i, j] = int.Parse(textBoxesMatrix[i][j].Text);
+                    ans[i, j] = double.Parse(textBoxesMatrix[i][j].Text, CultureInfo.CreateSpecificCulture("en-us"));
                 }
             }
 
@@ -80,14 +81,14 @@ namespace matrixComponent
             }
         }
 
-        public void setMatrix(int[,] matrix)
+        public void setMatrix(double[,] matrix)
         {
             createMatrix(matrix.GetLength(0), matrix.GetLength(1));
             fillMatrix(matrix);
             render();
         }
 
-        void fillMatrix(int[,] matrix)
+        void fillMatrix(double[,] matrix)
         {
             for (int i = 0; i < n; i++)
             {
@@ -194,9 +195,9 @@ namespace matrixComponent
         void handleInput(TextBox textBox)
         {
             int currentCursorPosition = textBox.SelectionStart;
-            textBox.Text = textBox.Text.Replace('.', ',');
+            textBox.Text = textBox.Text.Replace(',', '.');
 
-            Regex mask = new Regex(@"[^\d-]"); //все символы, которые не цифра и не '-'
+            Regex mask = new Regex(@"[^\d-.]"); //все символы, которые не цифра и не '-'
             textBox.Text = mask.Replace(textBox.Text, ""); //удаляем все символы, подходящие под маску
 
             textBox.SelectionStart = currentCursorPosition;

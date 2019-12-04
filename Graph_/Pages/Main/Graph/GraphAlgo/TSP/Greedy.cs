@@ -10,7 +10,7 @@ namespace Graph_
     {
         bool[] greedyMarkedVertices;
 
-        bool _greedy(List<int> way, long weight, int position, int stepNumber, ref Tuple<int, List<int>> ans)
+        bool _greedy(List<int> way, double weight, int position, int stepNumber, ref Tuple<double, List<int>> ans)
         {
             if (stepNumber == numberOfVertices - 1) //if all vertices are visited
             {
@@ -24,20 +24,20 @@ namespace Graph_
                 }
                 else
                 {
-                    ans = new Tuple<int, List<int>>((int)weight, new List<int>(way));
+                    ans = new Tuple<double, List<int>>(weight, new List<int>(way));
                     return true;
                 }
 
             }
 
-            List<Tuple<int, long>> adjacencyVertices = new List<Tuple<int, long>>();
+            List<Tuple<int, double>> adjacencyVertices = new List<Tuple<int, double>>();
             for (int i = 0; i < numberOfVertices; i++)  //loop for all of adjacency vertices
             {
                 if (i == position || greedyMarkedVertices[i])
                 {
                     continue;
                 }
-                adjacencyVertices.Add(new Tuple<int, long>(i, matrix[position, i]));
+                adjacencyVertices.Add(new Tuple<int, double>(i, matrix[position, i]));
             }
 
             adjacencyVertices.Sort((a, b) => (a.Item2 == b.Item2) ? 0 : ((a.Item2 < b.Item2) ? -1 : 1)); //sorting them by weight
@@ -58,19 +58,19 @@ namespace Graph_
             return false; //from this position we cannot make full traversal, so getting back on previous step and trying another edge
         }
 
-        Tuple<int, List<int>> greedyWrapper(List<int> way, long weight, int position, int stepNumber)
+        Tuple<double, List<int>> greedyWrapper(List<int> way, double weight, int position, int stepNumber)
         {
             greedyMarkedVertices = new bool[numberOfVertices];
             foreach (int vertex in way)
             {
                 greedyMarkedVertices[vertex] = true;
             }
-            Tuple<int, List<int>> ans = null;
+            Tuple<double, List<int>> ans = null;
             _greedy(new List<int>(way), weight, position, stepNumber, ref ans);
             return ans;
         }
 
-        public Tuple<int, List<int>> greedy()
+        public Tuple<double, List<int>> greedy()
         {
             return greedyWrapper(new List<int>() { start }, 0, start, 0);
         }

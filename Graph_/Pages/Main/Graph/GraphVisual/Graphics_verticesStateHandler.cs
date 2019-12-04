@@ -14,6 +14,15 @@ namespace Graph_.GraphVisual_
 {
     public partial class GraphVisual
     {
+        public void setNodeSize(float newSize)
+        {
+            foreach(Node node in nodes.Values)
+            {
+                node.nodeSize = newSize;
+            }
+            render();
+        }
+
         public void setActive(int vertexNumber, bool rerender = true)
         {
             activeVertices.Clear();

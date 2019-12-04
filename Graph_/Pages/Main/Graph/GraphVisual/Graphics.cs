@@ -20,6 +20,7 @@ namespace Graph_.GraphVisual_
         Colors colors;
         int maxY, maxX;
         bool isDirected, isWeighted;
+        float nodeSize = 1;
 
         public bool IsDirected { get { return isDirected; } set { isDirected = value; render(); } }
         public bool IsWeighted { get { return isWeighted; } set { isWeighted = value; render(); } }

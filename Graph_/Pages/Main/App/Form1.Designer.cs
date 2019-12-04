@@ -55,6 +55,7 @@
             this.addVertex = new System.Windows.Forms.Button();
             this.changeVertexesLabel = new System.Windows.Forms.Label();
             this.changeEdgesTab = new System.Windows.Forms.TabPage();
+            this.setWeightsByCoordsButton = new System.Windows.Forms.Button();
             this.clearEdges = new System.Windows.Forms.Button();
             this.makeGraphComplete = new System.Windows.Forms.Button();
             this.toEdgeValue = new System.Windows.Forms.NumericUpDown();
@@ -82,13 +83,15 @@
             this.TSPStartVertex = new System.Windows.Forms.NumericUpDown();
             this.startedVertexTSPLabel = new System.Windows.Forms.Label();
             this.settingsTab = new System.Windows.Forms.TabPage();
+            this.resetNodeSizeButton = new System.Windows.Forms.Button();
+            this.nodeSizeLabel = new System.Windows.Forms.Label();
+            this.scallerTrackBar = new System.Windows.Forms.TrackBar();
             this.setWeightButton = new System.Windows.Forms.Button();
             this.isWeightedCheckBox = new System.Windows.Forms.CheckBox();
             this.isDirectedCheckBox = new System.Windows.Forms.CheckBox();
             this.openGraphFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.setWeightsByCoordsButton = new System.Windows.Forms.Button();
             this.navigationMenu.SuspendLayout();
             this.graphRoot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plot)).BeginInit();
@@ -103,6 +106,7 @@
             this.tspTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TSPStartVertex)).BeginInit();
             this.settingsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scallerTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -305,6 +309,13 @@
             this.changeEdgesTab.Name = "changeEdgesTab";
             this.changeEdgesTab.UseVisualStyleBackColor = true;
             // 
+            // setWeightsByCoordsButton
+            // 
+            resources.ApplyResources(this.setWeightsByCoordsButton, "setWeightsByCoordsButton");
+            this.setWeightsByCoordsButton.Name = "setWeightsByCoordsButton";
+            this.setWeightsByCoordsButton.UseVisualStyleBackColor = true;
+            this.setWeightsByCoordsButton.Click += new System.EventHandler(this.setWeightsByCoordsButton_Click);
+            // 
             // clearEdges
             // 
             resources.ApplyResources(this.clearEdges, "clearEdges");
@@ -485,12 +496,37 @@
             // 
             // settingsTab
             // 
+            this.settingsTab.Controls.Add(this.resetNodeSizeButton);
+            this.settingsTab.Controls.Add(this.nodeSizeLabel);
+            this.settingsTab.Controls.Add(this.scallerTrackBar);
             this.settingsTab.Controls.Add(this.setWeightButton);
             this.settingsTab.Controls.Add(this.isWeightedCheckBox);
             this.settingsTab.Controls.Add(this.isDirectedCheckBox);
             resources.ApplyResources(this.settingsTab, "settingsTab");
             this.settingsTab.Name = "settingsTab";
             this.settingsTab.UseVisualStyleBackColor = true;
+            // 
+            // resetNodeSizeButton
+            // 
+            resources.ApplyResources(this.resetNodeSizeButton, "resetNodeSizeButton");
+            this.resetNodeSizeButton.Name = "resetNodeSizeButton";
+            this.resetNodeSizeButton.UseVisualStyleBackColor = true;
+            this.resetNodeSizeButton.Click += new System.EventHandler(this.resetNodeSizeButton_Click);
+            // 
+            // nodeSizeLabel
+            // 
+            resources.ApplyResources(this.nodeSizeLabel, "nodeSizeLabel");
+            this.nodeSizeLabel.Name = "nodeSizeLabel";
+            // 
+            // scallerTrackBar
+            // 
+            this.scallerTrackBar.LargeChange = 1;
+            resources.ApplyResources(this.scallerTrackBar, "scallerTrackBar");
+            this.scallerTrackBar.Maximum = 20;
+            this.scallerTrackBar.Minimum = 1;
+            this.scallerTrackBar.Name = "scallerTrackBar";
+            this.scallerTrackBar.Value = 10;
+            this.scallerTrackBar.ValueChanged += new System.EventHandler(this.scallerTrackBar_ValueChanged);
             // 
             // setWeightButton
             // 
@@ -531,13 +567,6 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             // 
-            // setWeightsByCoordsButton
-            // 
-            resources.ApplyResources(this.setWeightsByCoordsButton, "setWeightsByCoordsButton");
-            this.setWeightsByCoordsButton.Name = "setWeightsByCoordsButton";
-            this.setWeightsByCoordsButton.UseVisualStyleBackColor = true;
-            this.setWeightsByCoordsButton.Click += new System.EventHandler(this.setWeightsByCoordsButton_Click);
-            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -570,6 +599,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TSPStartVertex)).EndInit();
             this.settingsTab.ResumeLayout(false);
             this.settingsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scallerTrackBar)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -641,6 +671,9 @@
         private System.Windows.Forms.Label BNBSolutionLabel;
         private System.Windows.Forms.Button clearCanvasButton;
         private System.Windows.Forms.Button setWeightsByCoordsButton;
+        private System.Windows.Forms.TrackBar scallerTrackBar;
+        private System.Windows.Forms.Label nodeSizeLabel;
+        private System.Windows.Forms.Button resetNodeSizeButton;
     }
 }
 

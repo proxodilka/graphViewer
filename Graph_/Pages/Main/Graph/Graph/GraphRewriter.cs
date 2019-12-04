@@ -32,7 +32,7 @@ namespace Graph_
             vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
-        public void rewriteGraph(int[,] adjacencyMatrix)
+        public void rewriteGraph(double[,] adjacencyMatrix)
         {
             init();
 

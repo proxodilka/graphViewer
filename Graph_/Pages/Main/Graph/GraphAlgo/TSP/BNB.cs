@@ -11,10 +11,10 @@ namespace Graph_
     {
         class Branch
         {
-            long lowerBound, currentWeight;
-            long[,] distances;
+            double lowerBound, currentWeight;
+            double[,] distances;
             bool[] markedVertices;
-            Tuple<int, List<int>> upperBound;
+            Tuple<double, List<int>> upperBound;
             int numberOfVertices;
             List<int> way;
 
@@ -22,14 +22,14 @@ namespace Graph_
             public int Start { get { return way[0]; } }
 
 
-            public long LowerBound { get { return lowerBound; } }
-            public long UpperBound { get { return upperBound.Item1; } }
+            public double LowerBound { get { return lowerBound; } }
+            public double UpperBound { get { return upperBound.Item1; } }
 
-            public Tuple<int, List<int>> Answer { get { return new Tuple<int, List<int>>(upperBound.Item1, new List<int>(upperBound.Item2)); } }
+            public Tuple<double, List<int>> Answer { get { return new Tuple<double, List<int>>(upperBound.Item1, new List<int>(upperBound.Item2)); } }
 
             public List<int> Way { get { return way; } }
 
-            Branch(long[,] distances)
+            Branch(double[,] distances)
             {
                 way = new List<int>();
                 markedVertices = new bool[distances.GetLength(0)];
@@ -37,16 +37,16 @@ namespace Graph_
                 numberOfVertices = distances.GetLength(0);
             }
 
-            public Branch(int start, long[,] distances) : this(distances)
+            public Branch(int start, double[,] distances) : this(distances)
             {
                 addToPath(start);
             }
 
-            public Branch(List<int> way, long lowerBound, long currentWeight, long[,] distances)
+            public Branch(List<int> way, double lowerBound, double currentWeight, double[,] distances)
             {
                 this.way = new List<int>(way);
                 this.lowerBound = lowerBound;
-                this.upperBound = new Tuple<int, List<int>>((int)10e6, new List<int>());
+                this.upperBound = new Tuple<double, List<int>>(10e6, new List<int>());
                 this.currentWeight = currentWeight;
                 this.distances = distances;
                 markedVertices = new bool[distances.GetLength(0)];
@@ -56,7 +56,7 @@ namespace Graph_
             public Branch(Branch other)
             {
                 lowerBound = other.lowerBound;
-                upperBound = new Tuple<int, List<int>>(other.upperBound.Item1, new List<int>(other.upperBound.Item2));
+                upperBound = new Tuple<double, List<int>>(other.upperBound.Item1, new List<int>(other.upperBound.Item2));
                 currentWeight = other.currentWeight;
                 way = new List<int>(other.way);
                 distances = other.distances;
@@ -89,7 +89,7 @@ namespace Graph_
 
             void getLowerBound()
             {
-                long weight = this.currentWeight;
+                double weight = this.currentWeight;
                 
                 for(int i=0; i<numberOfVertices; i++)
                 {
@@ -98,7 +98,7 @@ namespace Graph_
                         continue;
                     }
 
-                    long minWeightInCol = (long)10e9;
+                    double minWeightInCol = 10e9;
                     for(int j=0; j<numberOfVertices; j++)
                     {
                         if (distances[i, j] < minWeightInCol)
@@ -116,7 +116,7 @@ namespace Graph_
             void getUpperBound()
             {
 
-                int newUpperBoundWeight = (int)currentWeight;
+                double newUpperBoundWeight = currentWeight;
                 List<int> newUpperBoundWay = new List<int>(way);
                 bool[] tempMarkedVertices = new bool[markedVertices.Length];
                 for(int i=0; i<markedVertices.Length; i++)
@@ -129,8 +129,8 @@ namespace Graph_
                 {
                     cureVertex = newUpperBoundWay.Last();
 
-                    int minAdjacencyVertexWeight = (int)10e6,
-                        minAdjacencyVertexId = 0;
+                    double minAdjacencyVertexWeight = 10e6;
+                    int minAdjacencyVertexId = 0;
 
                     for(int j=0; j<numberOfVertices; j++)
                     {
@@ -156,7 +156,7 @@ namespace Graph_
                 newUpperBoundWeight += (int)distances[cureVertex, Start];
                 newUpperBoundWay.Add(Start);
 
-                upperBound = new Tuple<int, List<int>>(newUpperBoundWeight, newUpperBoundWay);
+                upperBound = new Tuple<double, List<int>>(newUpperBoundWeight, newUpperBoundWay);
             }
 
         }
@@ -165,21 +165,21 @@ namespace Graph_
         void removeNotPerspectiveBranches(HashSet<Branch> branches)
         {
             Branch branchWithMinimumUpperBound = null;
-            int minimumUpperBound = (int)10e6;
+            double minimumUpperBound = 10e6;
 
             foreach (Branch branch in branches)
             {
                 if (branch.UpperBound < minimumUpperBound)
                 {
                     branchWithMinimumUpperBound = branch;
-                    minimumUpperBound = (int)branch.UpperBound;
+                    minimumUpperBound = branch.UpperBound;
                 }
             }
 
             branches.RemoveWhere((branchToDel) => { return branchToDel.Equals(branchWithMinimumUpperBound) ? false : branchToDel.LowerBound >= minimumUpperBound; });
         }
 
-        int currentBestAnswer = (int)10e6;
+        double currentBestAnswer = 10e6;
 
         async void BNB(CancellationToken cancel)
         {
@@ -234,7 +234,7 @@ namespace Graph_
             removeNotPerspectiveBranches(branches);
 
             Branch optimanBranch = null;
-            int optimalWeight = (int)10e6;
+            double optimalWeight = 10e6;
 
             if (cancel.IsCancellationRequested) return;
             foreach (Branch branch in branches)
@@ -242,7 +242,7 @@ namespace Graph_
                 if (branch.Answer.Item1 < optimalWeight)
                 {
                     optimanBranch = branch;
-                    optimalWeight = (int)branch.Answer.Item1;
+                    optimalWeight = branch.Answer.Item1;
                 }
             }
 

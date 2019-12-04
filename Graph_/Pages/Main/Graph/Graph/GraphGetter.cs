@@ -25,12 +25,23 @@ namespace Graph_
             return ans;
         }
 
-        public Dictionary<int, HashSet<int>> get()
+        public Dictionary<int, HashSet<int>> getAdjList()
         {
             Dictionary<int, HashSet<int>> copy = new Dictionary<int, HashSet<int>>();
             foreach (var pair in graph)
             {
                 copy.Add(pair.Key, new HashSet<int>(pair.Value.Keys));
+            }
+            return copy;
+        }
+
+        public Dictionary<int, Dictionary<int, double>> get()
+        {
+
+            Dictionary<int, Dictionary<int, double>> copy = new Dictionary<int, Dictionary<int, double>>();
+            foreach (var pair in graph)
+            {
+                copy.Add(pair.Key, new Dictionary<int, double>(pair.Value));
             }
             return copy;
         }
@@ -65,14 +76,14 @@ namespace Graph_
             return copy;
         }
 
-        public int[,] getAsMatrix()
+        public double[,] getAsMatrix()
         {
-            int[,] matrix = new int[verticesNumber, verticesNumber];
+            double[,] matrix = new double[verticesNumber, verticesNumber];
             foreach (var pair in graph)
             {
                 foreach (var vertex in pair.Value)
                 {
-                    matrix[pair.Key, vertex.Key] = (int)vertex.Value;
+                    matrix[pair.Key, vertex.Key] = vertex.Value;
                 }
             }
             if (!isDirected)

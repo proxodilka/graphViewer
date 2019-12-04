@@ -109,7 +109,7 @@ namespace Graph_.GraphVisual_
             Dictionary<double, Tuple<int, int>> deviations = new Dictionary<double, Tuple<int, int>>();
 
             double limit = 1;
-            var adjacenctList = graph.get();
+            var adjacenctList = graph.getAdjList();
             foreach (var pair in adjacenctList)
             {
                 int vertexNumber = pair.Key;

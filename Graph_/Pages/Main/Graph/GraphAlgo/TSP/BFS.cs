@@ -9,7 +9,7 @@ namespace Graph_
 {
     public partial class TSP
     {
-        async void BFS(List<int> way, long weight, int position, int stepNumber, CancellationToken cancel)
+        async void BFS(List<int> way, double weight, int position, int stepNumber, CancellationToken cancel)
         {
             if (cancel.IsCancellationRequested) return;
             if (stepNumber == numberOfVertices - 1) //if all vertices are visited
@@ -20,7 +20,7 @@ namespace Graph_
                 {
                     ans = new List<int>(way);
                     currentOptimalWeight = weight;
-                    updater(new Tuple<int, List<int>>((int)currentOptimalWeight, ans));
+                    updater(new Tuple<double, List<int>>(currentOptimalWeight, ans));
                 }
                 way.RemoveAt(way.Count - 1);
                 weight -= matrix[position, start];

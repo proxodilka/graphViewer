@@ -33,7 +33,7 @@ namespace Graph_
         GraphAlgo graphAlgo;
         CancellationTokenSource TSPcancellationToken;
 
-        List<Dictionary<int, HashSet<int>>> history;
+        List<Dictionary<int, Dictionary<int, double>>> history;
 
         private void MakeGraphComplete_Click(object sender, EventArgs e)
         {
@@ -68,9 +68,25 @@ namespace Graph_
             
         }
 
+        void debugFeatures()
+        {
+            var g = graph.get();
+            foreach(var pair in g)
+            {
+                foreach(double pair2 in pair.Value.Values)
+                {
+                    if (pair2 <= 0)
+                    {
+                        Console.WriteLine("error!!!!");
+                    }
+                }
+            }
+        }
+
         private void CentrateButton_Click(object sender, EventArgs e)
         {
             graphVisual.centrate();
+            debugFeatures();
         }
 
         private void settingsOption_Click(object sender, EventArgs e)
@@ -100,10 +116,44 @@ namespace Graph_
             graphVisual.reset();
         }
 
-        private void setWeightsByCoordsButton_Click(object sender, EventArgs e)
+
+        void setWeightsByCoords()
         {
             Dictionary<int, PointF> coords = graphVisual.getNodesCoords();
+            Dictionary<int, Dictionary<int, double>> graphInfo = graph.get(),
+                                                     duplicate = new Dictionary<int, Dictionary<int, double>>();
 
+            foreach (var vertex in graphInfo)
+            {
+                duplicate[vertex.Key] = new Dictionary<int, double>();
+                foreach (var adjacencyVertex in vertex.Value)
+                {
+                    PointF first = coords[vertex.Key], second = coords[adjacencyVertex.Key];
+                    duplicate[vertex.Key][adjacencyVertex.Key] = Math.Sqrt(Math.Pow(first.X - second.X, 2) + Math.Pow(first.Y - second.Y, 2));
+                    if (duplicate[vertex.Key][adjacencyVertex.Key] == 0)
+                    {
+                        duplicate[vertex.Key][adjacencyVertex.Key] = 0.0001f;
+                    }
+                }
+            }
+
+            graph.rewriteGraph(duplicate);
+            graphVisual.setNodesCoords(coords);
+        }
+
+        private void setWeightsByCoordsButton_Click(object sender, EventArgs e)
+        {
+            setWeightsByCoords();
+        }
+
+        private void resetNodeSizeButton_Click(object sender, EventArgs e)
+        {
+            scallerTrackBar.Value = 10;
+        }
+
+        private void scallerTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            graphVisual.setNodeSize((sender as TrackBar).Value / 10.0f);
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
@@ -155,7 +205,7 @@ namespace Graph_
             graph = new Graph();
             graphVisual = new GraphVisual(canvas, graph);
             graphAlgo = new GraphAlgo(graph);
-            history = new List<Dictionary<int, HashSet<int>>>();
+            history = new List<Dictionary<int, Dictionary<int, double>>>();
 
             subscribe();
             handleAppState();

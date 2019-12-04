@@ -11,15 +11,13 @@ namespace Graph_
     {
         Graph graph;
         Dictionary<int, HashSet<int>> graphList;
-        TSP TSPSolver;
         int[] visited;
         List<int> ans;
-
+             
         public GraphAlgo(Graph _graph)
         {
             graph = _graph;
             ans = new List<int>();
-            TSPSolver = new TSP(graph.getAsMatrix());
         }
 
         private void _dfs(int x, int colorValue, bool isFirst = true)
@@ -109,7 +107,7 @@ namespace Graph_
             return true;
         }
 
-        public Tuple<int, List<int>> TSP_Greedy(int start)
+        public Tuple<double, List<int>> TSP_Greedy(int start)
         {
             return new TSP(graph.getAsMatrix(), start).greedy();
         }

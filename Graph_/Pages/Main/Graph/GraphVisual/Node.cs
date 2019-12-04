@@ -18,15 +18,17 @@ namespace Graph_.GraphVisual_
         public string title { get; set; }
         public Circle Cirle { get { return circle; } }
 
+        public float nodeSize { get { return circle.r; } set { circle.r = value; text.fontSize = value; } }
+
         Circle circle;
         Text text;
 
-        public Node(int _id, string _title, PointF initialCoords)
+        public Node(int _id, string _title, PointF initialCoords, float nodeSize = 1)
         {
             id = _id;
-            circle = new Circle(initialCoords, 1, true, false);
+            circle = new Circle(initialCoords, nodeSize, true, false);
             circle.fillColor = Color.White;
-            text = new Text(_title, circle.getCenterAsMutable(), 1, Color.Black);
+            text = new Text(_title, circle.getCenterAsMutable(), nodeSize, Color.Black);
         }
 
         public void draw(WFCanvas plot, bool isNodeActive, bool isNodeMarked, Color color)

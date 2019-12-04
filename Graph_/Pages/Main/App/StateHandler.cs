@@ -27,7 +27,7 @@ namespace Graph_
             return allowToClose;
         }
 
-        void onRewriteMatrix(object sender, int[,] matrix)
+        void onRewriteMatrix(object sender, double[,] matrix)
         {
             var nodesCoordinates = graphVisual.getNodesCoords();
             graph.rewriteGraph(matrix);
@@ -152,6 +152,7 @@ namespace Graph_
                         plot.Enabled = true;
                         saveAsFileOption.Enabled = true;
                         saveFileOption.Enabled = true;
+                        scallerTrackBar.Value = 10;
                         break;
                     }
             }

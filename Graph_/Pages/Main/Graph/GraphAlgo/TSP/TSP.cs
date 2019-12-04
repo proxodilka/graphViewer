@@ -6,34 +6,34 @@ using System.Threading.Tasks;
 
 namespace Graph_
 {
-    public delegate void Updater(Tuple<int, List<int>> ans);
+    public delegate void Updater(Tuple<double, List<int>> ans);
     public partial class TSP
     {
         Updater updater;
-        long INF = (long)10e9;
+        double INF = 10e9;
         //long overflowValue = (long)10e1;
-        long[,] matrix;
+        double[,] matrix;
         List<HashSet<int>> ways;
         List<int> ans;
         bool[] markedVertices;
-        long currentOptimalWeight;
+        double currentOptimalWeight;
         int start;
         int numberOfVertices;
 
-        public TSP(int[,] matrix)
+        public TSP(double[,] matrix)
         {
 
-            setTSP(convertMatrixFromIntToLong(matrix));
+            setTSP(matrix);
             ways = new List<HashSet<int>>();
         }
 
-        public TSP(int[,] matrix, int start) : this(matrix)
+        public TSP(double[,] matrix, int start) : this(matrix)
         {
 
             setStart(start);
         }
 
-        public void setTSP(long[,] matrix)
+        public void setTSP(double[,] matrix)
         {
             this.matrix = makeComplete(matrix);
             start = 0;
@@ -43,7 +43,7 @@ namespace Graph_
             markedVertices = new bool[numberOfVertices];
         }
 
-        public void setTSP(long[,] matrix, int start)
+        public void setTSP(double[,] matrix, int start)
         {
             setTSP(matrix);
             setStart(start);
@@ -54,9 +54,9 @@ namespace Graph_
             this.start = start;
         }
 
-        long[,] makeComplete(long[,] source)
+        double[,] makeComplete(double[,] source)
         {
-            long[,] ans = new long[source.GetLength(0), source.GetLength(1)];
+            double[,] ans = new double[source.GetLength(0), source.GetLength(1)];
             for (int i = 0; i < source.GetLength(0); i++)
             {
                 for (int j = 0; j < source.GetLength(1); j++)

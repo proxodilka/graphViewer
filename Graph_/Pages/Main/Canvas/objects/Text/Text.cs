@@ -16,7 +16,7 @@ namespace Graph_
     {
         bool isCenterMutable;
         string text;
-        float fontSize;
+        public float fontSize;
         MutablePoint mutableCenter;
         PointF center;
         Color color;

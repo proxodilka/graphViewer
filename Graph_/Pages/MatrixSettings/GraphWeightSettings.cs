@@ -11,7 +11,7 @@ using matrixComponent;
 
 namespace Graph_
 {
-    public delegate void SettingsEventListener(object sender, int[,] e);
+    public delegate void SettingsEventListener(object sender, double[,] e);
     public partial class GraphWeightSettings : Form
     {
         public event SettingsEventListener syncEvent;
@@ -32,7 +32,7 @@ namespace Graph_
             this.Controls.Add(matrixComponent);
         }
 
-        public void updateMatrix(int[,] matrix)
+        public void updateMatrix(double[,] matrix)
         {
             matrixComponent.setMatrix(matrix);
         }

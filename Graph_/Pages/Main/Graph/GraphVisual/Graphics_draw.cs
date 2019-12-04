@@ -44,7 +44,7 @@ namespace Graph_.GraphVisual_
                     Node startNode = nodes[vertexNumber],
                          endNode = nodes[adjacencyVertex.Key];
 
-                    Edge edge = new Edge(startNode, endNode, isWeighted, isDirected, graph.hasEdge(endNode.ID, startNode.ID), adjacencyVertex.Value.ToString(), startNode.ID<endNode.ID?1:2);
+                    Edge edge = new Edge(startNode, endNode, isWeighted, isDirected, graph.hasEdge(endNode.ID, startNode.ID), Math.Round(adjacencyVertex.Value, 2).ToString(), startNode.ID<endNode.ID?1:2);
                     if (isShowingPath)
                     {
                         //(a, b) => a.Item1 == b.Item1 && a.Item2 == b.Item2)

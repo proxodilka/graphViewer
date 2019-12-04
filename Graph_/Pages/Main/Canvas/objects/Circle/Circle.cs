@@ -12,7 +12,7 @@ namespace Graph_
 {
     public class Circle
     {
-        float r;
+        public float r;
         PointF center;
         MutablePoint mutableCenter;
         public Color borderColor, fillColor, activeColor;
@@ -94,7 +94,8 @@ namespace Graph_
                         _to.Center.X += 0.02f;
                     }
                 }
-                float ang1 = (float)Math.Atan((_to.MutableCenter.value.Y - _from.MutableCenter.value.Y) / (_to.MutableCenter.value.X - _from.MutableCenter.value.X)),
+                float devidor = (_to.MutableCenter.value.X - _from.MutableCenter.value.X);
+                float ang1 = (float)Math.Atan((_to.MutableCenter.value.Y - _from.MutableCenter.value.Y) / (devidor==0?0.0001f:devidor)),
                 ang2 = (float)Math.PI + ang1;
                 return needToSwap?_to.calcPointOnCircle(ang2):_from.calcPointOnCircle(ang1);
             }),
@@ -112,7 +113,8 @@ namespace Graph_
                         _to.Center.X += 0.02f;
                     }
                 }
-                float ang1 = (float)Math.Atan((_to.MutableCenter.value.Y - _from.MutableCenter.value.Y) / (_to.MutableCenter.value.X - _from.MutableCenter.value.X)),
+                float devidor = (_to.MutableCenter.value.X - _from.MutableCenter.value.X);
+                float ang1 = (float)Math.Atan((_to.MutableCenter.value.Y - _from.MutableCenter.value.Y) / (devidor==0?0.0001f:devidor)),
                 ang2 = (float)Math.PI + ang1;
                 return !needToSwap ? _to.calcPointOnCircle(ang2) : _from.calcPointOnCircle(ang1);
             });

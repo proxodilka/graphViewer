@@ -16,6 +16,39 @@ namespace Graph_
     public partial class MainWindow : Form
     {
 
+
+        private Tuple<Dictionary<int, Dictionary<int, double>>, Dictionary<int, PointF>, Dictionary<string, int>> parseCoords(StreamReader stream)
+        {
+            int nOfVertex = -1;
+            Dictionary<int, Dictionary<int, double>> result = new Dictionary<int, Dictionary<int, double>>();
+            Dictionary<string, int> options = new Dictionary<string, int>();
+            Dictionary<int, PointF> coordinates = new Dictionary<int, PointF>();
+            bool hasCoordinates = false;
+
+            string[] currentString = new string[0];
+            do
+            {
+                nOfVertex = -1;
+                if (currentString.Length == 3) { options.Add(currentString[0], int.Parse(currentString[2])); }
+                currentString = stream.ReadLine().Split(' ');
+            } while (stream.Peek() != -1 && !int.TryParse(currentString[0], out nOfVertex));
+
+            int vertexNumber = 0;
+            while (vertexNumber<nOfVertex && stream.Peek() != -1)
+            {
+                currentString = stream.ReadLine().Split(' ');
+
+                PointF coords = new PointF(float.Parse(currentString[0].Replace(',', '.'), CultureInfo.CreateSpecificCulture("en-us")),
+                                           float.Parse(currentString[1].Replace(',', '.'), CultureInfo.CreateSpecificCulture("en-us")));
+                coordinates.Add(vertexNumber, coords);
+                result.Add(vertexNumber, new Dictionary<int, double>());
+                vertexNumber++;
+            }
+
+            return new Tuple<Dictionary<int, Dictionary<int, double>>, Dictionary<int, PointF>, Dictionary<string, int>>(result, coordinates, options);
+        }
+
+
         /// <summary>
         /// Returns tuple of adjacency list and nodes coordinates
         /// </summary>
@@ -151,14 +184,30 @@ namespace Graph_
                 }
                 else if (type[0] == "adjacency_list")
                 {
-                    //try {
+                    try {
                         var parseResult = parseList(fileStream);
                         graph.rewriteGraph(parseResult.Item1);
                         graphVisual.setNodesCoords(parseResult.Item2);
                         graph.IsDirected = parseResult.Item3.ContainsKey("is_directed")? (parseResult.Item3["is_directed"] == 1) : false;
                         graphVisual.IsWeighted = parseResult.Item3.ContainsKey("is_weighted") ? (parseResult.Item3["is_weighted"] == 1) : false;
+                    }
+                    catch { onError(titles.parseError); return false; }    
+                }
+                else if (type[0] == "coordinates")
+                {
+                    //try
+                    //{
+                        var parseResult = parseCoords(fileStream);
+                        graph.rewriteGraph(parseResult.Item1);
+                        graphVisual.setNodesCoords(parseResult.Item2);
+
+                        graph.IsDirected = parseResult.Item3.ContainsKey("is_directed") ? (parseResult.Item3["is_directed"] == 1) : false;
+                        graphVisual.IsWeighted = parseResult.Item3.ContainsKey("is_weighted") ? (parseResult.Item3["is_weighted"] == 1) : false;
+
+                        graph.makeGraphComplete();
+                        setWeightsByCoords();
                     //}
-                    //catch { onError(titles.parseError); return false; }    
+                    //catch { onError(titles.parseError); return false; }
                 }
                 else { onError(titles.unknownFileError); return false; };
             }
