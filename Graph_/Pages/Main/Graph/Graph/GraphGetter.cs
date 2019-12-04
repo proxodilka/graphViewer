@@ -25,6 +25,16 @@ namespace Graph_
             return ans;
         }
 
+        public List<string> getVerticesNumbers()
+        {
+            return graph.Keys.Select((x)=>x.ToString()).ToList();
+        }
+
+        public List<int> getVerticesNumbersAsInt()
+        {
+            return graph.Keys.ToList();
+        }
+
         public Dictionary<int, HashSet<int>> getAdjList()
         {
             Dictionary<int, HashSet<int>> copy = new Dictionary<int, HashSet<int>>();
@@ -78,12 +88,19 @@ namespace Graph_
 
         public double[,] getAsMatrix()
         {
+            var vertices = graph.Keys.ToList();
             double[,] matrix = new double[verticesNumber, verticesNumber];
-            foreach (var pair in graph)
             {
-                foreach (var vertex in pair.Value)
+                int i = 0;
+                foreach (var pair in graph)
                 {
-                    matrix[pair.Key, vertex.Key] = vertex.Value;
+                    foreach (var vertex in pair.Value)
+                    {
+                        int j = vertices.FindIndex((x)=>x==vertex.Key);
+                        //matrix[pair.Key, vertex.Key] = vertex.Value;
+                        matrix[i, j] = vertex.Value;
+                    }
+                    i++;
                 }
             }
             if (!isDirected)

@@ -28,7 +28,7 @@ namespace Graph_
         public event eventListener rewrite;
         public event eventListener isDirectedChanged;
 
-        Dictionary<int, Dictionary<int, double>> graph; //Key - vertex number, Value - Dictionary of adjacency vertices and weight of edge
+        SortedDictionary<int, Dictionary<int, double>> graph; //Key - vertex number, Value - Dictionary of adjacency vertices and weight of edge
         public int verticesNumber, edgesNumber, maxVertexNumber=0;
         SortedSet<int> availableVerticesNumbers;
         const int MaxVerticesNumber = 100000;
@@ -55,7 +55,7 @@ namespace Graph_
             this.isDirected = isDirected??this.isDirected;
             availableVerticesNumbers = new SortedSet<int>();
             for (int i = 0; i < MaxVerticesNumber; i++) { availableVerticesNumbers.Add(i); }
-            graph = new Dictionary<int, Dictionary<int, double>>();
+            graph = new SortedDictionary<int, Dictionary<int, double>>();
             edgesNumber = 0; verticesNumber = 0;
         }
 
@@ -198,6 +198,17 @@ namespace Graph_
             return graph.ContainsKey(from) && graph[from].ContainsKey(to);
         }
 
+        public bool isComplete()
+        {
+            foreach(var vertices in graph.Values)
+            {
+                if (vertices.Count < graph.Count-1)
+                {
+                    return false;
+                }
+            }
 
+            return true;
+        }
     }
 }

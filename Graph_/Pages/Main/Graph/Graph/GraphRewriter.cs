@@ -8,6 +8,27 @@ namespace Graph_
 {
     public partial class Graph
     {
+
+        public void updateGraph<T>(T[,] adjacencyMatrix)
+        {
+            int i = 0;
+            var vertices = graph.Keys.ToList();
+            Dictionary<int, Dictionary<int, double>> updatedGraph = new Dictionary<int, Dictionary<int, double>>();
+            foreach(var pair in graph)
+            {
+                updatedGraph.Add(pair.Key, new Dictionary<int, double>());
+                for(int j=0; j<adjacencyMatrix.GetLength(0); j++)
+                {
+                    double weight = Convert.ToDouble(adjacencyMatrix[i, j]);
+                    if (weight != 0)
+                    {
+                        updatedGraph[pair.Key][vertices[j]] = weight;
+                    }
+                }
+                i++;
+            }
+            rewriteGraph(updatedGraph);
+        }
         public void rewriteGraph<T>(T[][] adjacencyMatrix)
         {
             init();

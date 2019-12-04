@@ -24,6 +24,8 @@ namespace Graph_.GraphVisual_
         Line edge;
         Curve curve;
 
+        Color[] colors;
+
         private float offset { get { return (float)orderInPair / 2.0f; } }
 
         public Edge(Node from, Node to, bool hasWeight = false, bool isDirected=false, bool hasPair=false, string weight="", int orderInPair = 1)
@@ -38,6 +40,13 @@ namespace Graph_.GraphVisual_
             edge = Circle.getLineBetween(from.Cirle, to.Cirle);
             curve = createCurve(edge.MutableStart, edge.MutableEnd);
             Color = Color.Black;
+
+            colors = new Color[2] { Color.Green, Color.Red };
+            if (isDirected && hasPair)
+            {
+                Color = colors[orderInPair - 1];
+            }
+
         }
 
         public Edge(Node from, Node to, string weight) : this(from, to, true, false, false, weight) { }

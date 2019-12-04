@@ -38,8 +38,8 @@ namespace Graph_.GraphVisual_
 
                 foreach (var adjacencyVertex in pair.Value)
                 {
-                    //if (adjacencyVertex <= vertexNumber)
-                    //    continue;
+                    if (adjacencyVertex.Key <= vertexNumber && !isDirected)
+                        continue;
 
                     Node startNode = nodes[vertexNumber],
                          endNode = nodes[adjacencyVertex.Key];

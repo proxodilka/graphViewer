@@ -26,7 +26,7 @@ namespace Graph_
             graph.vertexModified += (object sender, GraphEventArgs e) => { updateMatrix((sender as Graph).getAsMatrix()); };
             graph.edgeModified += (object sender, GraphEventArgs e) => { updateMatrix((sender as Graph).getAsMatrix()); };
             margin = new Point(4, 40);
-            matrixComponent = new Matrix(graph.getAsMatrix());
+            matrixComponent = new Matrix(graph.getAsMatrix(), graph.getVerticesNumbers());
             matrixComponent.Location = margin;
             matrixComponent.onMatrixChanged += (object sender, EventArgs e) => { syncEvent?.Invoke(this, matrixComponent.getMatrix()); };
             this.Controls.Add(matrixComponent);
@@ -34,7 +34,7 @@ namespace Graph_
 
         public void updateMatrix(double[,] matrix)
         {
-            matrixComponent.setMatrix(matrix);
+            matrixComponent.setMatrix(matrix, graph.getVerticesNumbers());
         }
 
         private void increaseMatrixButton_Click(object sender, EventArgs e)

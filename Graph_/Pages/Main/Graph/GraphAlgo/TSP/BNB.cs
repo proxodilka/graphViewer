@@ -140,7 +140,7 @@ namespace Graph_
                         }
                         if (distances[cureVertex, j] < minAdjacencyVertexWeight)
                         {
-                            minAdjacencyVertexWeight = (int)distances[cureVertex, j];
+                            minAdjacencyVertexWeight = distances[cureVertex, j];
                             minAdjacencyVertexId = j;
                         }
 
@@ -153,7 +153,7 @@ namespace Graph_
                 }
 
                 cureVertex = newUpperBoundWay.Last();
-                newUpperBoundWeight += (int)distances[cureVertex, Start];
+                newUpperBoundWeight += distances[cureVertex, Start];
                 newUpperBoundWay.Add(Start);
 
                 upperBound = new Tuple<double, List<int>>(newUpperBoundWeight, newUpperBoundWay);
@@ -233,7 +233,7 @@ namespace Graph_
 
             removeNotPerspectiveBranches(branches);
 
-            Branch optimanBranch = null;
+            Branch optimalBranch = null;
             double optimalWeight = 10e6;
 
             if (cancel.IsCancellationRequested) return;
@@ -241,12 +241,12 @@ namespace Graph_
             {
                 if (branch.Answer.Item1 < optimalWeight)
                 {
-                    optimanBranch = branch;
+                    optimalBranch = branch;
                     optimalWeight = branch.Answer.Item1;
                 }
             }
 
-            updater(optimanBranch.Answer);
+            updater(optimalBranch.Answer);
             Console.WriteLine("done");
         }
 

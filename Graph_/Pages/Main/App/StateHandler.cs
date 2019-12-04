@@ -30,7 +30,7 @@ namespace Graph_
         void onRewriteMatrix(object sender, double[,] matrix)
         {
             var nodesCoordinates = graphVisual.getNodesCoords();
-            graph.rewriteGraph(matrix);
+            graph.updateGraph(matrix);
             graphVisual.setNodesCoords(nodesCoordinates, true);
         }
 

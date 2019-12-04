@@ -19,6 +19,7 @@ namespace matrixComponent
 
         Panel matrixRoot;
         List<List<TextBox>> textBoxesMatrix;
+        List<string> titles;
         int margin = 10;
         int n, m;
 
@@ -32,6 +33,7 @@ namespace matrixComponent
             this.Controls.Add(matrixRoot);
             this.AutoSize = true;
             this.BackColor = Color.Transparent;
+            titles = new List<string>();
             createMatrix(n, m);
             fillMatrix(true);
             render();
@@ -40,6 +42,12 @@ namespace matrixComponent
         public Matrix(double [,] matrix) : this(matrix.GetLength(0), matrix.GetLength(1))
         {
             fillMatrix(matrix);
+            render();
+        }
+
+        public Matrix(double[,] matrix, List<string> titles) : this(matrix)
+        {
+            this.titles = titles;
             render();
         }
 
@@ -81,17 +89,26 @@ namespace matrixComponent
             }
         }
 
-        public void setMatrix(double[,] matrix)
+        public void setMatrix(double[,] matrix, bool withoutRender = false)
         {
             createMatrix(matrix.GetLength(0), matrix.GetLength(1));
             fillMatrix(matrix);
+            if (!withoutRender) render();
+        }
+
+        public void setMatrix(double[,] matrix, List<string> titles)
+        {
+            setMatrix(matrix, true);
+            this.titles = titles;
             render();
         }
 
         void fillMatrix(double[,] matrix)
         {
+            titles.Clear();
             for (int i = 0; i < n; i++)
             {
+                titles.Add((i + 1).ToString());
                 for (int j = 0; j < m; j++)
                 {
                     textBoxesMatrix[i][j].Text = matrix[i, j].ToString();
@@ -101,8 +118,10 @@ namespace matrixComponent
 
         void fillMatrix(bool isEmpty = false)
         {
+            titles.Clear();
             for (int i = 0; i < n; i++)
             {
+                titles.Add((i + 1).ToString());
                 for (int j = 0; j < m; j++)
                 {
                     textBoxesMatrix[i][j].Text = "0";
@@ -163,7 +182,7 @@ namespace matrixComponent
             point.X += SampleLabel.Width / 2;
             for (int j = 0; j < m; j++)
             {
-                Label label = new Label() { Text = j.ToString(), Location = point };
+                Label label = new Label() { Text = titles[j], Location = point };
                 matrixRoot.Controls.Add(label);
                 point.X += margin + SampleTextBox.Width;
             }
@@ -172,7 +191,7 @@ namespace matrixComponent
 
             for (int i = 0; i < n; i++)
             {
-                Label label = new Label() { Text = i.ToString(), Location = point };
+                Label label = new Label() { Text = titles[i], Location = point };
                 matrixRoot.Controls.Add(label);
                 point.X += 2 * margin;
                 for (int j = 0; j < m; j++)
