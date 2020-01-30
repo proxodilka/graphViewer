@@ -17,7 +17,7 @@ namespace Graph_.GraphVisual_
         
         private PointF getCoordsByN(int i)
         {
-            int r = graph.verticesNumber, n = graph.verticesNumber;
+            int r = graph.VerticesNumber, n = graph.VerticesNumber;
 
             float angle = 2.0f * (float)Math.PI * i / n;
             float x = -r * (float)Math.Cos(angle), y = r * (float)Math.Sin(angle);

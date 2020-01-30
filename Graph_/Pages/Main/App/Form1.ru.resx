@@ -118,74 +118,74 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="fileOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 24</value>
+  </data>
+  <data name="fileOption.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 24</value>
+  </data>
+  <data name="editToolStripMenuItem.Text" xml:space="preserve">
+    <value>Правка</value>
+  </data>
   <data name="newFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
+    <value>291, 26</value>
   </data>
   <data name="newFileOption.Text" xml:space="preserve">
     <value>Создать</value>
   </data>
   <data name="openFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
+    <value>291, 26</value>
   </data>
   <data name="openFileOption.Text" xml:space="preserve">
     <value>Открыть...</value>
   </data>
   <data name="saveFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
+    <value>291, 26</value>
   </data>
   <data name="saveFileOption.Text" xml:space="preserve">
     <value>Сохранить</value>
   </data>
   <data name="saveAsFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
+    <value>291, 26</value>
   </data>
   <data name="saveAsFileOption.Text" xml:space="preserve">
     <value>Сохранить как...</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 6</value>
+    <value>288, 6</value>
   </data>
   <data name="settingsOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
+    <value>291, 26</value>
   </data>
   <data name="settingsOption.Text" xml:space="preserve">
     <value>Настройки</value>
   </data>
   <data name="exitOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 22</value>
+    <value>291, 26</value>
   </data>
   <data name="exitOption.Text" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="fileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="fileOption.Text" xml:space="preserve">
-    <value>Файл</value>
-  </data>
   <data name="undoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 22</value>
+    <value>211, 26</value>
   </data>
   <data name="undoButton.Text" xml:space="preserve">
     <value>Отменить</value>
   </data>
-  <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="editToolStripMenuItem.Text" xml:space="preserve">
-    <value>Правка</value>
-  </data>
   <data name="vertexValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
+    <value>78, 17</value>
   </data>
   <data name="vertexValue.Text" xml:space="preserve">
     <value>Vertices: 10;</value>
   </data>
   <data name="centrateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>736, 495</value>
+    <value>866, 620</value>
   </data>
   <data name="centrateButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 23</value>
+    <value>104, 28</value>
   </data>
   <data name="centrateButton.Text" xml:space="preserve">
     <value>центрировать</value>
@@ -195,7 +195,7 @@
     <value>NoControl</value>
   </data>
   <data name="edgesAtCircleButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 23</value>
+    <value>144, 28</value>
   </data>
   <data name="edgesAtCircleButton.Text" xml:space="preserve">
     <value>вершины по кругу</value>
@@ -206,14 +206,20 @@
   <data name="resetButton.Text" xml:space="preserve">
     <value>Обесцветить</value>
   </data>
+  <data name="changeVertexTab.Text" xml:space="preserve">
+    <value>Вершины</value>
+  </data>
   <data name="changeVertexesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 23</value>
+    <value>189, 29</value>
   </data>
   <data name="changeVertexesLabel.Text" xml:space="preserve">
     <value>Номер вершины:</value>
   </data>
-  <data name="changeVertexTab.Text" xml:space="preserve">
-    <value>Вершины</value>
+  <data name="changeEdgesTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 174</value>
+  </data>
+  <data name="changeEdgesTab.Text" xml:space="preserve">
+    <value>Ребра</value>
   </data>
   <data name="clearEdges.Text" xml:space="preserve">
     <value>Удалить все ребра</value>
@@ -222,16 +228,19 @@
     <value>Сделать полным</value>
   </data>
   <data name="changeEdgesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 23</value>
+    <value>185, 29</value>
   </data>
   <data name="changeEdgesLabel.Text" xml:space="preserve">
     <value>Номера вершин:</value>
   </data>
-  <data name="changeEdgesTab.Text" xml:space="preserve">
-    <value>Ребра</value>
+  <data name="traversalTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 174</value>
+  </data>
+  <data name="traversalTab.Text" xml:space="preserve">
+    <value>Обходы</value>
   </data>
   <data name="isConnectedComponents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 27</value>
+    <value>275, 33</value>
   </data>
   <data name="isConnectedComponents.Text" xml:space="preserve">
     <value>Компоненты связности</value>
@@ -240,16 +249,73 @@
     <value>Старт</value>
   </data>
   <data name="startedVertex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 23</value>
+    <value>225, 29</value>
   </data>
   <data name="startedVertex.Text" xml:space="preserve">
     <value>Начальная вершина:</value>
   </data>
-  <data name="traversalTab.Text" xml:space="preserve">
-    <value>Обходы</value>
+  <data name="tspTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 174</value>
   </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 553</value>
+  <data name="clearCanvasButton.Text" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="TSP_startGreedyButton.Text" xml:space="preserve">
+    <value>Жадность</value>
+  </data>
+  <data name="TSP_startBFSButton.Text" xml:space="preserve">
+    <value>Перебор</value>
+  </data>
+  <data name="TSP_startBNBButton.Text" xml:space="preserve">
+    <value>Ветв. и границ</value>
+  </data>
+  <data name="startedVertexTSPLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 29</value>
+  </data>
+  <data name="startedVertexTSPLabel.Text" xml:space="preserve">
+    <value>Начальный вершина:</value>
+  </data>
+  <data name="settingsTab.Size" type="System.Drawing.Size, System.Drawing">
+    <value>975, 174</value>
+  </data>
+  <data name="settingsTab.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="resetNodeSizeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>90, 92</value>
+  </data>
+  <data name="resetNodeSizeButton.Text" xml:space="preserve">
+    <value>Сбросить</value>
+  </data>
+  <data name="nodeSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 24</value>
+  </data>
+  <data name="nodeSizeLabel.Text" xml:space="preserve">
+    <value>Радиус вершины:</value>
+  </data>
+  <data name="scallerTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 64</value>
+  </data>
+  <data name="setWeightButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 29</value>
+  </data>
+  <data name="setWeightButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 27</value>
+  </data>
+  <data name="setWeightButton.Text" xml:space="preserve">
+    <value>Матрица весов</value>
+  </data>
+  <data name="isWeightedCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 27</value>
+  </data>
+  <data name="isWeightedCheckBox.Text" xml:space="preserve">
+    <value>Взвешенный</value>
+  </data>
+  <data name="isDirectedCheckBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 27</value>
+  </data>
+  <data name="isDirectedCheckBox.Text" xml:space="preserve">
+    <value>Орграф</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

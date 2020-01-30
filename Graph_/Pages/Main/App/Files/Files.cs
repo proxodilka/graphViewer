@@ -67,8 +67,8 @@ namespace Graph_
             StreamWriter fileStream = new StreamWriter(filePath);
 
             fileStream.WriteLine("type : adjacency_list");
-            fileStream.WriteLine($"vertices_number : {graph.verticesNumber}");
-            fileStream.WriteLine($"edges_number : {graph.edgesNumber}");
+            fileStream.WriteLine($"vertices_number : {graph.VerticesNumber}");
+            fileStream.WriteLine($"edges_number : {graph.EdgesNumber}");
             fileStream.WriteLine($"is_directed : {Convert.ToInt32(graph.IsDirected)}");
             fileStream.WriteLine($"is_weighted : {Convert.ToInt32(graphVisual.IsWeighted)}");
 

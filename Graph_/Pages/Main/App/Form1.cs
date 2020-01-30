@@ -37,15 +37,7 @@ namespace Graph_
 
         private void MakeGraphComplete_Click(object sender, EventArgs e)
         {
-            int goingToAdd = graph.verticesNumber + (graph.verticesNumber * (graph.verticesNumber - 1)) / 2 - graph.edgesNumber;
-
-
-            //DialogResult result = MessageBox.Show($"Сейчас в граф будет добавлено {goingToAdd} вершин. " +
-            //                    $"Это может занять продолжительное время," +
-            //                    $" продолжить?", "Сделать граф полным?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-            if (/*result == DialogResult.Yes*/true)
-                graph.makeGraphComplete();
+            graph.makeGraphComplete();
         }
 
         private void ClearEdges_Click(object sender, EventArgs e)
@@ -181,21 +173,10 @@ namespace Graph_
 
             Console.WriteLine(Thread.CurrentThread.CurrentCulture.NativeName);
         }
-
-        private void tests()
-        {
-            PointF x = new PointF(0, 0);
-            PointF a = x;
-            PointF b = x;
-            a.X = 20;
-            //int xa = 100000000009;
-            //Console.WriteLine(xa);
-        }
         
         public MainWindow()
         {
             initLanguage();
-            //tests();
             InitializeComponent();
 
             mainWindow = this;
@@ -210,16 +191,6 @@ namespace Graph_
             subscribe();
             handleAppState();
             if (Properties.Settings.Default.CreateFileAtStartup) newFile();
-            //Console.WriteLine(Resources.Culture);
-            //Properties.Settings.Default.CreateFileAtStartup = false;
-            //Properties.Settings.Default.Save();
-            //openFile(@"C:\Users\len\Documents\center_test.txt");
-            //Colors colorManager = new Colors();
-
-
-            //Console.WriteLine(colorManager.calcContrastRatio(Color.White, Color.Green));
-            //Console.WriteLine(colorManager.calcContrastRatio(Color.Black, Color.Green));
-            openFile(@"C:\Users\rp-re\OneDrive\Документы\1.txt");
         }
 
         

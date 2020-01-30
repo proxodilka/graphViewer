@@ -122,8 +122,8 @@ namespace Graph_
             string fileNameTitle = fileName + (isModified ? "*" : "");
             mainWindow.Text = $"{fileNameTitle} - {title}";
             filePathLabel.Text = currentFilePath;
-            vertexValue.Text = $"{titles.verticesTitle} {graph?.verticesNumber}";
-            edgesValue.Text = $"{titles.edgesTitle} {graph?.edgesNumber}";
+            vertexValue.Text = $"{titles.verticesTitle} {graph?.VerticesNumber}";
+            edgesValue.Text = $"{titles.edgesTitle} {graph?.EdgesNumber}";
             isDirectedCheckBox.Checked = graph.IsDirected;
             isWeightedCheckBox.Checked = graphVisual.IsWeighted;
 

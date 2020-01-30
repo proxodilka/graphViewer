@@ -115,15 +115,16 @@
             // 
             // navigationMenu
             // 
+            resources.ApplyResources(this.navigationMenu, "navigationMenu");
             this.navigationMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.navigationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileOption,
             this.editToolStripMenuItem});
-            resources.ApplyResources(this.navigationMenu, "navigationMenu");
             this.navigationMenu.Name = "navigationMenu";
             // 
             // fileOption
             // 
+            resources.ApplyResources(this.fileOption, "fileOption");
             this.fileOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newFileOption,
             this.openFileOption,
@@ -133,55 +134,54 @@
             this.settingsOption,
             this.exitOption});
             this.fileOption.Name = "fileOption";
-            resources.ApplyResources(this.fileOption, "fileOption");
             // 
             // newFileOption
             // 
-            this.newFileOption.Name = "newFileOption";
             resources.ApplyResources(this.newFileOption, "newFileOption");
+            this.newFileOption.Name = "newFileOption";
             this.newFileOption.Click += new System.EventHandler(this.NewFileOption_Click);
             // 
             // openFileOption
             // 
-            this.openFileOption.Name = "openFileOption";
             resources.ApplyResources(this.openFileOption, "openFileOption");
+            this.openFileOption.Name = "openFileOption";
             this.openFileOption.Click += new System.EventHandler(this.OpenFileOption_Click);
             // 
             // saveFileOption
             // 
-            this.saveFileOption.Name = "saveFileOption";
             resources.ApplyResources(this.saveFileOption, "saveFileOption");
+            this.saveFileOption.Name = "saveFileOption";
             this.saveFileOption.Click += new System.EventHandler(this.SaveFileOption_Click);
             // 
             // saveAsFileOption
             // 
-            this.saveAsFileOption.Name = "saveAsFileOption";
             resources.ApplyResources(this.saveAsFileOption, "saveAsFileOption");
+            this.saveAsFileOption.Name = "saveAsFileOption";
             this.saveAsFileOption.Click += new System.EventHandler(this.SaveAsFileOption_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // settingsOption
             // 
-            this.settingsOption.Name = "settingsOption";
             resources.ApplyResources(this.settingsOption, "settingsOption");
+            this.settingsOption.Name = "settingsOption";
             this.settingsOption.Click += new System.EventHandler(this.settingsOption_Click);
             // 
             // exitOption
             // 
-            this.exitOption.Name = "exitOption";
             resources.ApplyResources(this.exitOption, "exitOption");
+            this.exitOption.Name = "exitOption";
             this.exitOption.Click += new System.EventHandler(this.ExitOption_Click);
             // 
             // editToolStripMenuItem
             // 
+            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.undoButton});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
             // 
             // undoButton
             // 
@@ -191,6 +191,7 @@
             // 
             // graphRoot
             // 
+            resources.ApplyResources(this.graphRoot, "graphRoot");
             this.graphRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.graphRoot.Controls.Add(this.vertexValue);
             this.graphRoot.Controls.Add(this.filePathLabel);
@@ -198,7 +199,6 @@
             this.graphRoot.Controls.Add(this.centrateButton);
             this.graphRoot.Controls.Add(this.edgesAtCircleButton);
             this.graphRoot.Controls.Add(this.plot);
-            resources.ApplyResources(this.graphRoot, "graphRoot");
             this.graphRoot.Name = "graphRoot";
             // 
             // vertexValue
@@ -248,23 +248,23 @@
             // 
             // tabControl
             // 
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.changeVertexTab);
             this.tabControl.Controls.Add(this.changeEdgesTab);
             this.tabControl.Controls.Add(this.traversalTab);
             this.tabControl.Controls.Add(this.tspTab);
             this.tabControl.Controls.Add(this.settingsTab);
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TabControl_Selecting);
             // 
             // changeVertexTab
             // 
+            resources.ApplyResources(this.changeVertexTab, "changeVertexTab");
             this.changeVertexTab.Controls.Add(this.changeVertValue);
             this.changeVertexTab.Controls.Add(this.deleteVertex);
             this.changeVertexTab.Controls.Add(this.addVertex);
             this.changeVertexTab.Controls.Add(this.changeVertexesLabel);
-            resources.ApplyResources(this.changeVertexTab, "changeVertexTab");
             this.changeVertexTab.Name = "changeVertexTab";
             this.changeVertexTab.UseVisualStyleBackColor = true;
             // 
@@ -295,6 +295,7 @@
             // 
             // changeEdgesTab
             // 
+            resources.ApplyResources(this.changeEdgesTab, "changeEdgesTab");
             this.changeEdgesTab.Controls.Add(this.setWeightsByCoordsButton);
             this.changeEdgesTab.Controls.Add(this.clearEdges);
             this.changeEdgesTab.Controls.Add(this.makeGraphComplete);
@@ -305,7 +306,6 @@
             this.changeEdgesTab.Controls.Add(this.deleteEdge);
             this.changeEdgesTab.Controls.Add(this.addEdge);
             this.changeEdgesTab.Controls.Add(this.changeEdgesLabel);
-            resources.ApplyResources(this.changeEdgesTab, "changeEdgesTab");
             this.changeEdgesTab.Name = "changeEdgesTab";
             this.changeEdgesTab.UseVisualStyleBackColor = true;
             // 
@@ -373,6 +373,7 @@
             // 
             // traversalTab
             // 
+            resources.ApplyResources(this.traversalTab, "traversalTab");
             this.traversalTab.Controls.Add(this.isConnectedComponents);
             this.traversalTab.Controls.Add(this.resetButton);
             this.traversalTab.Controls.Add(this.traversalStartVertex);
@@ -380,7 +381,6 @@
             this.traversalTab.Controls.Add(this.isDfs);
             this.traversalTab.Controls.Add(this.isBfs);
             this.traversalTab.Controls.Add(this.startedVertex);
-            resources.ApplyResources(this.traversalTab, "traversalTab");
             this.traversalTab.Name = "traversalTab";
             this.traversalTab.UseVisualStyleBackColor = true;
             // 
@@ -496,13 +496,13 @@
             // 
             // settingsTab
             // 
+            resources.ApplyResources(this.settingsTab, "settingsTab");
             this.settingsTab.Controls.Add(this.resetNodeSizeButton);
             this.settingsTab.Controls.Add(this.nodeSizeLabel);
             this.settingsTab.Controls.Add(this.scallerTrackBar);
             this.settingsTab.Controls.Add(this.setWeightButton);
             this.settingsTab.Controls.Add(this.isWeightedCheckBox);
             this.settingsTab.Controls.Add(this.isDirectedCheckBox);
-            resources.ApplyResources(this.settingsTab, "settingsTab");
             this.settingsTab.Name = "settingsTab";
             this.settingsTab.UseVisualStyleBackColor = true;
             // 
@@ -520,8 +520,8 @@
             // 
             // scallerTrackBar
             // 
-            this.scallerTrackBar.LargeChange = 1;
             resources.ApplyResources(this.scallerTrackBar, "scallerTrackBar");
+            this.scallerTrackBar.LargeChange = 1;
             this.scallerTrackBar.Maximum = 20;
             this.scallerTrackBar.Minimum = 1;
             this.scallerTrackBar.Name = "scallerTrackBar";
@@ -549,9 +549,14 @@
             this.isDirectedCheckBox.UseVisualStyleBackColor = true;
             this.isDirectedCheckBox.CheckedChanged += new System.EventHandler(this.isDirectedCheckBox_CheckedChanged);
             // 
+            // openGraphFileDialog
+            // 
+            resources.ApplyResources(this.openGraphFileDialog, "openGraphFileDialog");
+            // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "\"txt\"";
+            resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             this.saveFileDialog.SupportMultiDottedExtensions = true;
             // 
             // splitContainer1
@@ -561,10 +566,12 @@
             // 
             // splitContainer1.Panel1
             // 
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
             this.splitContainer1.Panel1.Controls.Add(this.graphRoot);
             // 
             // splitContainer1.Panel2
             // 
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
             this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             // 
             // MainWindow

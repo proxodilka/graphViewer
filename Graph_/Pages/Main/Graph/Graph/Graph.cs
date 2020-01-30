@@ -29,12 +29,14 @@ namespace Graph_
         public event eventListener isDirectedChanged;
 
         SortedDictionary<int, Dictionary<int, double>> graph; //Key - vertex number, Value - Dictionary of adjacency vertices and weight of edge
-        public int verticesNumber, edgesNumber, maxVertexNumber=0;
+        int verticesNumber, edgesNumber, maxVertexNumber=0;
         SortedSet<int> availableVerticesNumbers;
         const int MaxVerticesNumber = 100000;
         bool isDirected = false;
 
         public bool IsDirected { get { return isDirected; } set { isDirected = value; isDirectedChanged?.Invoke(this,new GraphEventArgs(new int[0], new int[0])); } }
+        public int VerticesNumber { get { return verticesNumber; } }
+        public int EdgesNumber { get { return edgesNumber; } }
 
         public Graph(bool isDirected = false)
         {
@@ -200,6 +202,10 @@ namespace Graph_
 
         public bool isComplete()
         {
+            if (edgesNumber == 0)
+            {
+                return false;
+            }
             foreach(var vertices in graph.Values)
             {
                 if (vertices.Count < graph.Count-1)
