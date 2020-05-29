@@ -14,6 +14,7 @@ using Graph_.Properties;
 using System.Threading;
 using System.Globalization;
 using Graph_.Pages.Main.App.Localization;
+using System.Diagnostics;
 
 namespace Graph_
 {
@@ -60,25 +61,15 @@ namespace Graph_
             
         }
 
-        void debugFeatures()
+        void DEBUG_openFile(string filepath)
         {
-            var g = graph.get();
-            foreach(var pair in g)
-            {
-                foreach(double pair2 in pair.Value.Values)
-                {
-                    if (pair2 <= 0)
-                    {
-                        Console.WriteLine("error!!!!");
-                    }
-                }
-            }
+            openFile(filepath);
         }
 
         private void CentrateButton_Click(object sender, EventArgs e)
         {
             graphVisual.centrate();
-            debugFeatures();
+            //debugFeatures();
         }
 
         private void settingsOption_Click(object sender, EventArgs e)
@@ -143,6 +134,7 @@ namespace Graph_
             scallerTrackBar.Value = 10;
         }
 
+
         private void scallerTrackBar_ValueChanged(object sender, EventArgs e)
         {
             graphVisual.setNodeSize((sender as TrackBar).Value / 10.0f);
@@ -191,6 +183,8 @@ namespace Graph_
             subscribe();
             handleAppState();
             if (Properties.Settings.Default.CreateFileAtStartup) newFile();
+
+            //DEBUG_openFile("C:\\Users\\nuejk\\Documents\\tsp_sample.txt");
         }
 
         

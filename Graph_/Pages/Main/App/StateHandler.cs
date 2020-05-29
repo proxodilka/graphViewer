@@ -76,6 +76,8 @@ namespace Graph_
             TSP_startBNBButton.Enabled = !onTSP;
             TSP_startBFSButton.Enabled = !onTSP;
             TSP_startGreedyButton.Enabled = !onTSP;
+            TSP_startEvolvButton.Enabled = !onTSP;
+
             TSPStartVertex.Enabled = !onTSP;
             //resetButton.Enabled = !onAnimation;
 

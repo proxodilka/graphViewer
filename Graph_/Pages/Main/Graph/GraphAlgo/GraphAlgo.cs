@@ -107,6 +107,12 @@ namespace Graph_
             return true;
         }
 
+        public async Task<bool> TSP_Evol(int start, Updater updater, CancellationToken cancelation)
+        {
+            await new TSP(graph.getAsMatrix(), start).simpleEvolutionAlgo(updater, cancelation);
+            return true;
+        }
+
         public Tuple<double, List<int>> TSP_Greedy(int start)
         {
             return new TSP(graph.getAsMatrix(), start).greedy();

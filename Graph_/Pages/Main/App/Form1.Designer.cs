@@ -29,17 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.navigationMenu = new System.Windows.Forms.MenuStrip();
-            this.fileOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.newFileOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsFileOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.settingsOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.undoButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.graphRoot = new System.Windows.Forms.Panel();
             this.vertexValue = new System.Windows.Forms.Label();
             this.filePathLabel = new System.Windows.Forms.Label();
@@ -47,7 +37,6 @@
             this.centrateButton = new System.Windows.Forms.Button();
             this.edgesAtCircleButton = new System.Windows.Forms.Button();
             this.plot = new System.Windows.Forms.PictureBox();
-            this.resetButton = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.changeVertexTab = new System.Windows.Forms.TabPage();
             this.changeVertValue = new System.Windows.Forms.NumericUpDown();
@@ -67,12 +56,16 @@
             this.changeEdgesLabel = new System.Windows.Forms.Label();
             this.traversalTab = new System.Windows.Forms.TabPage();
             this.isConnectedComponents = new System.Windows.Forms.RadioButton();
+            this.resetButton = new System.Windows.Forms.Button();
             this.traversalStartVertex = new System.Windows.Forms.NumericUpDown();
             this.startTraversal = new System.Windows.Forms.Button();
             this.isDfs = new System.Windows.Forms.RadioButton();
             this.isBfs = new System.Windows.Forms.RadioButton();
             this.startedVertex = new System.Windows.Forms.Label();
             this.tspTab = new System.Windows.Forms.TabPage();
+            this.isLivePathUpdate = new System.Windows.Forms.CheckBox();
+            this.EvolvSolutionLabel = new System.Windows.Forms.Label();
+            this.TSP_startEvolvButton = new System.Windows.Forms.Button();
             this.clearCanvasButton = new System.Windows.Forms.Button();
             this.GreedySolutionLabel = new System.Windows.Forms.Label();
             this.BFSSolutionLabel = new System.Windows.Forms.Label();
@@ -89,10 +82,23 @@
             this.setWeightButton = new System.Windows.Forms.Button();
             this.isWeightedCheckBox = new System.Windows.Forms.CheckBox();
             this.isDirectedCheckBox = new System.Windows.Forms.CheckBox();
+            this.navigationMenu = new System.Windows.Forms.MenuStrip();
+            this.fileOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.newFileOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsFileOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.settingsOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoButton = new System.Windows.Forms.ToolStripMenuItem();
             this.openGraphFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.navigationMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.graphRoot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plot)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -107,87 +113,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.TSPStartVertex)).BeginInit();
             this.settingsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scallerTrackBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            this.navigationMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // navigationMenu
+            // splitContainer1
             // 
-            resources.ApplyResources(this.navigationMenu, "navigationMenu");
-            this.navigationMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.navigationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileOption,
-            this.editToolStripMenuItem});
-            this.navigationMenu.Name = "navigationMenu";
+            resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.Name = "splitContainer1";
             // 
-            // fileOption
+            // splitContainer1.Panel1
             // 
-            resources.ApplyResources(this.fileOption, "fileOption");
-            this.fileOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newFileOption,
-            this.openFileOption,
-            this.saveFileOption,
-            this.saveAsFileOption,
-            this.toolStripSeparator1,
-            this.settingsOption,
-            this.exitOption});
-            this.fileOption.Name = "fileOption";
+            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
+            this.splitContainer1.Panel1.Controls.Add(this.graphRoot);
             // 
-            // newFileOption
+            // splitContainer1.Panel2
             // 
-            resources.ApplyResources(this.newFileOption, "newFileOption");
-            this.newFileOption.Name = "newFileOption";
-            this.newFileOption.Click += new System.EventHandler(this.NewFileOption_Click);
-            // 
-            // openFileOption
-            // 
-            resources.ApplyResources(this.openFileOption, "openFileOption");
-            this.openFileOption.Name = "openFileOption";
-            this.openFileOption.Click += new System.EventHandler(this.OpenFileOption_Click);
-            // 
-            // saveFileOption
-            // 
-            resources.ApplyResources(this.saveFileOption, "saveFileOption");
-            this.saveFileOption.Name = "saveFileOption";
-            this.saveFileOption.Click += new System.EventHandler(this.SaveFileOption_Click);
-            // 
-            // saveAsFileOption
-            // 
-            resources.ApplyResources(this.saveAsFileOption, "saveAsFileOption");
-            this.saveAsFileOption.Name = "saveAsFileOption";
-            this.saveAsFileOption.Click += new System.EventHandler(this.SaveAsFileOption_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            // 
-            // settingsOption
-            // 
-            resources.ApplyResources(this.settingsOption, "settingsOption");
-            this.settingsOption.Name = "settingsOption";
-            this.settingsOption.Click += new System.EventHandler(this.settingsOption_Click);
-            // 
-            // exitOption
-            // 
-            resources.ApplyResources(this.exitOption, "exitOption");
-            this.exitOption.Name = "exitOption";
-            this.exitOption.Click += new System.EventHandler(this.ExitOption_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.undoButton});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            // 
-            // undoButton
-            // 
-            resources.ApplyResources(this.undoButton, "undoButton");
-            this.undoButton.Name = "undoButton";
-            this.undoButton.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
+            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             // 
             // graphRoot
             // 
@@ -238,13 +180,6 @@
             this.plot.TabStop = false;
             this.plot.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.Plot_GiveFeedback);
             this.plot.QueryContinueDrag += new System.Windows.Forms.QueryContinueDragEventHandler(this.Plot_QueryContinueDrag);
-            // 
-            // resetButton
-            // 
-            resources.ApplyResources(this.resetButton, "resetButton");
-            this.resetButton.Name = "resetButton";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // tabControl
             // 
@@ -390,6 +325,13 @@
             this.isConnectedComponents.Name = "isConnectedComponents";
             this.isConnectedComponents.UseVisualStyleBackColor = true;
             // 
+            // resetButton
+            // 
+            resources.ApplyResources(this.resetButton, "resetButton");
+            this.resetButton.Name = "resetButton";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
             // traversalStartVertex
             // 
             resources.ApplyResources(this.traversalStartVertex, "traversalStartVertex");
@@ -426,6 +368,9 @@
             // tspTab
             // 
             resources.ApplyResources(this.tspTab, "tspTab");
+            this.tspTab.Controls.Add(this.isLivePathUpdate);
+            this.tspTab.Controls.Add(this.EvolvSolutionLabel);
+            this.tspTab.Controls.Add(this.TSP_startEvolvButton);
             this.tspTab.Controls.Add(this.clearCanvasButton);
             this.tspTab.Controls.Add(this.GreedySolutionLabel);
             this.tspTab.Controls.Add(this.BFSSolutionLabel);
@@ -437,6 +382,25 @@
             this.tspTab.Controls.Add(this.startedVertexTSPLabel);
             this.tspTab.Name = "tspTab";
             this.tspTab.UseVisualStyleBackColor = true;
+            // 
+            // isLivePathUpdate
+            // 
+            resources.ApplyResources(this.isLivePathUpdate, "isLivePathUpdate");
+            this.isLivePathUpdate.Name = "isLivePathUpdate";
+            this.isLivePathUpdate.UseVisualStyleBackColor = true;
+            // 
+            // EvolvSolutionLabel
+            // 
+            resources.ApplyResources(this.EvolvSolutionLabel, "EvolvSolutionLabel");
+            this.EvolvSolutionLabel.Name = "EvolvSolutionLabel";
+            // 
+            // TSP_startEvolvButton
+            // 
+            resources.ApplyResources(this.TSP_startEvolvButton, "TSP_startEvolvButton");
+            this.TSP_startEvolvButton.Name = "TSP_startEvolvButton";
+            this.TSP_startEvolvButton.Tag = "Greedy algorithm";
+            this.TSP_startEvolvButton.UseVisualStyleBackColor = true;
+            this.TSP_startEvolvButton.Click += new System.EventHandler(this.TSP_startEvolvButton_Click);
             // 
             // clearCanvasButton
             // 
@@ -549,6 +513,82 @@
             this.isDirectedCheckBox.UseVisualStyleBackColor = true;
             this.isDirectedCheckBox.CheckedChanged += new System.EventHandler(this.isDirectedCheckBox_CheckedChanged);
             // 
+            // navigationMenu
+            // 
+            resources.ApplyResources(this.navigationMenu, "navigationMenu");
+            this.navigationMenu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.navigationMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileOption,
+            this.editToolStripMenuItem});
+            this.navigationMenu.Name = "navigationMenu";
+            // 
+            // fileOption
+            // 
+            resources.ApplyResources(this.fileOption, "fileOption");
+            this.fileOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newFileOption,
+            this.openFileOption,
+            this.saveFileOption,
+            this.saveAsFileOption,
+            this.toolStripSeparator1,
+            this.settingsOption,
+            this.exitOption});
+            this.fileOption.Name = "fileOption";
+            // 
+            // newFileOption
+            // 
+            resources.ApplyResources(this.newFileOption, "newFileOption");
+            this.newFileOption.Name = "newFileOption";
+            this.newFileOption.Click += new System.EventHandler(this.NewFileOption_Click);
+            // 
+            // openFileOption
+            // 
+            resources.ApplyResources(this.openFileOption, "openFileOption");
+            this.openFileOption.Name = "openFileOption";
+            this.openFileOption.Click += new System.EventHandler(this.OpenFileOption_Click);
+            // 
+            // saveFileOption
+            // 
+            resources.ApplyResources(this.saveFileOption, "saveFileOption");
+            this.saveFileOption.Name = "saveFileOption";
+            this.saveFileOption.Click += new System.EventHandler(this.SaveFileOption_Click);
+            // 
+            // saveAsFileOption
+            // 
+            resources.ApplyResources(this.saveAsFileOption, "saveAsFileOption");
+            this.saveAsFileOption.Name = "saveAsFileOption";
+            this.saveAsFileOption.Click += new System.EventHandler(this.SaveAsFileOption_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            // 
+            // settingsOption
+            // 
+            resources.ApplyResources(this.settingsOption, "settingsOption");
+            this.settingsOption.Name = "settingsOption";
+            this.settingsOption.Click += new System.EventHandler(this.settingsOption_Click);
+            // 
+            // exitOption
+            // 
+            resources.ApplyResources(this.exitOption, "exitOption");
+            this.exitOption.Name = "exitOption";
+            this.exitOption.Click += new System.EventHandler(this.ExitOption_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            resources.ApplyResources(this.editToolStripMenuItem, "editToolStripMenuItem");
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.undoButton});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            // 
+            // undoButton
+            // 
+            resources.ApplyResources(this.undoButton, "undoButton");
+            this.undoButton.Name = "undoButton";
+            this.undoButton.Click += new System.EventHandler(this.UndoToolStripMenuItem_Click);
+            // 
             // openGraphFileDialog
             // 
             resources.ApplyResources(this.openGraphFileDialog, "openGraphFileDialog");
@@ -558,21 +598,6 @@
             this.saveFileDialog.DefaultExt = "\"txt\"";
             resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             this.saveFileDialog.SupportMultiDottedExtensions = true;
-            // 
-            // splitContainer1
-            // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            resources.ApplyResources(this.splitContainer1.Panel1, "splitContainer1.Panel1");
-            this.splitContainer1.Panel1.Controls.Add(this.graphRoot);
-            // 
-            // splitContainer1.Panel2
-            // 
-            resources.ApplyResources(this.splitContainer1.Panel2, "splitContainer1.Panel2");
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl);
             // 
             // MainWindow
             // 
@@ -585,8 +610,10 @@
             this.MainMenuStrip = this.navigationMenu;
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
-            this.navigationMenu.ResumeLayout(false);
-            this.navigationMenu.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.graphRoot.ResumeLayout(false);
             this.graphRoot.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plot)).EndInit();
@@ -607,10 +634,8 @@
             this.settingsTab.ResumeLayout(false);
             this.settingsTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scallerTrackBar)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.navigationMenu.ResumeLayout(false);
+            this.navigationMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -681,6 +706,9 @@
         private System.Windows.Forms.TrackBar scallerTrackBar;
         private System.Windows.Forms.Label nodeSizeLabel;
         private System.Windows.Forms.Button resetNodeSizeButton;
+        private System.Windows.Forms.Label EvolvSolutionLabel;
+        private System.Windows.Forms.Button TSP_startEvolvButton;
+        private System.Windows.Forms.CheckBox isLivePathUpdate;
     }
 }
 

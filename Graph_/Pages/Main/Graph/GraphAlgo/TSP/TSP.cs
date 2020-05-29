@@ -1,4 +1,5 @@
-﻿using System;
+﻿using matrixComponent;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,10 +28,10 @@ namespace Graph_
             ways = new List<HashSet<int>>();
         }
 
-        public TSP(double[,] matrix, int start) : this(matrix)
+        public TSP(double[,] matrix, int start)
         {
 
-            setStart(start);
+            setTSP(matrix, start);
         }
 
         public void setTSP(double[,] matrix)
@@ -79,6 +80,19 @@ namespace Graph_
                 }
             }
             return answer;
+        }
+
+
+        public double calcWayLength(List<int> way)
+        {
+            double result = 0;
+
+            for (int i=0; i<way.Count-1; i++)
+            {
+                result += matrix[way[i], way[i + 1]];
+            }
+
+            return result;
         }
     }
 }

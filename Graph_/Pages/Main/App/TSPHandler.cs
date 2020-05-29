@@ -44,8 +44,9 @@ namespace Graph_
                 {
                     changeOnTSPState((sender as Button));
                     TSPcancellationToken = new CancellationTokenSource();
-                    await graphAlgo.TSP_BFS((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(BFSSolutionLabel, ans), TSPcancellationToken.Token);
+                    await graphAlgo.TSP_BFS((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(BFSSolutionLabel, ans, isLivePathUpdate.Checked), TSPcancellationToken.Token);
                     changeOnTSPState((sender as Button));
+                    TSPAnswerHandler(BFSSolutionLabel);
                 }
                 else
                 {
@@ -55,6 +56,7 @@ namespace Graph_
             else
             {
                 TSPcancellationToken.Cancel();
+                TSPAnswerHandler(BFSSolutionLabel);
             }
         }
 
@@ -67,8 +69,9 @@ namespace Graph_
                 {
                     changeOnTSPState((sender as Button));
                     TSPcancellationToken = new CancellationTokenSource();
-                    await graphAlgo.TSP_BNB((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(BNBSolutionLabel, ans), TSPcancellationToken.Token);
+                    await graphAlgo.TSP_BNB((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(BNBSolutionLabel, ans, isLivePathUpdate.Checked), TSPcancellationToken.Token);
                     changeOnTSPState((sender as Button));
+                    TSPAnswerHandler(BNBSolutionLabel);
                 }
                 else
                 {
@@ -78,11 +81,41 @@ namespace Graph_
             else
             {
                 TSPcancellationToken.Cancel();
+                TSPAnswerHandler(BNBSolutionLabel);
             }
         }
 
-        void TSPAnswerHandler(Label target, Tuple<double, List<int>> answer)
+        private async void TSP_startEvolvButton_Click(object sender, EventArgs e)
         {
+            if (!onTSP)
+            {
+                if (graph.isComplete())
+                {
+                    changeOnTSPState((sender as Button));
+                    TSPcancellationToken = new CancellationTokenSource();
+                    await graphAlgo.TSP_Evol((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(EvolvSolutionLabel, ans, isLivePathUpdate.Checked), TSPcancellationToken.Token);
+                    changeOnTSPState((sender as Button));
+                    TSPAnswerHandler(EvolvSolutionLabel);
+                }
+                else
+                {
+                    showNotCompleteError();
+                }
+            }
+            else
+            {
+                TSPcancellationToken.Cancel();
+                TSPAnswerHandler(EvolvSolutionLabel);
+            }
+        }
+
+        Tuple<double, List<int>> lastAnswer;
+        void TSPAnswerHandler(Label target, Tuple<double, List<int>> answer=null, bool do_not_draw=false)
+        {
+            if (answer == null)
+            {
+                answer = lastAnswer;
+            }
             if (target.InvokeRequired)
             {
                 this.Invoke(new MethodInvoker(() =>
@@ -92,7 +125,10 @@ namespace Graph_
 
                     target.Text = $"Weight: {Math.Round(answer.Item1, 6)} | Path: {string.Join("-", translatedAnswer)}";
                     Console.WriteLine($"Weight: {answer.Item1} | Path: {string.Join("-", answer.Item2)}");
-                    graphVisual.setPath(translatedAnswer);
+
+                    lastAnswer = answer;
+                    if (!do_not_draw)
+                        graphVisual.setPath(translatedAnswer);
                 }));
             }
             else

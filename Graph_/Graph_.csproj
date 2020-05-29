@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\BFS.cs" />
     <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\BNB.cs" />
+    <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\EvAlgo.cs" />
     <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\Greedy.cs" />
     <Compile Include="Pages\Main\Graph\GraphAlgo\TSP\TSP.cs" />
     <Compile Include="Pages\Main\Graph\Graph\GraphRewriter.cs" />
