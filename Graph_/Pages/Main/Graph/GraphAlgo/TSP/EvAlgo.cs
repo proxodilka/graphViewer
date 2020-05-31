@@ -38,11 +38,18 @@ namespace Graph_
 
         class Population
         {
-            List<Individual> individuals;
+            public List<Individual> individuals;
             int fixed_amount;
             TSP _src;
 
             public int Amount { get { return fixed_amount; } }
+
+
+            public void Add(Individual individual)
+            {
+                individuals.Add(individual);
+                Sort_invididuals();
+            }
 
             public Individual GetI(int index)
             {
@@ -93,10 +100,12 @@ namespace Graph_
                     new_population.Add(individuals[i]);
                 }
 
-                for (int i=0; i< fixed_amount-N_bests; i++)
+                for (int i = 0; i < fixed_amount - N_bests; i++)
                 {
                     new_population.Add(individuals[_src.random_generator.Next(0, fixed_amount)]);
                 }
+
+
 
                 individuals = new_population;
 
@@ -114,7 +123,7 @@ namespace Graph_
 
                 for (int i = 0; i < fixed_amount - N_bests; i++)
                 {
-                    int first_competitor  = _src.random_generator.Next(N_bests + 1, fixed_amount),
+                    int first_competitor = _src.random_generator.Next(N_bests + 1, fixed_amount),
                         second_competitor = _src.random_generator.Next(N_bests + 1, fixed_amount);
 
                     Individual winner = individuals[first_competitor].Value < individuals[second_competitor].Value ? individuals[second_competitor] : individuals[first_competitor];
@@ -122,7 +131,7 @@ namespace Graph_
                 }
 
 
-                for(int i=0; i<to_mate.Count; i++)
+                for (int i=0; i<to_mate.Count; i++)
                 {
                     Individual parrent1 = to_mate[i],
                                parrent2 = to_mate[_src.random_generator.Next(0, to_mate.Count)];
@@ -316,27 +325,69 @@ namespace Graph_
 
         void mainEvolutionLoop(CancellationToken cancel)
         {
-            //var greedy_ans = greedy().Item2;
-            //List<Individual> started_individuals = new List<Individual>();
-            //started_individuals.Add(new Individual(this, greedy_ans));
+            bool migration = true;
+            int should_migrate = 1000; // migrate once in 1000 generations
+            int amount_of_random_populations = 10;
+            int amount_of_greedy_based_populations = 3;
 
-            //setTSP(matrix, start);
+            var greedy_ans = greedy().Item2;
+            List<Individual> started_individuals = new List<Individual>();
+            started_individuals.Add(new Individual(this, greedy_ans));
 
-            Population population = new Population(this, numberOfVertices*10);
+            setTSP(matrix, start);
+
+            List<Population> populations = new List<Population>();
+
+            for(int i=0; i<amount_of_random_populations; i++)
+            {
+                populations.Add(new Population(this, numberOfVertices * 10));
+            }
+
+            for(int i=0; i<amount_of_greedy_based_populations; i++)
+            {
+                populations.Add(new Population(this, numberOfVertices * 10, started_individuals));
+            }
+
+            int no_best_changes_counter = 0;
             while (true)
             {
-                if (cancel.IsCancellationRequested) return;
-                population.Mate();
-                population.ExecuteSelection();
-
-                Individual best = population.Get_N_Bests(1)[0];
-
-                if (best.Value < currentOptimalWeight)
+                foreach(Population population in populations)
                 {
-                    ans = new List<int>(best.Chromos);
-                    currentOptimalWeight = best.Value;
-                    updater(new Tuple<double, List<int>>(currentOptimalWeight, ans));
+                    if (cancel.IsCancellationRequested) return;
+                    population.Mate();
+                    population.ExecuteSelection();
+
+                    Individual best = population.Get_N_Bests(1)[0];
+
+                    if (best.Value < currentOptimalWeight)
+                    {
+                        //no_best_changes_counter = 0;
+                        ans = new List<int>(best.Chromos);
+                        currentOptimalWeight = best.Value;
+                        updater(new Tuple<double, List<int>>(currentOptimalWeight, ans));
+                    }
                 }
+                no_best_changes_counter++;
+
+                if (migration)
+                {
+                    if (no_best_changes_counter == should_migrate)
+                    {
+                        List<Individual> bests = new List<Individual>();
+                        foreach (Population population in populations)
+                        {
+                            bests.Add(population.Get_N_Bests(1)[0]);
+                            population.individuals.RemoveAt(0);
+                        }
+
+                        for (int i = 0; i < populations.Count; i++)
+                        {
+                            populations[i].Add(bests[(i + 1) % populations.Count]);
+                        }
+                        no_best_changes_counter = 0;
+                    }
+                }
+                
                 //print_population(population);
             }
         }

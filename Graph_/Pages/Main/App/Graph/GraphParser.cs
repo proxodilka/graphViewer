@@ -195,8 +195,8 @@ namespace Graph_
                 }
                 else if (type[0] == "coordinates")
                 {
-                    //try
-                    //{
+                    try
+                    {
                         var parseResult = parseCoords(fileStream);
                         graph.rewriteGraph(parseResult.Item1);
                         graphVisual.setNodesCoords(parseResult.Item2);
@@ -206,8 +206,8 @@ namespace Graph_
 
                         graph.makeGraphComplete();
                         setWeightsByCoords();
-                    //}
-                    //catch { onError(titles.parseError); return false; }
+                    }
+                    catch { onError(titles.parseError); return false; }
                 }
                 else { onError(titles.unknownFileError); return false; };
             }

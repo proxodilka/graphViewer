@@ -398,7 +398,7 @@
             // 
             resources.ApplyResources(this.TSP_startEvolvButton, "TSP_startEvolvButton");
             this.TSP_startEvolvButton.Name = "TSP_startEvolvButton";
-            this.TSP_startEvolvButton.Tag = "Greedy algorithm";
+            this.TSP_startEvolvButton.Tag = "Genetic algorithm";
             this.TSP_startEvolvButton.UseVisualStyleBackColor = true;
             this.TSP_startEvolvButton.Click += new System.EventHandler(this.TSP_startEvolvButton_Click);
             // 
