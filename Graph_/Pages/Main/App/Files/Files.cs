@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Graph_.GraphVisual_;
 using Graph_.Pages.Main.App.Localization;
+using System.Drawing.Imaging;
 
 namespace Graph_
 {
@@ -122,6 +123,29 @@ namespace Graph_
             for (int i = 0; i < text.Length; i++)
                 result += text[i];
             MessageBox.Show(result, titles.fileErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void SaveGraphImge(string name, string type)
+        {
+            ImageCodecInfo codecInfo;
+            codecInfo = GetEncoderInfo(type);
+            System.Drawing.Imaging.Encoder encoder = System.Drawing.Imaging.Encoder.Quality;
+            EncoderParameters encoderParameters = new EncoderParameters(1);
+            EncoderParameter encoderparam = new EncoderParameter(encoder, 75L);
+            encoderParameters.Param[0] = encoderparam;
+            canvas.GetBitmap.Save(name, codecInfo, encoderParameters);
+        }
+        private static ImageCodecInfo GetEncoderInfo(String mimeType)
+        {
+            int j;
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            for (j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType == mimeType)
+                    return encoders[j];
+            }
+            return null;
         }
     }
 }

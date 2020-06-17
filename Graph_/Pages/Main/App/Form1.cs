@@ -36,6 +36,8 @@ namespace Graph_
 
         List<Dictionary<int, Dictionary<int, double>>> history;
 
+        TSPsettings tspset = new TSPsettings();
+
         private void MakeGraphComplete_Click(object sender, EventArgs e)
         {
             graph.makeGraphComplete();
@@ -134,6 +136,12 @@ namespace Graph_
             scallerTrackBar.Value = 10;
         }
 
+        private void GASettings_Click(object sender, EventArgs e)
+        {
+            tspset.Show();
+        }
+
+       
 
         private void scallerTrackBar_ValueChanged(object sender, EventArgs e)
         {

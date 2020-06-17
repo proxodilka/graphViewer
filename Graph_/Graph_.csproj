@@ -58,6 +58,12 @@
     <Compile Include="Pages\Main\App\TSPHandler.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pages\Main\App\TSPsettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Main\App\TSPsettings.Designer.cs">
+      <DependentUpon>TSPsettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Main\App\Validation\Validation_InputsHandler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Main\App\Form1.ru.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Main\App\TSPsettings.resx">
+      <DependentUpon>TSPsettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\MatrixSettings\GraphWeightSettings.resx">
       <DependentUpon>GraphWeightSettings.cs</DependentUpon>

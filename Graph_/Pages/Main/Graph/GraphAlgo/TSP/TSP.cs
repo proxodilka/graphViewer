@@ -20,17 +20,18 @@ namespace Graph_
         double currentOptimalWeight;
         int start;
         int numberOfVertices;
+        Dictionary<string, int> args;
 
-        public TSP(double[,] matrix)
+        public TSP(double[,] matrix, Dictionary<string, int> args = null)
         {
-
+            this.args = args;
             setTSP(matrix);
             ways = new List<HashSet<int>>();
         }
 
-        public TSP(double[,] matrix, int start)
+        public TSP(double[,] matrix, int start, Dictionary<string, int> args = null)
         {
-
+            this.args = args;
             setTSP(matrix, start);
         }
 

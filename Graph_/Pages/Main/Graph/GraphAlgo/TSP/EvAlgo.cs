@@ -74,7 +74,7 @@ namespace Graph_
                 this._src = _src;
                 individuals = new List<Individual>(fixed_amount);
                 var src_range = Enumerable.Range(1, _src.numberOfVertices-1);
-                for (int i=0; i< fixed_amount; i++)
+                for (int i=0; i< amount; i++)
                 {
                     List<int> _tmp_list = _src.Shuffle(new List<int>(src_range));
                     _tmp_list.Add(0);
@@ -325,10 +325,10 @@ namespace Graph_
 
         void mainEvolutionLoop(CancellationToken cancel)
         {
-            bool migration = true;
-            int should_migrate = 1000; // migrate once in 1000 generations
-            int amount_of_random_populations = 10;
-            int amount_of_greedy_based_populations = 3;
+            bool migration = Convert.ToBoolean(args["migration"]);
+            int should_migrate = args["should_migrate"]; // migrate once in 1000 generations
+            int amount_of_random_populations = args["num_rnd"];
+            int amount_of_greedy_based_populations = args["num_greedy"];
 
             var greedy_ans = greedy().Item2;
             List<Individual> started_individuals = new List<Individual>();
@@ -351,6 +351,7 @@ namespace Graph_
             int no_best_changes_counter = 0;
             while (true)
             {
+                bool shouldUpdate = false;
                 foreach(Population population in populations)
                 {
                     if (cancel.IsCancellationRequested) return;
@@ -361,10 +362,9 @@ namespace Graph_
 
                     if (best.Value < currentOptimalWeight)
                     {
-                        //no_best_changes_counter = 0;
+                        shouldUpdate = true;
                         ans = new List<int>(best.Chromos);
                         currentOptimalWeight = best.Value;
-                        updater(new Tuple<double, List<int>>(currentOptimalWeight, ans));
                     }
                 }
                 no_best_changes_counter++;
@@ -387,7 +387,11 @@ namespace Graph_
                         no_best_changes_counter = 0;
                     }
                 }
-                
+                if (shouldUpdate)
+                {
+                    updater(new Tuple<double, List<int>>(currentOptimalWeight, ans));
+                }
+               
                 //print_population(population);
             }
         }

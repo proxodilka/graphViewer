@@ -218,5 +218,7 @@ namespace Graph_
         public int W { get { return w; } }
         public int H { get { return h; } }
 
+        public Bitmap GetBitmap { get { return img; } }
+
     }
 }

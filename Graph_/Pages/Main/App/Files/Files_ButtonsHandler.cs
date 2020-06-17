@@ -53,5 +53,28 @@ namespace Graph_
         {
             this.Close();
         }
+
+        
+        private void pngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.FileName = "newImge.png";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                currentFilePath = saveFileDialog.FileName;
+                SaveGraphImge(currentFilePath, "image/png");
+            }
+
+        }
+
+        private void jpgToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.FileName = "newImge.jpg";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                currentFilePath = saveFileDialog.FileName;
+                SaveGraphImge(currentFilePath, "image/jpeg");
+            }
+        }
+
     }
 }

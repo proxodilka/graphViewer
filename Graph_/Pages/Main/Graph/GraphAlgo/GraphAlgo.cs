@@ -107,9 +107,9 @@ namespace Graph_
             return true;
         }
 
-        public async Task<bool> TSP_Evol(int start, Updater updater, CancellationToken cancelation)
+        public async Task<bool> TSP_Evol(int start, Updater updater, CancellationToken cancelation, Dictionary<string, int> args)
         {
-            await new TSP(graph.getAsMatrix(), start).simpleEvolutionAlgo(updater, cancelation);
+            await new TSP(graph.getAsMatrix(), start, args).simpleEvolutionAlgo(updater, cancelation);
             return true;
         }
 

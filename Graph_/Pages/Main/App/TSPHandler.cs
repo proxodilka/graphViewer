@@ -91,9 +91,10 @@ namespace Graph_
             {
                 if (graph.isComplete())
                 {
+
                     changeOnTSPState((sender as Button));
                     TSPcancellationToken = new CancellationTokenSource();
-                    await graphAlgo.TSP_Evol((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(EvolvSolutionLabel, ans, isLivePathUpdate.Checked), TSPcancellationToken.Token);
+                    await graphAlgo.TSP_Evol((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(EvolvSolutionLabel, ans, isLivePathUpdate.Checked), TSPcancellationToken.Token, tspset.get_value());
                     changeOnTSPState((sender as Button));
                     TSPAnswerHandler(EvolvSolutionLabel);
                 }
