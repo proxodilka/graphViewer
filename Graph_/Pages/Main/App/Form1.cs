@@ -192,7 +192,7 @@ namespace Graph_
             handleAppState();
             if (Properties.Settings.Default.CreateFileAtStartup) newFile();
 
-            //DEBUG_openFile("C:\\Users\\nuejk\\Documents\\tsp_sample.txt");
+           // DEBUG_openFile(@"C:\Users\rp-re\OneDrive\Desktop\сова\tsplib\berlin52.tsp");
         }
 
         

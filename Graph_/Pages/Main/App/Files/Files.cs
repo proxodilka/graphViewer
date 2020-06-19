@@ -12,6 +12,7 @@ using Graph_.GraphVisual_;
 using Graph_.Pages.Main.App.Localization;
 using System.Drawing.Imaging;
 
+
 namespace Graph_
 {
     public partial class MainWindow : Form
@@ -38,13 +39,19 @@ namespace Graph_
 
         private void openFile(string filePath)
         {
-             
             StreamReader fileStream = new StreamReader(filePath);
-            string firstLine = fileStream.ReadLine();
+            bool fileOk = false;
+            if(filePath.Contains(".tsp"))
+            {
+                fileOk = readTSP(fileStream);
+            }
+            else
+            {
+                string firstLine = fileStream.ReadLine();
 
-            string[] type = detectType(firstLine).Split(' ');
-            bool fileOk = tryToParseGraph(fileStream, type);
-            
+                string[] type = detectType(firstLine).Split(' ');
+                fileOk = tryToParseGraph(fileStream, type);
+            }
             fileStream.Close();
 
             if (fileOk)
@@ -63,6 +70,7 @@ namespace Graph_
             
         }
 
+      
         private void saveFile(string filePath)
         {
             StreamWriter fileStream = new StreamWriter(filePath);

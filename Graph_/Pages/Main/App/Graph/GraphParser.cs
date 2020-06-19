@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Graph_.Pages.Main.App.Localization;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace Graph_
 {
@@ -228,6 +229,8 @@ namespace Graph_
             return true;
         }
 
+
+
         private Array slice(Array arr, int start, int? _end = null)
         {
             int end = _end ?? arr.Length - start;
@@ -235,6 +238,50 @@ namespace Graph_
             Array.Copy(arr, start, res, 0, end - start + 1);
             return res;
         }
-
+        
+        private bool readTSP(StreamReader file)
+        {
+            Dictionary<string, string> settings = new Dictionary<string, string>();
+            Regex set = new Regex(@"([A-Z,_]+)\s*:\s*([\w,\d]+)");
+            string line;
+            while (true)
+            {
+                line = file.ReadLine();
+                if (line.Contains("SECTION"))
+                {
+                    break;
+                }
+                Match match = set.Match(line);
+                settings[match.Groups[1].Value] = match.Groups[2].Value;
+            }
+            if (line.Contains("NODE_COORD"))
+            {
+                int N = Convert.ToInt32(settings["DIMENSION"]);
+                graph.rewriteGraph(N);
+                if ((settings.ContainsKey("EDGE_WEIGHT_TYPE")&&
+                    (settings["EDGE_WEIGHT_TYPE"] == "EUC_2D" || settings["EDGE_WEIGHT_TYPE"] == "GEO")) ||
+                    settings.ContainsKey("NODE_COORD_TYPE")&&settings["NODE_COORD_TYPE"] == "TWOD_COORDS")
+                {
+                    Dictionary<int, PointF> coords = new Dictionary<int, PointF>(N);
+                    Regex getcoords = new Regex(@"(\d+)\s+([+-]?([0-9]*[.])?[0-9]+)\s+([+-]?([0-9]*[.])?[0-9]+)");
+                    
+                    for(int i =0;i<N;++i)
+                    {
+                        line = file.ReadLine();
+                        Match match2 = getcoords.Match(line);
+                        Group index, firstcoord, secondcoord = match2.Groups[4];
+                        index = match2.Groups[1];
+                        firstcoord = match2.Groups[2];
+                        coords[Convert.ToInt32(index.Value)] = new PointF(float.Parse(firstcoord.Value), float.Parse(secondcoord.Value));
+                    }
+                    graphVisual.setNodesCoords(coords);
+                    graph.IsDirected = true;
+                    graphVisual.IsWeighted = true;
+                    graph.makeGraphComplete();
+                    setWeightsByCoords();
+                }
+            }
+            return true;
+        }
     }
 }
