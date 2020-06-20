@@ -1,0 +1,6 @@
+{
+    "migration": 1,
+    "should_migrate": 1000,
+    "num_rnd": 10,
+    "num_greedy": 3
+}
