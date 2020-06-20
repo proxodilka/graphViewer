@@ -123,6 +123,18 @@ namespace Graph_
             vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
         }
 
+        public void rewriteGraph(int N)
+        {
+            init();
+            for(int i = 0; i < N; ++i)
+            {
+                addVertex(i, true);
+            }
+
+            rewrite?.Invoke(this, new GraphEventArgs(graph.Keys.ToArray(), new int[0]));
+            vertexModified?.Invoke(this, new GraphEventArgs(new int[0], new int[0]));
+        }
+
         public void rewriteGraph()
         {
             init();
