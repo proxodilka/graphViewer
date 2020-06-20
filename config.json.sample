@@ -1,0 +1,13 @@
+{
+    "mysql":{
+        "db_host": "",
+        "db_user": "",
+        "db_pass": "",
+        "db_name": ""
+    },
+    "cloudinary":{
+        "cloud_name": "",
+        "api_key": "",
+        "api_secret": ""
+    }
+}
