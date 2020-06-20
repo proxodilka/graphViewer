@@ -54,8 +54,16 @@ def interface():
         default="settings.json",
         help="Params for selected TSP method.",
     )
-    parser.add_argument("--executor", "-e", required=True, help="Path to TSP executor.")
-    parser.add_argument("--config", "-c", required=False, default="config.json", help="Path to config file.")
+    parser.add_argument(
+        "--executor",
+        "-e",
+        required=False,
+        default="Graph_/bin/Debug/Graph_.exe",
+        help="Path to TSP executor.",
+    )
+    parser.add_argument(
+        "--config", "-c", required=False, default="config.json", help="Path to config file."
+    )
 
     return vars(parser.parse_args())
 

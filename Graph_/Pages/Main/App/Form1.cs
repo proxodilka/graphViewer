@@ -27,6 +27,7 @@ namespace Graph_
         bool isModified = false, hasPath=false, onAnimation=false, onTSP=false, isTabControlBlocked=false;
         int traversalTabIndex = 2;
         int TSPTabIndex = 3;
+        bool isHiden = false;
 
         WFCanvas canvas;
         GraphVisual graphVisual;
@@ -143,11 +144,18 @@ namespace Graph_
             tspset.Show();
         }
 
-       
 
         private void scallerTrackBar_ValueChanged(object sender, EventArgs e)
         {
             graphVisual.setNodeSize((sender as TrackBar).Value / 10.0f);
+        }
+
+        private void MainWindow_Shown(object sender, EventArgs e)
+        {
+            if (isHiden)
+            {
+                this.Hide();
+            }
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
@@ -180,8 +188,9 @@ namespace Graph_
         {
             string[] args = Environment.GetCommandLineArgs();
             //string[] args = new string[] { "Graph_.exe", @"C:\Users\nuejk\source\repos\graphs-editor\Samples\tsp\tsp_big(36 vertices).txt", "evolv", @"C:\Users\nuejk\source\repos\graphs-editor\Samples\tsp_settings.json", "10" };
-            if (args.Length >= 1)
+            if (args.Length > 1)
             {
+                isHiden = true;
                 string fileName = args[1];
                 string TSPMethod = args[2];
                 string TSPParams = args[3];
@@ -229,9 +238,8 @@ namespace Graph_
             subscribe();
             handleAppState();
             if (Properties.Settings.Default.CreateFileAtStartup) newFile();
-
             evalSubtasks();
-           // DEBUG_openFile(@"C:\Users\rp-re\OneDrive\Desktop\сова\tsplib\berlin52.tsp");
+            // DEBUG_openFile(@"C:\Users\rp-re\OneDrive\Desktop\сова\tsplib\berlin52.tsp");
         }
 
         
