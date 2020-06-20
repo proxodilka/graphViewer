@@ -64,6 +64,7 @@ def interface():
     parser.add_argument(
         "--config", "-c", required=False, default="config.json", help="Path to config file."
     )
+    parser.add_argument("--num_runs", "-n", required=False, default=1, help="Number of runs.")
 
     return vars(parser.parse_args())
 
@@ -180,14 +181,15 @@ if __name__ == "__main__":
     validate_arguments(args)
     read_config(args)
     config_cloudinary(args)
-    results = run_solver(args)
-    results.update(get_meta_data(args["data_path"]))
-    results.update(
-        {
-            "run_time": args["time"],
-            "method": args["method"],
-            "tsp_params": get_file_content(args["params"]),
-        }
-    )
-    upload_image(results)
-    report_results(args, results)
+    for i in range(args["repeat_num"]):
+        results = run_solver(args)
+        results.update(get_meta_data(args["data_path"]))
+        results.update(
+            {
+                "run_time": args["time"],
+                "method": args["method"],
+                "tsp_params": get_file_content(args["params"]),
+            }
+        )
+        upload_image(results)
+        report_results(args, results)
