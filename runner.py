@@ -10,6 +10,8 @@ import os
 import warnings
 import mysql.connector
 
+import multiprocessing
+
 is_path = ["data_path", "executor", "params", "config"]
 ERROR_IMG = "https://res.cloudinary.com/dsp5c2jts/image/upload/v1592664249/error_pn2wvi.jpg"
 paths_to_clear = []
@@ -41,7 +43,7 @@ def interface():
         "--time",
         "-t",
         required=False,
-        default=60,
+        default="60",
         help="Time in seconds that TSP solver will work.",
     )
     parser.add_argument(
@@ -175,21 +177,32 @@ def get_file_content(path, no_formating=False):
         else:
             return content
 
+def work(args):
+    config_cloudinary(args)
+    results = run_solver(args)
+    results.update(get_meta_data(args["data_path"]))
+    results.update(
+        {
+            "run_time": args["time"],
+            "method": args["method"],
+            "tsp_params": get_file_content(args["params"]),
+        }
+    )
+    upload_image(results)
+    report_results(args, results)
 
 if __name__ == "__main__":
     args.update(interface())
     validate_arguments(args)
     read_config(args)
-    config_cloudinary(args)
-    for i in range(args["repeat_num"]):
-        results = run_solver(args)
-        results.update(get_meta_data(args["data_path"]))
-        results.update(
-            {
-                "run_time": args["time"],
-                "method": args["method"],
-                "tsp_params": get_file_content(args["params"]),
-            }
-        )
-        upload_image(results)
-        report_results(args, results)
+    
+    processes = []
+    for _ in range(int(args["num_runs"])):
+        p = multiprocessing.Process(target=work, args=[args])
+        p.start()
+        processes.append(p)
+    
+    for p in processes:
+        p.join()
+    
+    print("Done.")
