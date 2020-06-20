@@ -90,7 +90,7 @@ namespace Graph_
                     Swap<Circle>(ref _from, ref _to);
                     if (from.Center.X == to.Center.X)
                     {
-                        Console.WriteLine("equals");
+                        //Console.WriteLine("equals");
                         _to.Center.X += 0.02f;
                     }
                 }
@@ -109,7 +109,7 @@ namespace Graph_
                     Swap<Circle>(ref _from, ref _to);
                     if (from.Center.X == to.Center.X)
                     {
-                        Console.WriteLine("equals");
+                        //Console.WriteLine("equals");
                         _to.Center.X += 0.02f;
                     }
                 }

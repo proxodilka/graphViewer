@@ -399,7 +399,7 @@ namespace Graph_
         void print_population(Population population)
         {
             Individual best = population.Get_N_Bests(1)[0];
-            Console.WriteLine($"BEST: {best.Value} : {best.Chromos}");
+            //Console.WriteLine($"BEST: {best.Value} : {best.Chromos}");
             for (int i=0; i<population.Amount; i++)
             {
                 print_individual(population.GetI(i), i.ToString());
@@ -408,7 +408,7 @@ namespace Graph_
 
         void print_individual(Individual individual, string prefix="")
         {
-            Console.WriteLine($"{prefix} {individual.Value} : {string.Join(",", individual.Chromos)}");
+            //Console.WriteLine($"{prefix} {individual.Value} : {string.Join(",", individual.Chromos)}");
         }
 
         public async Task<bool> simpleEvolutionAlgo(Updater updater, CancellationToken cancel)

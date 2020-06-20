@@ -125,17 +125,21 @@ namespace Graph_
             MessageBox.Show(result, titles.fileErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void SaveGraphImge(string name, string type)
+        private void SaveGraphImge(string name, string type, bool no_ext=false)
         {
-            ImageCodecInfo codecInfo;
-            codecInfo = GetEncoderInfo(type);
+            ImageCodecInfo codecInfo = GetEncoderInfo("image/" + type);
             System.Drawing.Imaging.Encoder encoder = System.Drawing.Imaging.Encoder.Quality;
             EncoderParameters encoderParameters = new EncoderParameters(1);
             EncoderParameter encoderparam = new EncoderParameter(encoder, 75L);
             encoderParameters.Param[0] = encoderparam;
+
+            if (!no_ext)
+            {
+                name += "." + type;
+            }
             canvas.GetBitmap.Save(name, codecInfo, encoderParameters);
         }
-        private static ImageCodecInfo GetEncoderInfo(String mimeType)
+        private static ImageCodecInfo GetEncoderInfo(string mimeType)
         {
             int j;
             ImageCodecInfo[] encoders;

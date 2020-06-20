@@ -123,10 +123,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 30</value>
-  </data>
-  <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>0, 24</value>
   </data>
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
@@ -139,10 +136,10 @@
     <value>True</value>
   </data>
   <data name="vertexValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 570</value>
+    <value>2, 435</value>
   </data>
   <data name="vertexValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
+    <value>68, 13</value>
   </data>
   <data name="vertexValue.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -169,7 +166,7 @@
     <value>2, 0</value>
   </data>
   <data name="filePathLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 17</value>
+    <value>46, 13</value>
   </data>
   <data name="filePathLabel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -196,10 +193,10 @@
     <value>True</value>
   </data>
   <data name="edgesValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>89, 570</value>
+    <value>76, 435</value>
   </data>
   <data name="edgesValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 17</value>
+    <value>54, 13</value>
   </data>
   <data name="edgesValue.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -223,13 +220,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="centrateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>883, 568</value>
-  </data>
-  <data name="centrateButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>757, 433</value>
   </data>
   <data name="centrateButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 30</value>
+    <value>75, 23</value>
   </data>
   <data name="centrateButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -253,13 +247,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="edgesAtCircleButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>726, 568</value>
-  </data>
-  <data name="edgesAtCircleButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>622, 433</value>
   </data>
   <data name="edgesAtCircleButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 30</value>
+    <value>129, 23</value>
   </data>
   <data name="edgesAtCircleButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -289,7 +280,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="plot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>973, 570</value>
+    <value>834, 435</value>
   </data>
   <data name="plot.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -312,11 +303,8 @@
   <data name="graphRoot.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="graphRoot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
   <data name="graphRoot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>983, 606</value>
+    <value>843, 462</value>
   </data>
   <data name="graphRoot.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -349,13 +337,10 @@
     <value>Calibri, 9.75pt</value>
   </data>
   <data name="changeVertValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 35</value>
-  </data>
-  <data name="changeVertValue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>7, 27</value>
   </data>
   <data name="changeVertValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 27</value>
+    <value>87, 23</value>
   </data>
   <data name="changeVertValue.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -373,13 +358,10 @@
     <value>0</value>
   </data>
   <data name="deleteVertex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 35</value>
-  </data>
-  <data name="deleteVertex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>127, 27</value>
   </data>
   <data name="deleteVertex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 30</value>
+    <value>24, 23</value>
   </data>
   <data name="deleteVertex.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -400,13 +382,10 @@
     <value>1</value>
   </data>
   <data name="addVertex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 35</value>
-  </data>
-  <data name="addVertex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>100, 27</value>
   </data>
   <data name="addVertex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 30</value>
+    <value>24, 23</value>
   </data>
   <data name="addVertex.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -436,7 +415,7 @@
     <value>3, 0</value>
   </data>
   <data name="changeVertexesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 29</value>
+    <value>129, 23</value>
   </data>
   <data name="changeVertexesLabel.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -457,16 +436,13 @@
     <value>3</value>
   </data>
   <data name="changeVertexTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="changeVertexTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>4, 22</value>
   </data>
   <data name="changeVertexTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="changeVertexTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>975, 220</value>
+    <value>835, 165</value>
   </data>
   <data name="changeVertexTab.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -493,13 +469,10 @@
     <value>NoControl</value>
   </data>
   <data name="setWeightsByCoordsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 68</value>
-  </data>
-  <data name="setWeightsByCoordsButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>157, 52</value>
   </data>
   <data name="setWeightsByCoordsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 29</value>
+    <value>274, 22</value>
   </data>
   <data name="setWeightsByCoordsButton.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -526,13 +499,10 @@
     <value>NoControl</value>
   </data>
   <data name="clearEdges.Location" type="System.Drawing.Point, System.Drawing">
-    <value>346, 34</value>
-  </data>
-  <data name="clearEdges.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>297, 26</value>
   </data>
   <data name="clearEdges.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 31</value>
+    <value>134, 24</value>
   </data>
   <data name="clearEdges.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -556,13 +526,10 @@
     <value>Calibri, 9pt</value>
   </data>
   <data name="makeGraphComplete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 35</value>
-  </data>
-  <data name="makeGraphComplete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>157, 27</value>
   </data>
   <data name="makeGraphComplete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 29</value>
+    <value>134, 22</value>
   </data>
   <data name="makeGraphComplete.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -586,13 +553,10 @@
     <value>Calibri, 9.75pt</value>
   </data>
   <data name="toEdgeValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>59, 34</value>
-  </data>
-  <data name="toEdgeValue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>51, 26</value>
   </data>
   <data name="toEdgeValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 27</value>
+    <value>38, 23</value>
   </data>
   <data name="toEdgeValue.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -613,13 +577,10 @@
     <value>Calibri, 9.75pt</value>
   </data>
   <data name="fromEdgeValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 34</value>
-  </data>
-  <data name="fromEdgeValue.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>7, 26</value>
   </data>
   <data name="fromEdgeValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 27</value>
+    <value>38, 23</value>
   </data>
   <data name="fromEdgeValue.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -643,10 +604,10 @@
     <value>Calibri, 12pt</value>
   </data>
   <data name="toLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 72</value>
+    <value>47, 55</value>
   </data>
   <data name="toLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>21, 24</value>
+    <value>18, 19</value>
   </data>
   <data name="toLabel.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -673,10 +634,10 @@
     <value>Calibri, 12pt</value>
   </data>
   <data name="fromLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 72</value>
+    <value>3, 55</value>
   </data>
   <data name="fromLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 24</value>
+    <value>26, 19</value>
   </data>
   <data name="fromLabel.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -697,13 +658,10 @@
     <value>6</value>
   </data>
   <data name="deleteEdge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 35</value>
-  </data>
-  <data name="deleteEdge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>127, 27</value>
   </data>
   <data name="deleteEdge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 30</value>
+    <value>24, 23</value>
   </data>
   <data name="deleteEdge.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -724,13 +682,10 @@
     <value>7</value>
   </data>
   <data name="addEdge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 35</value>
-  </data>
-  <data name="addEdge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>100, 27</value>
   </data>
   <data name="addEdge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 30</value>
+    <value>24, 23</value>
   </data>
   <data name="addEdge.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -760,7 +715,7 @@
     <value>3, 0</value>
   </data>
   <data name="changeEdgesLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 29</value>
+    <value>150, 23</value>
   </data>
   <data name="changeEdgesLabel.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -781,13 +736,10 @@
     <value>9</value>
   </data>
   <data name="changeEdgesTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="changeEdgesTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>4, 22</value>
   </data>
   <data name="changeEdgesTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>975, 220</value>
+    <value>835, 165</value>
   </data>
   <data name="changeEdgesTab.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -814,13 +766,10 @@
     <value>Calibri, 14.25pt, style=Bold</value>
   </data>
   <data name="isConnectedComponents.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 77</value>
-  </data>
-  <data name="isConnectedComponents.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>134, 59</value>
   </data>
   <data name="isConnectedComponents.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 33</value>
+    <value>215, 27</value>
   </data>
   <data name="isConnectedComponents.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -844,13 +793,10 @@
     <value>Calibri, 12pt</value>
   </data>
   <data name="resetButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 34</value>
-  </data>
-  <data name="resetButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>185, 26</value>
   </data>
   <data name="resetButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 35</value>
+    <value>103, 27</value>
   </data>
   <data name="resetButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -874,13 +820,10 @@
     <value>Calibri, 11.25pt</value>
   </data>
   <data name="traversalStartVertex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 34</value>
-  </data>
-  <data name="traversalStartVertex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>11, 26</value>
   </data>
   <data name="traversalStartVertex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 30</value>
+    <value>87, 26</value>
   </data>
   <data name="traversalStartVertex.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -901,13 +844,10 @@
     <value>Calibri, 12pt</value>
   </data>
   <data name="startTraversal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 35</value>
-  </data>
-  <data name="startTraversal.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>104, 27</value>
   </data>
   <data name="startTraversal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 34</value>
+    <value>75, 26</value>
   </data>
   <data name="startTraversal.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -934,13 +874,10 @@
     <value>Calibri, 14.25pt, style=Bold</value>
   </data>
   <data name="isDfs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 77</value>
-  </data>
-  <data name="isDfs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>70, 59</value>
   </data>
   <data name="isDfs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 33</value>
+    <value>58, 27</value>
   </data>
   <data name="isDfs.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -967,13 +904,10 @@
     <value>Calibri, 14.25pt, style=Bold</value>
   </data>
   <data name="isBfs.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 77</value>
-  </data>
-  <data name="isBfs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>7, 59</value>
   </data>
   <data name="isBfs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 33</value>
+    <value>57, 27</value>
   </data>
   <data name="isBfs.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1003,7 +937,7 @@
     <value>3, 0</value>
   </data>
   <data name="startedVertex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 29</value>
+    <value>128, 23</value>
   </data>
   <data name="startedVertex.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1024,16 +958,13 @@
     <value>6</value>
   </data>
   <data name="traversalTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="traversalTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>4, 22</value>
   </data>
   <data name="traversalTab.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="traversalTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>975, 220</value>
+    <value>835, 165</value>
   </data>
   <data name="traversalTab.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1060,10 +991,13 @@
     <value>5, 5</value>
   </data>
   <data name="GASettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 185</value>
+    <value>146, 141</value>
+  </data>
+  <data name="GASettings.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="GASettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
+    <value>103, 18</value>
   </data>
   <data name="GASettings.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1084,13 +1018,10 @@
     <value>0</value>
   </data>
   <data name="isLivePathUpdate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 115</value>
-  </data>
-  <data name="isLivePathUpdate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>13, 88</value>
   </data>
   <data name="isLivePathUpdate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 71</value>
+    <value>114, 54</value>
   </data>
   <data name="isLivePathUpdate.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1120,10 +1051,10 @@
     <value>NoControl</value>
   </data>
   <data name="EvolvSolutionLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 149</value>
+    <value>255, 114</value>
   </data>
   <data name="EvolvSolutionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 23</value>
+    <value>128, 18</value>
   </data>
   <data name="EvolvSolutionLabel.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -1147,13 +1078,10 @@
     <value>NoControl</value>
   </data>
   <data name="TSP_startEvolvButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 148</value>
-  </data>
-  <data name="TSP_startEvolvButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>146, 113</value>
   </data>
   <data name="TSP_startEvolvButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 30</value>
+    <value>103, 23</value>
   </data>
   <data name="TSP_startEvolvButton.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1180,13 +1108,10 @@
     <value>NoControl</value>
   </data>
   <data name="clearCanvasButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 76</value>
-  </data>
-  <data name="clearCanvasButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>13, 58</value>
   </data>
   <data name="clearCanvasButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 35</value>
+    <value>103, 27</value>
   </data>
   <data name="clearCanvasButton.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -1216,10 +1141,10 @@
     <value>NoControl</value>
   </data>
   <data name="GreedySolutionLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 111</value>
+    <value>255, 85</value>
   </data>
   <data name="GreedySolutionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 23</value>
+    <value>128, 18</value>
   </data>
   <data name="GreedySolutionLabel.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -1249,10 +1174,10 @@
     <value>NoControl</value>
   </data>
   <data name="BFSSolutionLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 75</value>
+    <value>255, 57</value>
   </data>
   <data name="BFSSolutionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 23</value>
+    <value>128, 18</value>
   </data>
   <data name="BFSSolutionLabel.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -1282,10 +1207,10 @@
     <value>NoControl</value>
   </data>
   <data name="BNBSolutionLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>297, 37</value>
+    <value>255, 28</value>
   </data>
   <data name="BNBSolutionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 23</value>
+    <value>128, 18</value>
   </data>
   <data name="BNBSolutionLabel.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -1309,13 +1234,10 @@
     <value>NoControl</value>
   </data>
   <data name="TSP_startGreedyButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 110</value>
-  </data>
-  <data name="TSP_startGreedyButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>146, 84</value>
   </data>
   <data name="TSP_startGreedyButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 30</value>
+    <value>103, 23</value>
   </data>
   <data name="TSP_startGreedyButton.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1339,13 +1261,10 @@
     <value>NoControl</value>
   </data>
   <data name="TSP_startBFSButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 73</value>
-  </data>
-  <data name="TSP_startBFSButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>146, 56</value>
   </data>
   <data name="TSP_startBFSButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 30</value>
+    <value>103, 23</value>
   </data>
   <data name="TSP_startBFSButton.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1366,13 +1285,10 @@
     <value>9</value>
   </data>
   <data name="TSP_startBNBButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 35</value>
-  </data>
-  <data name="TSP_startBNBButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>146, 27</value>
   </data>
   <data name="TSP_startBNBButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 30</value>
+    <value>103, 23</value>
   </data>
   <data name="TSP_startBNBButton.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1396,13 +1312,10 @@
     <value>Calibri, 11.25pt</value>
   </data>
   <data name="TSPStartVertex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 34</value>
-  </data>
-  <data name="TSPStartVertex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>13, 26</value>
   </data>
   <data name="TSPStartVertex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 30</value>
+    <value>87, 26</value>
   </data>
   <data name="TSPStartVertex.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -1429,10 +1342,10 @@
     <value>NoControl</value>
   </data>
   <data name="startedVertexTSPLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 0</value>
+    <value>5, 0</value>
   </data>
   <data name="startedVertexTSPLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 29</value>
+    <value>128, 23</value>
   </data>
   <data name="startedVertexTSPLabel.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -1453,13 +1366,10 @@
     <value>12</value>
   </data>
   <data name="tspTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tspTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 5, 3, 5</value>
+    <value>4, 22</value>
   </data>
   <data name="tspTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>975, 220</value>
+    <value>835, 165</value>
   </data>
   <data name="tspTab.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1483,13 +1393,10 @@
     <value>Calibri, 9pt</value>
   </data>
   <data name="resetNodeSizeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 94</value>
-  </data>
-  <data name="resetNodeSizeButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>21, 72</value>
   </data>
   <data name="resetNodeSizeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 30</value>
+    <value>75, 23</value>
   </data>
   <data name="resetNodeSizeButton.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1516,10 +1423,10 @@
     <value>Calibri, 12pt</value>
   </data>
   <data name="nodeSizeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 64</value>
+    <value>17, 49</value>
   </data>
   <data name="nodeSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 24</value>
+    <value>76, 19</value>
   </data>
   <data name="nodeSizeLabel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1540,13 +1447,10 @@
     <value>1</value>
   </data>
   <data name="scallerTrackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>115, 64</value>
-  </data>
-  <data name="scallerTrackBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>99, 49</value>
   </data>
   <data name="scallerTrackBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 56</value>
+    <value>169, 45</value>
   </data>
   <data name="scallerTrackBar.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1564,13 +1468,10 @@
     <value>2</value>
   </data>
   <data name="setWeightButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 29</value>
-  </data>
-  <data name="setWeightButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>115, 22</value>
   </data>
   <data name="setWeightButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 27</value>
+    <value>75, 21</value>
   </data>
   <data name="setWeightButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1600,13 +1501,10 @@
     <value>NoControl</value>
   </data>
   <data name="isWeightedCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 29</value>
-  </data>
-  <data name="isWeightedCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>21, 22</value>
   </data>
   <data name="isWeightedCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 27</value>
+    <value>87, 22</value>
   </data>
   <data name="isWeightedCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1633,13 +1531,10 @@
     <value>Calibri, 11.25pt</value>
   </data>
   <data name="isDirectedCheckBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 4</value>
-  </data>
-  <data name="isDirectedCheckBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>21, 3</value>
   </data>
   <data name="isDirectedCheckBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 27</value>
+    <value>80, 22</value>
   </data>
   <data name="isDirectedCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1660,13 +1555,13 @@
     <value>5</value>
   </data>
   <data name="settingsTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
+    <value>4, 22</value>
   </data>
   <data name="settingsTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>3, 2, 3, 2</value>
   </data>
   <data name="settingsTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>975, 220</value>
+    <value>835, 165</value>
   </data>
   <data name="settingsTab.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1692,11 +1587,8 @@
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>983, 250</value>
+    <value>843, 191</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1726,13 +1618,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>983, 861</value>
+    <value>843, 657</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>606</value>
-  </data>
-  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
-    <value>5</value>
+    <value>462</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1756,7 +1645,7 @@
     <value>Ctrl+N</value>
   </data>
   <data name="newFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="newFileOption.Text" xml:space="preserve">
     <value>New</value>
@@ -1765,7 +1654,7 @@
     <value>Ctrl+O</value>
   </data>
   <data name="openFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="openFileOption.Text" xml:space="preserve">
     <value>Open...</value>
@@ -1774,25 +1663,25 @@
     <value>Ctrl+S</value>
   </data>
   <data name="saveFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="saveFileOption.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="pngToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>95, 22</value>
   </data>
   <data name="pngToolStripMenuItem.Text" xml:space="preserve">
     <value>png</value>
   </data>
   <data name="jpgToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 26</value>
+    <value>95, 22</value>
   </data>
   <data name="jpgToolStripMenuItem.Text" xml:space="preserve">
     <value>jpg</value>
   </data>
   <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Image</value>
@@ -1801,28 +1690,28 @@
     <value>Ctrl+Shift+S</value>
   </data>
   <data name="saveAsFileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="saveAsFileOption.Text" xml:space="preserve">
     <value>Save As...</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>239, 6</value>
+    <value>192, 6</value>
   </data>
   <data name="settingsOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="settingsOption.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
   <data name="exitOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+    <value>195, 22</value>
   </data>
   <data name="exitOption.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="fileOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 24</value>
+    <value>37, 20</value>
   </data>
   <data name="fileOption.Text" xml:space="preserve">
     <value>File</value>
@@ -1834,13 +1723,13 @@
     <value>Ctrl+Z</value>
   </data>
   <data name="undoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 26</value>
+    <value>144, 22</value>
   </data>
   <data name="undoButton.Text" xml:space="preserve">
     <value>Undo</value>
   </data>
   <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 24</value>
+    <value>39, 20</value>
   </data>
   <data name="editToolStripMenuItem.Text" xml:space="preserve">
     <value>Edit</value>
@@ -1848,11 +1737,8 @@
   <data name="navigationMenu.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="navigationMenu.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>7, 3, 0, 3</value>
-  </data>
   <data name="navigationMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>983, 30</value>
+    <value>843, 24</value>
   </data>
   <data name="navigationMenu.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1885,10 +1771,10 @@
     <value>25</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 17</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>983, 891</value>
+    <value>843, 681</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 8.25pt</value>
@@ -3025,11 +2911,8 @@
         ////////AAAf/////////////////+AA//8=
 </value>
   </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>579, 634</value>
+    <value>499, 494</value>
   </data>
   <data name="&gt;&gt;fileOption.Name" xml:space="preserve">
     <value>fileOption</value>

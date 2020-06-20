@@ -64,8 +64,8 @@ namespace Graph_
         private void onFieldWheel(object sender, MouseEventArgs e)
         {
             if (!scalable) return;
-            Console.WriteLine($"center: {center}");
-            Console.WriteLine($"location: {e.Location}");
+            //Console.WriteLine($"center: {center}");
+            //Console.WriteLine($"location: {e.Location}");
 
             //
             //center = new PointF(baseCenter.X+baseCenter.X-e.X, baseCenter.Y+baseCenter.Y-e.Y);

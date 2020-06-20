@@ -247,7 +247,7 @@ namespace Graph_
             }
 
             updater(optimalBranch.Answer);
-            Console.WriteLine("done");
+            //Console.WriteLine("done");
         }
 
         public async Task<bool> branchAndBound(Updater updater, CancellationToken cancel)

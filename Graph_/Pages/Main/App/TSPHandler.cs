@@ -111,7 +111,7 @@ namespace Graph_
         }
 
         Tuple<double, List<int>> lastAnswer;
-        void TSPAnswerHandler(Label target, Tuple<double, List<int>> answer=null, bool do_not_draw=false)
+        void TSPAnswerHandler(Label target, Tuple<double, List<int>> answer=null, bool do_not_draw=false, bool raw_print_info=false)
         {
             if (answer == null)
             {
@@ -125,7 +125,14 @@ namespace Graph_
                     var translatedAnswer = answer.Item2.Select((x) => vertices[x]).ToList();
 
                     target.Text = $"Weight: {Math.Round(answer.Item1, 6)} | Path: {string.Join("-", translatedAnswer)}";
-                    Console.WriteLine($"Weight: {answer.Item1} | Path: {string.Join("-", answer.Item2)}");
+
+                    if (raw_print_info) {
+                        Console.WriteLine($"{answer.Item1} {string.Join(" ", answer.Item2)}");
+                    }
+                    else {
+                        Console.WriteLine($"Weight: {answer.Item1} | Path: {string.Join("-", answer.Item2)}");
+                    }
+                    
 
                     lastAnswer = answer;
                     if (!do_not_draw)
@@ -138,7 +145,14 @@ namespace Graph_
                 var translatedAnswer = answer.Item2.Select((x) => vertices[x]).ToList();
 
                 target.Text = $"Weight: {Math.Round(answer.Item1, 6)} | Path: {string.Join("-", translatedAnswer)}";
-                Console.WriteLine($"Weight: {answer.Item1} | Path: {string.Join("-", answer.Item2)}");
+                if (raw_print_info)
+                {
+                    Console.WriteLine($"{answer.Item1} {string.Join(" ", answer.Item2)}");
+                }
+                else
+                {
+                    Console.WriteLine($"Weight: {answer.Item1} | Path: {string.Join("-", answer.Item2)}");
+                }
                 graphVisual.setPath(translatedAnswer);
             }
             

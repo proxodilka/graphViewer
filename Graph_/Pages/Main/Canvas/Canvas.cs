@@ -47,7 +47,7 @@ namespace Graph_
         int h, w, scale;
         bool noAxis = true, isMousePressed=false, scalable, childControleMouse, restrintChildControleMouse;
         PointF center, baseCenter;
-        PictureBox field;
+        public PictureBox field;
         Bitmap img;
         Graphics graph;
 
@@ -103,7 +103,7 @@ namespace Graph_
 
         private void onSizeChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("size changed");
+            //Console.WriteLine("size changed");
             h = field.Height;
             w = field.Width;
 

@@ -15,6 +15,7 @@ using System.Threading;
 using System.Globalization;
 using Graph_.Pages.Main.App.Localization;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace Graph_
 {
@@ -54,12 +55,12 @@ namespace Graph_
 
         private void Plot_GiveFeedback(object sender, GiveFeedbackEventArgs e)
         {
-            Console.WriteLine("dragging");
+            //Console.WriteLine("dragging");
         }
 
         private void Plot_QueryContinueDrag(object sender, QueryContinueDragEventArgs e)
         {
-            Console.WriteLine("dragging");
+            //Console.WriteLine("dragging");
             
         }
 
@@ -93,6 +94,7 @@ namespace Graph_
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //Console.WriteLine("BYE!!!");
             if (!closingFile()) e.Cancel=true;
         }
 
@@ -171,14 +173,50 @@ namespace Graph_
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(userLang);
             Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(userLang);
 
-            Console.WriteLine(Thread.CurrentThread.CurrentCulture.NativeName);
+            //Console.WriteLine(Thread.CurrentThread.CurrentCulture.NativeName);
         }
         
+        async void evalSubtasks()
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            //string[] args = new string[] { "Graph_.exe", @"C:\Users\nuejk\source\repos\graphs-editor\Samples\tsp\tsp_big(36 vertices).txt", "evolv", @"C:\Users\nuejk\source\repos\graphs-editor\Samples\tsp_settings.json", "10" };
+            if (args.Length >= 1)
+            {
+                string fileName = args[1];
+                string TSPMethod = args[2];
+                string TSPParams = args[3];
+                string pic_output = args[4];
+                int executionTime = Convert.ToInt32(args[5]);
+
+                openFile(fileName);
+                TSPParams = new StreamReader(TSPParams).ReadToEnd();
+
+                if (TSPMethod == "evolv")
+                {
+                    var algoParams = JsonConvert.DeserializeObject<Dictionary<string, int>>(TSPParams);
+                    TSPcancellationToken = new CancellationTokenSource();
+                    graphAlgo.TSP_Evol((int)TSPStartVertex.Value, (ans) => TSPAnswerHandler(EvolvSolutionLabel, ans, true, true), TSPcancellationToken.Token, algoParams);
+                    await Task.Delay(executionTime*1000);
+                    TSPcancellationToken.Cancel();
+                    TSPAnswerHandler(EvolvSolutionLabel, null, true, true);
+                    canvas.field.Size = new Size(2560, 1440);
+                    graphVisual.centrate();
+
+                    SaveGraphImge(pic_output, "png", true);
+                    Application.Exit();
+                }
+                else
+                {
+
+                }
+            }
+
+        }
+
         public MainWindow()
         {
             initLanguage();
             InitializeComponent();
-
             mainWindow = this;
             KeyPreview = true;
             this.DoubleBuffered = true;
@@ -193,6 +231,7 @@ namespace Graph_
             if (Properties.Settings.Default.CreateFileAtStartup) newFile();
 
             //DEBUG_openFile("C:\\Users\\nuejk\\Documents\\tsp_sample.txt");
+            evalSubtasks();
         }
 
         

@@ -241,7 +241,7 @@ namespace Graph_
 
         private void onGraphicsUpdate(object sender)
         {
-            Console.WriteLine("onRender");
+            //Console.WriteLine("onRender");
             resetButton.Enabled = (sender as GraphVisual).isCanvasDirty;
         }
 

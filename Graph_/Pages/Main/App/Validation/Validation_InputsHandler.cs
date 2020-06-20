@@ -25,7 +25,7 @@ namespace Graph_
             int value = (int)valueContainer.Value;
             
             validateButton(value, startTraversal);
-            Console.WriteLine(value);
+            //Console.WriteLine(value);
             if (tabControl.SelectedIndex == traversalTabIndex) { graphVisual.setActive(value); }
         }
 

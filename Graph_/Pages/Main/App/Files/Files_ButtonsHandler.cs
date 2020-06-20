@@ -57,22 +57,22 @@ namespace Graph_
         
         private void pngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog.FileName = "newImge.png";
+            saveFileDialog.FileName = "newImge";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 currentFilePath = saveFileDialog.FileName;
-                SaveGraphImge(currentFilePath, "image/png");
+                SaveGraphImge(currentFilePath, "png");
             }
 
         }
 
         private void jpgToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog.FileName = "newImge.jpg";
+            saveFileDialog.FileName = "newImge";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 currentFilePath = saveFileDialog.FileName;
-                SaveGraphImge(currentFilePath, "image/jpeg");
+                SaveGraphImge(currentFilePath, "jpeg");
             }
         }
 
