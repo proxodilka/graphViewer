@@ -262,26 +262,84 @@ namespace Graph_
                     (settings["EDGE_WEIGHT_TYPE"] == "EUC_2D" || settings["EDGE_WEIGHT_TYPE"] == "GEO")) ||
                     settings.ContainsKey("NODE_COORD_TYPE")&&settings["NODE_COORD_TYPE"] == "TWOD_COORDS")
                 {
-                    Dictionary<int, PointF> coords = new Dictionary<int, PointF>(N);
-                    Regex getcoords = new Regex(@"(\d+)\s+([+-]?([0-9]*[.])?[0-9]+)\s+([+-]?([0-9]*[.])?[0-9]+)");
-                    
-                    for(int i =0;i<N;++i)
-                    {
-                        line = file.ReadLine();
-                        Match match2 = getcoords.Match(line);
-                        Group index, firstcoord, secondcoord = match2.Groups[4];
-                        index = match2.Groups[1];
-                        firstcoord = match2.Groups[2];
-                        coords[Convert.ToInt32(index.Value)] = new PointF(float.Parse(firstcoord.Value), float.Parse(secondcoord.Value));
-                    }
-                    graphVisual.setNodesCoords(coords);
-                    graph.IsDirected = true;
-                    graphVisual.IsWeighted = true;
-                    graph.makeGraphComplete();
-                    setWeightsByCoords();
+                    return parseTSPtwo_coords(file, N);
                 }
             }
-            return true;
+            if (line.Contains("EDGE_WEIGHT_"))
+            {
+                int N = Convert.ToInt32(settings["DIMENSION"]);
+                if (settings["EDGE_WEIGHT_FORMAT"]== "UPPER_ROW")
+                {
+                    return parseTSPupper_row(file, N);
+                }
+            }
+            return false;
+        }
+
+        private bool parseTSPtwo_coords(StreamReader file, int N)
+        {
+            try
+            { 
+                Dictionary<int, PointF> coords = new Dictionary<int, PointF>(N);
+                Regex getcoords = new Regex(@"(\d+)\s+([+-]?([0-9]*[.])?[0-9]+)\s+([+-]?([0-9]*[.])?[0-9]+)");
+
+                for (int i = 0; i < N; ++i)
+                {
+                    string line = file.ReadLine();
+                    Match match2 = getcoords.Match(line);
+                    Group index, firstcoord, secondcoord = match2.Groups[4];
+                    index = match2.Groups[1];
+                    firstcoord = match2.Groups[2];
+                    coords[Convert.ToInt32(index.Value)] = new PointF(float.Parse(firstcoord.Value), float.Parse(secondcoord.Value));
+                }
+                graphVisual.setNodesCoords(coords);
+                graph.IsDirected = true;
+                graphVisual.IsWeighted = true;
+                graph.makeGraphComplete();
+                setWeightsByCoords();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private bool parseTSPupper_row(StreamReader file,int N)
+        {
+            try
+            {
+                double[][] matrix = new double[N][]; 
+                for(int i = 0; i < N; ++i)
+                {
+                    matrix[i] = new double[N];
+                }
+                for(int i = 0; i < N; ++i)
+                {
+                    string line = file.ReadLine();
+                    Regex num = new Regex(@"([+-]?([0-9]*[.])?[0-9]+)");
+                    MatchCollection matches = num.Matches(line);
+                    int j = N-2;
+                    //matrix[i] = new double[N];
+                    matrix[i][i] = 0;
+                    foreach(Match match in matches)
+                    {
+                        double lenght = double.Parse(match.Groups[1].Value);
+                        matrix[i][j] = lenght;
+                        matrix[j][i] = lenght;
+                        j--;
+                    }
+                }
+                graph.rewriteGraph(matrix);
+                graph.IsDirected = true;
+                graphVisual.IsWeighted = true;
+                //graph.makeGraphComplete();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
